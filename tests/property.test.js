@@ -1,13 +1,18 @@
 import { expect } from "chai";
 
-import { Property } from "../src/property";
-import { PROPERTIES } from "../src/settings";
+import { Property as PropertyClass } from "../src/js/property.js";
+import { Property } from "../src/js/settings.ts";
 
 describe("Property", () => {
-    const obj = { name: PROPERTIES.pressure };
+    const obj = { name: Property.pressure };
 
     it("can be created", () => {
-        const app = new Property(obj);
-        expect(app.prettyName).to.equal("Pressure");
+        const property = new PropertyClass(obj);
+        expect(property).to.be.instanceOf(PropertyClass);
+    });
+
+    it("has a name", () => {
+        const property = new PropertyClass(obj);
+        expect(property.name).to.equal(Property.pressure);
     });
 });
