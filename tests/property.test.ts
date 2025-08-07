@@ -1,10 +1,10 @@
 import { expect } from "chai";
 
-import { Property as PropertyClass } from "../src/js/property.js";
-import { Property } from "../src/js/settings.ts";
+import PropertyClass from "../src/js/Property";
+import { PropertyName } from "../src/js/settings";
 
 describe("Property", () => {
-    const obj = { name: Property.pressure };
+    const obj = { name: PropertyName.pressure };
 
     it("can be created", () => {
         const property = new PropertyClass(obj);
@@ -13,6 +13,6 @@ describe("Property", () => {
 
     it("has a name", () => {
         const property = new PropertyClass(obj);
-        expect(property.name).to.equal(Property.pressure);
+        expect(property.name).to.equal(PropertyName.pressure);
     });
 });

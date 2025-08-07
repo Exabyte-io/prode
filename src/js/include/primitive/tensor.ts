@@ -1,4 +1,4 @@
-import { Property } from "../../property";
+import Property from "../../Property";
 
 // by default this is a 2d array: eg. [ [], [], []]
 export class TensorProperty extends Property {
@@ -45,6 +45,14 @@ export class TensorProperty extends Property {
      *   }
      */
     get values() {
-        return this.prop("value") || this.prop("values", []).map((x) => x.value);
+        return this.valueProp || this.valuesProp.map((x) => x.value);
+    }
+
+    private get valueProp() {
+        return this.prop<number[][]>("value");
+    }
+
+    private get valuesProp() {
+        return this.prop<{ id: number; value: number[] }[]>("values", []);
     }
 }

@@ -1,14 +1,7 @@
-import type { PseudopotentialFile } from "@mat3ra/esse/dist/js/types";
-import _ from "underscore";
+import type { FileDataItem } from "@mat3ra/esse/dist/js/types";
+import uniqBy from "lodash/uniqBy";
 
-import { Property } from "../../property";
-
-type PseudopotentialData = Required<Required<PseudopotentialFile>["data"]>;
-type DataExchangeCorrelation = PseudopotentialData["exchangeCorrelation"];
-type DataType = PseudopotentialData["type"];
-type DataVersion = PseudopotentialData["version"];
-type DataApps = PseudopotentialData["apps"];
-type DataElement = PseudopotentialData["element"];
+import MetaProperty from "../../MetaProperty";
 
 type RawDataObject = {
     path: string;
@@ -22,45 +15,45 @@ enum CompatibleExchangeCorrelationKey {
     hse06 = "hse06",
 }
 
-export class Pseudopotential extends Property {
-    static compatibleExchangeCorrelation: Record<CompatibleExchangeCorrelationKey, string[]> = {
+export class Pseudopotential extends MetaProperty {
+    static readonly compatibleExchangeCorrelation = {
         hse06: ["pbe", "hse06"],
     };
 
     get path() {
-        return this.prop("path", "");
+        return this.requiredProp<FileDataItem["path"]>("path");
     }
 
     get filename() {
-        return this.prop("filename");
+        return this.prop<FileDataItem["filename"]>("filename");
     }
 
-    get isCustom() {
-        return this.prop("source") === "user";
+    get source() {
+        return this.requiredProp<FileDataItem["source"]>("source");
     }
 
     get element() {
-        return this.prop<DataElement>("element", "");
+        return this.requiredProp<FileDataItem["element"]>("element");
     }
 
     get apps() {
-        return this.prop<DataApps>("apps", []);
-    }
-
-    get exchangeCorrelation() {
-        const exchangeCorrelation = this.prop<DataExchangeCorrelation>("exchangeCorrelation");
-        if (!exchangeCorrelation) {
-            throw new Error("Exchange correlation is missing");
-        }
-        return exchangeCorrelation;
+        return this.requiredProp<FileDataItem["apps"]>("apps");
     }
 
     get type() {
-        return this.requiredProp<DataType>("type");
+        return this.requiredProp<FileDataItem["type"]>("type");
     }
 
     get version() {
-        return this.prop<DataVersion>("version");
+        return this.prop<FileDataItem["version"]>("version");
+    }
+
+    get exchangeCorrelation() {
+        return this.requiredProp<FileDataItem["exchangeCorrelation"]>("exchangeCorrelation");
+    }
+
+    get isCustom() {
+        return this.source === "user";
     }
 
     /**
@@ -123,7 +116,7 @@ export class Pseudopotential extends Property {
 
     // filter unique (assuming that path is always unique)
     static filterUnique(array: Pseudopotential[]) {
-        return _.uniq(array, (item) => item.path);
+        return uniqBy(array, (item) => item.path);
     }
 
     // filter unique by apps (assuming that path is always unique)

@@ -10,7 +10,7 @@ import type { Options, PlotLines } from "highcharts";
 import lodash from "lodash";
 
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
-import { Property } from "../../property";
+import Property from "../../Property";
 import {
     type TwoDimensionalPlotMixin,
     type XDataArray,

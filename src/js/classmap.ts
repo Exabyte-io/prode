@@ -18,8 +18,8 @@ import { StructureProperty } from "./include/non-scalar/structure";
 import { WorkflowProperty } from "./include/non-scalar/workflow";
 import { ObjectProperty } from "./include/primitive/object";
 import { TensorProperty } from "./include/primitive/tensor";
-import { Property as PropertyClass } from "./property";
-import { Property, PropertyType } from "./settings";
+import PropertyClass from "./Property";
+import { PropertyName, PropertyType } from "./settings";
 
 /**
  * @description Type for property class constructor
@@ -29,49 +29,49 @@ type PropertyClassConstructor = new (...args: any[]) => any;
 /**
  * @description Type for the property class map
  */
-type PropertyClassMap = Record<Property, PropertyClassConstructor | null>;
+type PropertyClassMap = Record<PropertyName, PropertyClassConstructor | null>;
 
 /**
  * @desc Used in property factory to map property names to property classes.
  */
 export const PROPERTY_CLASS_MAP: PropertyClassMap = {
-    [Property.pressure]: null,
-    [Property.total_force]: null,
-    [Property.total_energy]: null,
-    [Property.surface_energy]: null,
-    [Property.convergence_elec]: ConvergenceElectronicProperty,
-    [Property.convergence_ion]: ConvergenceIonicProperty,
-    [Property.fermi_energy]: null,
-    [Property.zero_point_energy]: null,
-    [Property.total_energy_contrib]: null,
-    [Property.atomic_forces]: null,
-    [Property.atomic_constraints]: null,
-    [Property.stress_tensor]: null,
-    [Property.dos]: DensityOfStatesProperty,
-    [Property.band_structure]: BandStructureProperty,
-    [Property.band_gaps]: BandGapsProperty,
-    [Property.phonon_dispersions]: PhononDispersionsProperty,
-    [Property.phonon_dos]: PhononDOSProperty,
-    [Property.predicted_properties]: null,
-    [Property.final_structure]: StructureProperty,
-    [Property.is_relaxed]: null,
-    [Property.w_ml_predict]: WorkflowProperty,
-    [Property.w_pyml_predict]: WorkflowProperty,
-    [Property.file_content]: null,
-    [Property.magnetic_moments]: null,
-    [Property.rxn_energy_barrier]: null,
-    [Property.rxn_energy_profile]: ReactionEnergyProfileProperty,
-    [Property.potential_profile]: PotentialProfileProperty,
-    [Property.charge_density_profile]: ChargeDensityProfileProperty,
-    [Property.jupyter_nb_endpoint]: null,
-    [Property.average_potential_profile]: AveragePotentialProfileProperty,
-    [Property.valence_band_offset]: null,
-    [Property.pseudopotential]: Pseudopotential,
-    [Property.boundary_conditions]: null,
-    [Property.dielectric_tensor]: DielectricTensorProperty,
-    [Property.hubbard_u]: HubbardUProperty,
-    [Property.hubbard_v_nn]: HubbardVNNProperty,
-    [Property.hubbard_v]: HubbardVProperty,
+    [PropertyName.pressure]: null,
+    [PropertyName.total_force]: null,
+    [PropertyName.total_energy]: null,
+    [PropertyName.surface_energy]: null,
+    [PropertyName.convergence_elec]: ConvergenceElectronicProperty,
+    [PropertyName.convergence_ion]: ConvergenceIonicProperty,
+    [PropertyName.fermi_energy]: null,
+    [PropertyName.zero_point_energy]: null,
+    [PropertyName.total_energy_contrib]: null,
+    [PropertyName.atomic_forces]: null,
+    [PropertyName.atomic_constraints]: null,
+    [PropertyName.stress_tensor]: null,
+    [PropertyName.dos]: DensityOfStatesProperty,
+    [PropertyName.band_structure]: BandStructureProperty,
+    [PropertyName.band_gaps]: BandGapsProperty,
+    [PropertyName.phonon_dispersions]: PhononDispersionsProperty,
+    [PropertyName.phonon_dos]: PhononDOSProperty,
+    [PropertyName.predicted_properties]: null,
+    [PropertyName.final_structure]: StructureProperty,
+    [PropertyName.is_relaxed]: null,
+    [PropertyName.w_ml_predict]: WorkflowProperty,
+    [PropertyName.w_pyml_predict]: WorkflowProperty,
+    [PropertyName.file_content]: null,
+    [PropertyName.magnetic_moments]: null,
+    [PropertyName.rxn_energy_barrier]: null,
+    [PropertyName.rxn_energy_profile]: ReactionEnergyProfileProperty,
+    [PropertyName.potential_profile]: PotentialProfileProperty,
+    [PropertyName.charge_density_profile]: ChargeDensityProfileProperty,
+    [PropertyName.jupyter_nb_endpoint]: null,
+    [PropertyName.average_potential_profile]: AveragePotentialProfileProperty,
+    [PropertyName.valence_band_offset]: null,
+    [PropertyName.pseudopotential]: Pseudopotential,
+    [PropertyName.boundary_conditions]: null,
+    [PropertyName.dielectric_tensor]: DielectricTensorProperty,
+    [PropertyName.hubbard_u]: HubbardUProperty,
+    [PropertyName.hubbard_v_nn]: HubbardVNNProperty,
+    [PropertyName.hubbard_v]: HubbardVProperty,
 };
 
 export const PROPERTY_BRANCH_MAP: { [key in PropertyType]: PropertyClassConstructor } = {

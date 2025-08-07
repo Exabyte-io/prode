@@ -1,9 +1,9 @@
 import type { ConvergenceElectronicPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AxisLabelFormatterOptions, IndividualSeriesOptions } from "highcharts";
-import _ from "underscore";
+import groupBy from "lodash/groupBy";
 
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
-import { Property } from "../../property";
+import Property from "../../Property";
 
 interface DataPoint {
     index: number;
@@ -93,7 +93,7 @@ export class ConvergenceElectronicProperty extends Property {
             .map((values, index) => values.map((value) => ({ index, value })))
             .flat();
 
-        const groupedData = Object.values(_.groupBy(data.concat(newData), (x) => x.index));
+        const groupedData = Object.values(groupBy(data.concat(newData), (x) => x.index));
 
         return groupedData.map((energies) => energies.map((energy) => energy.value));
     }

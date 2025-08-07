@@ -3,7 +3,7 @@ import type { ConvergenceIonicPropertySchema } from "@mat3ra/esse/dist/js/types"
 import type { Options } from "highcharts";
 
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
-import { Property } from "../../property";
+import Property from "../../Property";
 
 class ConvergenceIonicConfig extends HighChartsConfig {
     constructor(monitor: ConvergenceIonicProperty) {

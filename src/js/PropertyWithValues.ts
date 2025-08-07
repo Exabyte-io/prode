@@ -1,7 +1,7 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 
 import { type PropertyWithValuesMixin, propertyWithValuesMixin } from "./mixins/PropertyWithValues";
-import { Property } from "./property";
+import Property from "./Property";
 
 type NamedPropertyWithValuesBase = typeof Property & Constructor<PropertyWithValuesMixin>;
 

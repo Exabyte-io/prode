@@ -1,10 +1,10 @@
 import { NamedInMemoryEntity } from "@mat3ra/code/dist/js/entity";
-import _ from "underscore";
+import pickBy from "lodash/pickBy";
 
-import { PropertyType } from "./settings";
+import { type PropertyName, PropertyType } from "./settings";
 import PROPERTIES_TREE, { type PropertyConfig, REFINED_PROPERTIES_SUBTREE } from "./tree";
 
-export class Property extends NamedInMemoryEntity {
+export default class Property extends NamedInMemoryEntity {
     readonly propertyBranch = Property.propertyBranch(this.name);
 
     readonly prettyName = Property.prettifyName(this.name);
@@ -41,7 +41,7 @@ export class Property extends NamedInMemoryEntity {
 
     static propertyBranch(propertyName: string): PropertyConfig {
         // safely return empty object in case the tree does not contain the name key
-        return _.find(PROPERTIES_TREE, (_v, k) => k === propertyName) || {};
+        return PROPERTIES_TREE[propertyName as PropertyName] || {};
     }
 
     static omitInResults(propertyName: string) {
@@ -56,9 +56,9 @@ export class Property extends NamedInMemoryEntity {
         return Boolean(propertyConfig.isConvergence);
     }
 
-    static readonly scalarsSubTree = _.pick(PROPERTIES_TREE, (val) => this.isScalar(val));
+    static readonly scalarsSubTree = pickBy(PROPERTIES_TREE, (val) => this.isScalar(val));
 
-    static readonly nonScalarsSubTree = _.pick(PROPERTIES_TREE, (val) => !this.isScalar(val));
+    static readonly nonScalarsSubTree = pickBy(PROPERTIES_TREE, (val) => !this.isScalar(val));
 
-    static readonly convergencesSubTree = _.pick(PROPERTIES_TREE, (val) => this.isConvergence(val));
+    static readonly convergencesSubTree = pickBy(PROPERTIES_TREE, (val) => this.isConvergence(val));
 }

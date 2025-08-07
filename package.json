@@ -35,10 +35,7 @@
     "dependencies": {
         "@types/highcharts": "^5.0.44",
         "lodash": "^4.17.21",
-        "mathjs": "^3.9.0",
-        "moment": "^2.17.1",
-        "underscore": "^1.13.3",
-        "underscore.string": "^3.3.4"
+        "moment": "^2.17.1"
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.16.3",

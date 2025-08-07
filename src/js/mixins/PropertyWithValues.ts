@@ -1,6 +1,6 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 
-import type { Property } from "../property";
+import type Property from "../Property";
 
 export interface PropertyWithValuesMixin {
     values: object[];

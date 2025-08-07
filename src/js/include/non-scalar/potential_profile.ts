@@ -5,7 +5,7 @@ import type { PotentialProfileSchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import lodash from "lodash";
 
-import { Property } from "../../property";
+import Property from "../../Property";
 import {
     type TwoDimensionalPlotMixin,
     TwoDimensionalHighChartConfigMixin,

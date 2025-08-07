@@ -1,7 +1,7 @@
 import lodash from "lodash";
 
 import { PROPERTY_BRANCH_MAP, PROPERTY_CLASS_MAP } from "./classmap";
-import { Property } from "./property";
+import Property from "./Property";
 import PROPERTIES_TREE from "./tree";
 
 export default class PropertyFactory {

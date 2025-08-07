@@ -1,6 +1,6 @@
 import moment from "moment";
 
-import { Property } from "../../property";
+import Property from "../../Property";
 
 export class WorkflowProperty extends Property {
     displayName = "";

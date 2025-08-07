@@ -6,7 +6,7 @@ import {
     type HighChartsConfigParams,
     HighChartsConfig,
 } from "../../charts/highcharts";
-import { type Property } from "../../property";
+import type Property from "../../Property";
 
 export type TwoDimensionalPlotMixin<
     S extends {
@@ -60,9 +60,15 @@ export type TwoDimensionalHighChartConfigMixinParams = {
 };
 
 export class TwoDimensionalHighChartConfigMixin extends HighChartsConfig {
-    xDataArray: XDataArray;
+    readonly xDataArray: XDataArray;
 
-    yDataSeries: YDataSeries;
+    readonly yDataSeries: YDataSeries;
+
+    // override upon inheritance
+    readonly tooltipXAxisName: string = "";
+
+    // override upon inheritance
+    readonly tooltipYAxisName: string = "";
 
     constructor(property: TwoDimensionalHighChartConfigMixinParams) {
         super({
@@ -77,18 +83,13 @@ export class TwoDimensionalHighChartConfigMixin extends HighChartsConfig {
     }
 
     get series() {
-        return lodash.map(this.yDataSeries, (item) => {
+        return this.yDataSeries.map((item) => {
             return {
                 animation: false,
                 data: lodash.zip(this.xDataArray, item) as [number, number][],
             };
         });
     }
-
-    // override upon inheritance
-    readonly tooltipXAxisName: string = "";
-
-    readonly tooltipYAxisName: string = "";
 
     tooltipFormatter(xDataArray: XDataArray = []) {
         const { tooltipXAxisName, tooltipYAxisName } = this;

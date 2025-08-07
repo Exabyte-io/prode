@@ -2,7 +2,7 @@ import { deepClone, flattenObject } from "@mat3ra/code/dist/js/utils";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { BandGapsSchema } from "@mat3ra/esse/dist/js/types";
 
-import { Property } from "../../property";
+import Property from "../../Property";
 
 export class BandGapsProperty extends Property {
     declare toJSON: () => BandGapsSchema & AnyObject;

@@ -6,7 +6,7 @@ import type { Options } from "highcharts";
 import zip from "lodash/zip";
 import type { FormatterScope } from "src/js/charts/highcharts";
 
-import { Property } from "../../property";
+import Property from "../../Property";
 import { TwoDimensionalHighChartConfigMixin } from "../mixins/2d_plot";
 
 export class DielectricTensorConfig extends TwoDimensionalHighChartConfigMixin {

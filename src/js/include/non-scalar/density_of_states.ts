@@ -4,10 +4,10 @@ import type { Constructor } from "@mat3ra/code/dist/js/utils/types.js";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { DensityOfStatesSchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
-import _ from "underscore";
+import zip from "lodash/zip";
 
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
-import { Property } from "../../property";
+import Property from "../../Property";
 import {
     type TwoDimensionalPlotMixin,
     type YDataSeries,
@@ -69,7 +69,7 @@ export class DensityOfStatesConfig extends HighChartsConfig {
 
     // shifting values wrt fermi energy here
     cleanXDataArray(rawData: DensityOfStatesSchema["xDataArray"]) {
-        return _.map(_.flatten(rawData), (x) => {
+        return rawData.flat().map((x) => {
             const value = this.fermiEnergy ? x - this.fermiEnergy : x;
             return +value.toPrecision(4);
         });
@@ -86,7 +86,7 @@ export class DensityOfStatesConfig extends HighChartsConfig {
                     : "Total";
 
             return {
-                data: _.zip(
+                data: zip(
                     this.xDataArray,
                     item.map((x) => Number(x).toPrecision(4) as unknown as number),
                 ) as [number, number][],

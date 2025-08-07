@@ -1,1 +1,1 @@
-export { PropertyWithValues as HubbardVNNProperty } from "../../property_with_values";
+export { PropertyWithValues as HubbardVNNProperty } from "../../PropertyWithValues";

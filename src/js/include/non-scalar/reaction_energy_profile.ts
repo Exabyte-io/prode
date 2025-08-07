@@ -5,7 +5,7 @@ import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 import type { ReactionEnergyProfileSchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 
-import { Property } from "../../property";
+import Property from "../../Property";
 import {
     type TwoDimensionalPlotMixin,
     TwoDimensionalHighChartConfigMixin,

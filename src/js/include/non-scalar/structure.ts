@@ -1,3 +1,3 @@
-import { Property } from "../../property";
+import Property from "../../Property";
 
 export class StructureProperty extends Property {}

@@ -18,7 +18,7 @@ export enum PropertyDomain {
     workflow = "workflow",
 }
 
-export enum Property {
+export enum PropertyName {
     pressure = "pressure",
     total_force = "total_force",
     total_energy = "total_energy",

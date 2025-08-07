@@ -4,7 +4,7 @@ import type { AveragePotentialProfileSchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import lodash from "lodash";
 
-import { Property } from "../../property";
+import Property from "../../Property";
 import {
     type TwoDimensionalPlotMixin,
     TwoDimensionalHighChartConfigMixin,
@@ -19,7 +19,7 @@ export class AveragePotentialProfileConfig extends TwoDimensionalHighChartConfig
     readonly tooltipYAxisName: string = "energy";
 
     get series() {
-        return lodash.map(this.yDataSeries, (item, index) => {
+        return this.yDataSeries.map((item, index) => {
             return {
                 animation: false,
                 name: NAMES[index],
