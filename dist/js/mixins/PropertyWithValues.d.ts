@@ -4,4 +4,4 @@ export interface PropertyWithValuesMixin {
     values: object[];
 }
 export type PropertyWithValuesMixinConstructor = Constructor<PropertyWithValuesMixin>;
-export declare function propertyWithValuesMixin<T extends Property = Property>(item: T): void;
+export declare function propertyWithValuesMixin(item: Property): void;

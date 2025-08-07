@@ -9,29 +9,22 @@ exports.propertyHolderMixin = propertyHolderMixin;
 const utils_1 = require("@mat3ra/code/dist/js/utils");
 const PropertyFactory_1 = __importDefault(require("../PropertyFactory"));
 function propertyHolderMixin(item) {
-    // @ts-expect-error
+    // @ts-expect-error - this is a workaround to allow the propertyMixin to be used with any type of entity
     const properties = {
         get data() {
-            return this.prop("data");
+            return this.requiredProp("data");
         },
         get precision() {
-            return this.prop("precision", {});
-        },
-        get schemaVersion() {
-            return this.prop("schemaVersion");
+            return this.prop("precision");
         },
         get source() {
             return this.requiredProp("source");
         },
         get sourceInfo() {
-            return this.prop("source.info") || {};
+            return this.requiredProp("source.info");
         },
         get group() {
             return this.prop("group");
-        },
-        // same as element of PROPERTIES
-        get slug() {
-            return this.prop("slug");
         },
         get exabyteId() {
             return this.prop("exabyteId");
