@@ -2,65 +2,54 @@ import type { InMemoryEntity } from "@mat3ra/code/dist/js/entity";
 import { flattenObject } from "@mat3ra/code/dist/js/utils";
 import type { NameValueObjectExtended } from "@mat3ra/code/dist/js/utils/object";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
-import type { PropertyBaseSchema, PropertySourceSchema } from "@mat3ra/esse/dist/js/types";
+import type { PropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
 
 import type Property from "../Property";
 import PropertyFactory from "../PropertyFactory";
 
-export interface PropertySchemaJSON extends PropertyBaseSchema, AnyObject {}
+export type PropertyHolderSourceSchema = PropertyHolderSchema["source"];
+
+export interface PropertySchemaJSON extends PropertyHolderSchema, AnyObject {}
 
 export type PropertyHolderMixin = {
-    data: PropertyBaseSchema["data"];
-    precision: PropertyBaseSchema["precision"];
-    schemaVersion: PropertyBaseSchema["schemaVersion"];
-    source: PropertySourceSchema;
-    sourceInfo: PropertySourceSchema["info"];
-    group: PropertyBaseSchema["group"];
-    slug: PropertyBaseSchema["slug"];
-    exabyteId: PropertyBaseSchema["exabyteId"];
+    data: PropertyHolderSchema["data"];
+    precision: PropertyHolderSchema["precision"];
+    source: PropertyHolderSourceSchema;
+    sourceInfo: PropertyHolderSourceSchema["info"];
+    group: PropertyHolderSchema["group"];
+    exabyteId: PropertyHolderSchema["exabyteId"];
     property: Property;
     flattenProperties(): { [x: string]: unknown }[];
-    toRowValues(): (PropertyBaseSchema & AnyObject)[];
+    toRowValues(): (PropertyHolderSchema & AnyObject)[];
 };
 
 export type PropertyInMemoryEntity = InMemoryEntity & PropertyHolderMixin;
 
-export type BaseEntity = InMemoryEntity;
-
-export function propertyHolderMixin<T extends BaseEntity = BaseEntity>(item: T) {
-    // @ts-expect-error
-    const properties: T & PropertyHolderMixin = {
+export function propertyHolderMixin(item: InMemoryEntity) {
+    // @ts-expect-error - this is a workaround to allow the propertyMixin to be used with any type of entity
+    const properties: InMemoryEntity & PropertyHolderMixin = {
         get data() {
-            return this.prop<PropertyBaseSchema["data"]>("data");
+            return this.requiredProp<PropertyHolderSchema["data"]>("data");
         },
 
         get precision() {
-            return this.prop<PropertyBaseSchema["precision"]>("precision", {});
-        },
-
-        get schemaVersion() {
-            return this.prop<PropertyBaseSchema["schemaVersion"]>("schemaVersion");
+            return this.prop<PropertyHolderSchema["precision"]>("precision");
         },
 
         get source() {
-            return this.requiredProp<PropertyBaseSchema["source"]>("source");
+            return this.requiredProp<PropertyHolderSourceSchema>("source");
         },
 
         get sourceInfo() {
-            return this.requiredProp<PropertyBaseSchema["source"]["info"]>("source.info");
+            return this.requiredProp<PropertyHolderSourceSchema["info"]>("source.info");
         },
 
         get group() {
-            return this.prop<PropertyBaseSchema["group"]>("group");
-        },
-
-        // same as element of PROPERTIES
-        get slug() {
-            return this.prop<PropertyBaseSchema["slug"]>("slug");
+            return this.prop<PropertyHolderSchema["group"]>("group");
         },
 
         get exabyteId() {
-            return this.prop<PropertyBaseSchema["exabyteId"]>("exabyteId");
+            return this.prop<PropertyHolderSchema["exabyteId"]>("exabyteId");
         },
 
         get property() {

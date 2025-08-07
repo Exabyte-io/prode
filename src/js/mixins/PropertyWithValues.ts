@@ -8,9 +8,9 @@ export interface PropertyWithValuesMixin {
 
 export type PropertyWithValuesMixinConstructor = Constructor<PropertyWithValuesMixin>;
 
-export function propertyWithValuesMixin<T extends Property = Property>(item: T) {
+export function propertyWithValuesMixin(item: Property) {
     // @ts-expect-error - this is a workaround to allow the propertyMixin to be used with any type of entity
-    const properties: T & PropertyWithValuesMixin = {
+    const properties: Property & PropertyWithValuesMixin = {
         get values() {
             return this.prop("values", []);
         },

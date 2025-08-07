@@ -1,10 +1,14 @@
 import { NamedInMemoryEntity } from "@mat3ra/code/dist/js/entity";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { PropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
 import pickBy from "lodash/pickBy";
 
 import { type PropertyName, PropertyType } from "./settings";
 import PROPERTIES_TREE, { type PropertyConfig, REFINED_PROPERTIES_SUBTREE } from "./tree";
 
 export default class Property extends NamedInMemoryEntity {
+    declare toJSON: () => PropertyHolderSchema & AnyObject;
+
     readonly propertyBranch = Property.propertyBranch(this.name);
 
     readonly prettyName = Property.prettifyName(this.name);
