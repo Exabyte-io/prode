@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Pseudopotential = void 0;
 const uniqBy_1 = __importDefault(require("lodash/uniqBy"));
@@ -47,19 +45,23 @@ class Pseudopotential extends MetaProperty_1.default {
      * @note Filters by path!
      */
     static safelyFilterRawDataBySearchText(rawData, searchText = "", separator = ",") {
-        if (!searchText) return rawData;
+        if (!searchText)
+            return rawData;
         const filteredData = [];
         searchText.split(separator).forEach((txt) => {
             const text = txt.trim(); // remove whitespace and do nothing if empty string
-            if (!text) return;
+            if (!text)
+                return;
             try {
                 const regexp = new RegExp(text);
                 const filteredData_ = rawData.filter((el) => el.path.match(regexp));
                 filteredData.push(...filteredData_);
-            } catch (e) {
+            }
+            catch (e) {
                 if (e instanceof Error) {
                     console.error(e.message);
-                } else {
+                }
+                else {
                     console.error(e);
                 }
             }
@@ -77,15 +79,8 @@ class Pseudopotential extends MetaProperty_1.default {
         return rawData.filter((item) => {
             var _a, _b;
             return this.isCompatibleWithOther(functional)
-                ? this.compatibleExchangeCorrelation[functional].includes(
-                      ((_a = item.exchangeCorrelation) === null || _a === void 0
-                          ? void 0
-                          : _a.functional) || "",
-                  )
-                : functional ===
-                      ((_b = item.exchangeCorrelation) === null || _b === void 0
-                          ? void 0
-                          : _b.functional);
+                ? this.compatibleExchangeCorrelation[functional].includes(((_a = item.exchangeCorrelation) === null || _a === void 0 ? void 0 : _a.functional) || "")
+                : functional === ((_b = item.exchangeCorrelation) === null || _b === void 0 ? void 0 : _b.functional);
         });
     }
     // filter unique (assuming that path is always unique)
@@ -125,20 +120,23 @@ class Pseudopotential extends MetaProperty_1.default {
             if (typeof fValue === "string") {
                 if (fKey === "searchText") {
                     filteredPseudos = this.safelyFilterRawDataBySearchText(filteredPseudos, fValue);
-                } else if (fKey === "appName") {
+                }
+                else if (fKey === "appName") {
                     filteredPseudos = this.filterByAppName(filteredPseudos, fValue);
-                } else if (fKey === "type") {
+                }
+                else if (fKey === "type") {
                     filteredPseudos = this.filterByType(filteredPseudos, fValue);
                 }
-            } else if (
-                typeof fValue === "object" &&
+            }
+            else if (typeof fValue === "object" &&
                 "functional" in fValue &&
-                "approximation" in fValue
-            ) {
+                "approximation" in fValue) {
                 filteredPseudos = this.filterRawDataByExchangeCorrelation(filteredPseudos, fValue);
-            } else if (Array.isArray(fValue)) {
+            }
+            else if (Array.isArray(fValue)) {
                 filteredPseudos = this.filterByElements(filteredPseudos, fValue);
-            } else {
+            }
+            else {
                 throw new Error(`Invalid filter value: ${fValue}`);
             }
         });
@@ -168,7 +166,8 @@ class Pseudopotential extends MetaProperty_1.default {
         });
     }
     static filterByType(pseudos, pseudoType) {
-        if (pseudoType === undefined || pseudoType === "any") return pseudos;
+        if (pseudoType === undefined || pseudoType === "any")
+            return pseudos;
         return pseudos.filter((pseudo) => pseudo.type.includes(pseudoType));
     }
 }

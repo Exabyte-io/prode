@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BandGapsProperty = void 0;
 const utils_1 = require("@mat3ra/code/dist/js/utils");
@@ -21,11 +19,11 @@ class BandGapsProperty extends Property_1.default {
     flattenProperties() {
         return this.values
             .map((x) => {
-                return {
-                    name: `${this.name}:${x.type}`,
-                    value: x.value,
-                };
-            })
+            return {
+                name: `${this.name}:${x.type}`,
+                value: x.value,
+            };
+        })
             .map((x) => (0, utils_1.flattenObject)(x));
     }
     /**

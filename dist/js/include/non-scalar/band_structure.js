@@ -1,14 +1,9 @@
 "use strict";
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BandStructureProperty =
-    exports.BandStructureConfig =
-    exports._POINT_COORDINATES_PRECISION_ =
-        void 0;
+exports.BandStructureProperty = exports.BandStructureConfig = exports._POINT_COORDINATES_PRECISION_ = void 0;
 /* eslint-disable class-methods-use-this */
 // eslint-disable-next-line max-classes-per-file
 const math_1 = require("@mat3ra/code/dist/js/math");
@@ -38,7 +33,8 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
     // round each value in array to certain precision
     cleanXDataArray(rawData = []) {
         return rawData.map((p) => {
-            if (!p || !Array.isArray(p)) return [];
+            if (!p || !Array.isArray(p))
+                return [];
             return p.map((c) => {
                 return math_1.math.roundValueToNDecimals(c, exports._POINT_COORDINATES_PRECISION_);
             });
@@ -64,16 +60,17 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
         const copiedXDataArray = (0, utils_1.deepClone)(this.xDataArray);
         return this.pointsPath
             ? this.pointsPath
-                  .map((p) => {
-                      const idx = this.findSymmetryPointIndex(copiedXDataArray, p.coordinates);
-                      // "reset" element at index if found to avoid duplicate matches
-                      if (idx > -1) copiedXDataArray[idx] = [-1, -1, -1];
-                      return {
-                          point: p.point,
-                          distance: idx > -1 ? this.pointsDistanceArray[idx] : null,
-                      };
-                  })
-                  .map(this.plotXLineAtPoint)
+                .map((p) => {
+                const idx = this.findSymmetryPointIndex(copiedXDataArray, p.coordinates);
+                // "reset" element at index if found to avoid duplicate matches
+                if (idx > -1)
+                    copiedXDataArray[idx] = [-1, -1, -1];
+                return {
+                    point: p.point,
+                    distance: idx > -1 ? this.pointsDistanceArray[idx] : null,
+                };
+            })
+                .map(this.plotXLineAtPoint)
             : [];
     }
     plotXLineAtPoint({ point, distance }) {
@@ -130,8 +127,7 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
         // note 'this' below refers to Highcharts tooltip scope
         // eslint-disable-next-line func-names
         return function () {
-            return (
-                "<b>spin:</b> " +
+            return ("<b>spin:</b> " +
                 this.series.name +
                 "<br>" +
                 "<b>point:</b> " +
@@ -146,8 +142,7 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
                 "<b>" +
                 yAxisName +
                 ": </b>  " +
-                this.y.toFixed(exports._POINT_COORDINATES_PRECISION_)
-            );
+                this.y.toFixed(exports._POINT_COORDINATES_PRECISION_));
         };
     }
     yAxis() {
@@ -156,17 +151,17 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
             gridZIndex: 1,
             plotLines: this.fermiEnergy
                 ? this.plotSingleLine({
-                      value: 0.0,
-                      width: 2, // to be shown above above grid/tickLine at zero
-                      label: {
-                          text: "E_F",
-                          style: {
-                              color: "red",
-                          },
-                          y: -5,
-                          x: -10,
-                      },
-                  })
+                    value: 0.0,
+                    width: 2, // to be shown above above grid/tickLine at zero
+                    label: {
+                        text: "E_F",
+                        style: {
+                            color: "red",
+                        },
+                        y: -5,
+                        x: -10,
+                    },
+                })
                 : [],
         };
     }

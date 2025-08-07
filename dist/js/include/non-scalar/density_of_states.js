@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DensityOfStatesProperty = exports.DensityOfStatesConfig = void 0;
 const zip_1 = __importDefault(require("lodash/zip"));
@@ -64,15 +62,11 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
             const legend = this.legends[index];
             const { spin } = legend;
             const spinText = spin ? ` ${spin > 0 ? "↑" : "↓"}` : "";
-            const name =
-                legend && legend.element
-                    ? `${legend.element} ${legend.electronicState}${spinText}`
-                    : "Total";
+            const name = legend && legend.element
+                ? `${legend.element} ${legend.electronicState}${spinText}`
+                : "Total";
             return {
-                data: (0, zip_1.default)(
-                    this.xDataArray,
-                    item.map((x) => Number(x).toPrecision(4)),
-                ),
+                data: (0, zip_1.default)(this.xDataArray, item.map((x) => Number(x).toPrecision(4))),
                 name,
                 color: name === "Total" ? "#000000" : undefined,
                 animation: false,
@@ -83,16 +77,14 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
     tooltipFormatter() {
         // eslint-disable-next-line func-names
         return function () {
-            return (
-                "<b>state:</b> " +
+            return ("<b>state:</b> " +
                 this.series.name +
                 "<br>" +
                 "<b>energy:</b> " +
                 this.key.toFixed(4) +
                 "<br>" +
                 "<b>value: </b>  " +
-                this.y.toFixed(4)
-            );
+                this.y.toFixed(4));
         };
     }
     xAxis() {
@@ -100,17 +92,17 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
             ...super.xAxis(),
             plotLines: this.fermiEnergy
                 ? this.plotSingleLine({
-                      value: 0.0,
-                      label: {
-                          text: "E_F",
-                          style: {
-                              color: "red",
-                          },
-                          y: 15,
-                          x: 5,
-                          rotation: 0,
-                      },
-                  })
+                    value: 0.0,
+                    label: {
+                        text: "E_F",
+                        style: {
+                            color: "red",
+                        },
+                        y: 15,
+                        x: 5,
+                        rotation: 0,
+                    },
+                })
                 : [],
         };
     }

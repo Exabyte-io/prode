@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PROPERTY_BRANCH_MAP = exports.PROPERTY_CLASS_MAP = void 0;
 const convergence_electronic_1 = require("./include/convergence/convergence_electronic");
@@ -36,8 +34,7 @@ exports.PROPERTY_CLASS_MAP = {
     [settings_1.PropertyName.total_force]: null,
     [settings_1.PropertyName.total_energy]: null,
     [settings_1.PropertyName.surface_energy]: null,
-    [settings_1.PropertyName.convergence_elec]:
-        convergence_electronic_1.ConvergenceElectronicProperty,
+    [settings_1.PropertyName.convergence_elec]: convergence_electronic_1.ConvergenceElectronicProperty,
     [settings_1.PropertyName.convergence_ion]: convergence_ionic_1.ConvergenceIonicProperty,
     [settings_1.PropertyName.fermi_energy]: null,
     [settings_1.PropertyName.zero_point_energy]: null,
@@ -58,14 +55,11 @@ exports.PROPERTY_CLASS_MAP = {
     [settings_1.PropertyName.file_content]: null,
     [settings_1.PropertyName.magnetic_moments]: null,
     [settings_1.PropertyName.rxn_energy_barrier]: null,
-    [settings_1.PropertyName.rxn_energy_profile]:
-        reaction_energy_profile_1.ReactionEnergyProfileProperty,
+    [settings_1.PropertyName.rxn_energy_profile]: reaction_energy_profile_1.ReactionEnergyProfileProperty,
     [settings_1.PropertyName.potential_profile]: potential_profile_1.PotentialProfileProperty,
-    [settings_1.PropertyName.charge_density_profile]:
-        charge_density_profile_1.ChargeDensityProfileProperty,
+    [settings_1.PropertyName.charge_density_profile]: charge_density_profile_1.ChargeDensityProfileProperty,
     [settings_1.PropertyName.jupyter_nb_endpoint]: null,
-    [settings_1.PropertyName.average_potential_profile]:
-        average_potential_profile_1.AveragePotentialProfileProperty,
+    [settings_1.PropertyName.average_potential_profile]: average_potential_profile_1.AveragePotentialProfileProperty,
     [settings_1.PropertyName.valence_band_offset]: null,
     [settings_1.PropertyName.pseudopotential]: pseudopotential_1.Pseudopotential,
     [settings_1.PropertyName.boundary_conditions]: null,

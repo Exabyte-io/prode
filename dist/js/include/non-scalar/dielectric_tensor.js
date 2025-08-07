@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DielectricTensorProperty = exports.DielectricTensorConfig = void 0;
 const zip_1 = __importDefault(require("lodash/zip"));
@@ -22,16 +20,14 @@ class DielectricTensorConfig extends _2d_plot_1.TwoDimensionalHighChartConfigMix
     tooltipFormatter() {
         // eslint-disable-next-line func-names
         return function () {
-            return (
-                "<b>part:</b> " +
+            return ("<b>part:</b> " +
                 this.series.name +
                 "<br>" +
                 "<b>frequency:</b> " +
                 this.key.toFixed(4) +
                 "<br>" +
                 "<b>epsilon: </b>  " +
-                this.y.toFixed(4)
-            );
+                this.y.toFixed(4));
         };
     }
     get overrideConfig() {
@@ -81,16 +77,13 @@ class DielectricTensorProperty extends Property_1.default {
         return this.requiredProp("values");
     }
     rowMajorToColumnMajor(matrix) {
-        return matrix.reduce(
-            (accumulator, item) => {
-                const [x, y, z] = item;
-                accumulator[0].push(x);
-                accumulator[1].push(y);
-                accumulator[2].push(z);
-                return accumulator;
-            },
-            [[], [], []],
-        );
+        return matrix.reduce((accumulator, item) => {
+            const [x, y, z] = item;
+            accumulator[0].push(x);
+            accumulator[1].push(y);
+            accumulator[2].push(z);
+            return accumulator;
+        }, [[], [], []]);
     }
     getComplementaryPairs(precision = 3) {
         const groupedBySpin = {};
@@ -100,12 +93,9 @@ class DielectricTensorProperty extends Property_1.default {
             groupedBySpin[spinValue] = groupedBySpin[spinValue] || [];
             groupedBySpin[spinValue].push(item);
         });
-        return Object.values(groupedBySpin).filter(
-            (group) =>
-                group.length === 2 &&
-                group.find((item) => item.part === "real") &&
-                group.find((item) => item.part === "imaginary"),
-        );
+        return Object.values(groupedBySpin).filter((group) => group.length === 2 &&
+            group.find((item) => item.part === "real") &&
+            group.find((item) => item.part === "imaginary"));
     }
     getAllChartConfigs() {
         const complementaryPairs = this.getComplementaryPairs();

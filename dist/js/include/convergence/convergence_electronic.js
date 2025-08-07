@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConvergenceElectronicProperty = void 0;
 const groupBy_1 = __importDefault(require("lodash/groupBy"));
@@ -82,9 +80,7 @@ class ConvergenceElectronicProperty extends Property_1.default {
         const data = currentData
             .map((values, index) => values.map((value) => ({ index, value })))
             .flat();
-        const groupedData = Object.values(
-            (0, groupBy_1.default)(data.concat(newData), (x) => x.index),
-        );
+        const groupedData = Object.values((0, groupBy_1.default)(data.concat(newData), (x) => x.index));
         return groupedData.map((energies) => energies.map((energy) => energy.value));
     }
 }

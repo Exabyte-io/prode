@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TwoDimensionalHighChartConfigMixin = void 0;
 exports.twoDimensionalPlotMixin = twoDimensionalPlotMixin;
@@ -56,16 +54,14 @@ class TwoDimensionalHighChartConfigMixin extends highcharts_1.HighChartsConfig {
         // eslint-disable-next-line func-names
         return function () {
             const xValue = xDataArray[this.point.index];
-            return (
-                "<b>" +
+            return ("<b>" +
                 tooltipXAxisName +
                 "</b> " +
                 (Array.isArray(xValue) ? xValue.join(", ") : xValue.toFixed(4)) +
                 "<br><b>" +
                 tooltipYAxisName +
                 ": </b>  " +
-                this.y.toFixed(4)
-            );
+                this.y.toFixed(4));
         };
     }
     get overrideConfig() {

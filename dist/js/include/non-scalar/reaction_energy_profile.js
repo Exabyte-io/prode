@@ -1,11 +1,9 @@
 "use strict";
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-classes-per-file */
-var __importDefault =
-    (this && this.__importDefault) ||
-    function (mod) {
-        return mod && mod.__esModule ? mod : { default: mod };
-    };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReactionEnergyProfileProperty = exports.ReactionEnergyProfileConfig = void 0;
 const Property_1 = __importDefault(require("../../Property"));

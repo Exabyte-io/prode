@@ -1,10 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PropertyName =
-    exports.PropertyDomain =
-    exports.PropertyType =
-    exports.ExternalSource =
-        void 0;
+exports.PropertyName = exports.PropertyDomain = exports.PropertyType = exports.ExternalSource = void 0;
 var ExternalSource;
 (function (ExternalSource) {
     ExternalSource["materials_project"] = "MaterialsProject";

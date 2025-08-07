@@ -6,7 +6,7 @@ exports.HighChartsConfig = void 0;
  * @description Base class for Highcharts configuration
  */
 class HighChartsConfig {
-    constructor({ title, subtitle, yAxisTitle, xAxisTitle, yAxisType, series, legend }) {
+    constructor({ title, subtitle, yAxisTitle, xAxisTitle, yAxisType, series, legend, }) {
         this.title = title;
         this.subtitle = subtitle;
         this.yAxisTitle = yAxisTitle;
@@ -41,18 +41,11 @@ class HighChartsConfig {
     }
     // override in children
     tooltipFormatter(
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        _xDataArray = [],
-    ) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _xDataArray = []) {
         return undefined;
     }
-    plotSingleLine({
-        value = 0.0,
-        width = 1,
-        label = { text: "Point" },
-        color = "red",
-        dashStyle = "dash",
-    }) {
+    plotSingleLine({ value = 0.0, width = 1, label = { text: "Point" }, color = "red", dashStyle = "dash", }) {
         return [
             {
                 value,
