@@ -1,0 +1,56 @@
+import Property from "./Property";
+import PROPERTIES_TREE from "./tree";
+export default class PropertyFactory {
+    static Property: typeof Property;
+    static classMap: {
+        pressure: (new (...args: any[]) => any) | null;
+        total_force: (new (...args: any[]) => any) | null;
+        total_energy: (new (...args: any[]) => any) | null;
+        surface_energy: (new (...args: any[]) => any) | null;
+        convergence_electronic: (new (...args: any[]) => any) | null;
+        convergence_ionic: (new (...args: any[]) => any) | null;
+        fermi_energy: (new (...args: any[]) => any) | null;
+        zero_point_energy: (new (...args: any[]) => any) | null;
+        total_energy_contributions: (new (...args: any[]) => any) | null;
+        atomic_forces: (new (...args: any[]) => any) | null;
+        atomic_constraints: (new (...args: any[]) => any) | null;
+        stress_tensor: (new (...args: any[]) => any) | null;
+        density_of_states: (new (...args: any[]) => any) | null;
+        band_structure: (new (...args: any[]) => any) | null;
+        band_gaps: (new (...args: any[]) => any) | null;
+        phonon_dispersions: (new (...args: any[]) => any) | null;
+        phonon_dos: (new (...args: any[]) => any) | null;
+        predicted_properties: (new (...args: any[]) => any) | null;
+        final_structure: (new (...args: any[]) => any) | null;
+        is_relaxed: (new (...args: any[]) => any) | null;
+        "workflow:ml_predict": (new (...args: any[]) => any) | null;
+        "workflow:pyml_predict": (new (...args: any[]) => any) | null;
+        file_content: (new (...args: any[]) => any) | null;
+        magnetic_moments: (new (...args: any[]) => any) | null;
+        reaction_energy_barrier: (new (...args: any[]) => any) | null;
+        reaction_energy_profile: (new (...args: any[]) => any) | null;
+        potential_profile: (new (...args: any[]) => any) | null;
+        charge_density_profile: (new (...args: any[]) => any) | null;
+        jupyter_notebook_endpoint: (new (...args: any[]) => any) | null;
+        average_potential_profile: (new (...args: any[]) => any) | null;
+        valence_band_offset: (new (...args: any[]) => any) | null;
+        pseudopotential: (new (...args: any[]) => any) | null;
+        boundary_conditions: (new (...args: any[]) => any) | null;
+        dielectric_tensor: (new (...args: any[]) => any) | null;
+        hubbard_u: (new (...args: any[]) => any) | null;
+        hubbard_v_nn: (new (...args: any[]) => any) | null;
+        hubbard_v: (new (...args: any[]) => any) | null;
+    };
+    static branchMap: {
+        scalar: new (...args: any[]) => any;
+        "non-scalar": new (...args: any[]) => any;
+        tensor: new (...args: any[]) => any;
+        object: new (...args: any[]) => any;
+    };
+    static methodsTree: Record<string, () => void>;
+    static create(config: string | object, methodType?: string): Property;
+    static _propertyClassByName(name: keyof typeof PROPERTIES_TREE): new (...args: any[]) => any;
+    static _precisionFunctionByMethodType(methodType?: string): () => void;
+    static _calculateFermiEnergy(): any;
+    static _calculatePointsPath(property: Property): any;
+}
