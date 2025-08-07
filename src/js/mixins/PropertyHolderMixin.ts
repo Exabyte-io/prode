@@ -47,7 +47,7 @@ export function propertyHolderMixin<T extends BaseEntity = BaseEntity>(item: T) 
         },
 
         get sourceInfo() {
-            return this.prop<PropertyBaseSchema["source"]["info"]>("source.info") || {};
+            return this.requiredProp<PropertyBaseSchema["source"]["info"]>("source.info");
         },
 
         get group() {
