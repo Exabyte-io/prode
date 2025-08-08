@@ -5,7 +5,7 @@ interface DataPoint {
 }
 export declare class ConvergenceElectronicProperty extends Property {
     get data(): number[][];
-    get units(): "eV" | "Ry" | "hartree" | undefined;
+    get units(): "eV" | "hartree" | "Ry" | undefined;
     get chartConfig(): import("highcharts").Options;
     /**
      * Data is transferred in a flat way from Rupy but it is stored in a nested array format on webapp.

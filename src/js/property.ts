@@ -6,8 +6,17 @@ import pickBy from "lodash/pickBy";
 import { type PropertyName, PropertyType } from "./settings";
 import PROPERTIES_TREE, { type PropertyConfig, REFINED_PROPERTIES_SUBTREE } from "./tree";
 
+export type PropertySchemaJSON = PropertyHolderSchema["data"] & AnyObject;
+
+export type PropertyRowValue = PropertySchemaJSON & {
+    slug?: string;
+    group?: string;
+};
+
 export default class Property extends NamedInMemoryEntity {
-    declare toJSON: () => PropertyHolderSchema & AnyObject;
+    declare toJSON: (exclude?: string[]) => PropertySchemaJSON;
+
+    declare _json: PropertySchemaJSON;
 
     readonly propertyBranch = Property.propertyBranch(this.name);
 
@@ -29,7 +38,7 @@ export default class Property extends NamedInMemoryEntity {
 
     readonly isRefined = this.name in REFINED_PROPERTIES_SUBTREE;
 
-    toRowValues(group?: string, slug?: string) {
+    toRowValues(group?: string, slug?: string): PropertyRowValue[] {
         return [
             {
                 ...this.toJSON(),
@@ -65,4 +74,8 @@ export default class Property extends NamedInMemoryEntity {
     static readonly nonScalarsSubTree = pickBy(PROPERTIES_TREE, (val) => !this.isScalar(val));
 
     static readonly convergencesSubTree = pickBy(PROPERTIES_TREE, (val) => this.isConvergence(val));
+
+    get repetition() {
+        return this.requiredProp<PropertyHolderSchema["data"]["repetition"]>("repetition");
+    }
 }

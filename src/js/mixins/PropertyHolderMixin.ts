@@ -1,15 +1,13 @@
 import type { InMemoryEntity } from "@mat3ra/code/dist/js/entity";
 import { flattenObject } from "@mat3ra/code/dist/js/utils";
 import type { NameValueObjectExtended } from "@mat3ra/code/dist/js/utils/object";
-import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { PropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
 
 import type Property from "../Property";
+import type { PropertyRowValue } from "../Property";
 import PropertyFactory from "../PropertyFactory";
 
 export type PropertyHolderSourceSchema = PropertyHolderSchema["source"];
-
-export interface PropertySchemaJSON extends PropertyHolderSchema, AnyObject {}
 
 export type PropertyHolderMixin = {
     data: PropertyHolderSchema["data"];
@@ -20,7 +18,7 @@ export type PropertyHolderMixin = {
     exabyteId: PropertyHolderSchema["exabyteId"];
     property: Property;
     flattenProperties(): { [x: string]: unknown }[];
-    toRowValues(): (PropertyHolderSchema & AnyObject)[];
+    toRowValues(): PropertyRowValue[];
 };
 
 export type PropertyInMemoryEntity = InMemoryEntity & PropertyHolderMixin;
