@@ -10,6 +10,7 @@ export type PropertyHolderMixin = {
     sourceInfo: PropertyHolderSourceSchema["info"];
     group: PropertyHolderSchema["group"];
     exabyteId: PropertyHolderSchema["exabyteId"];
+    repetition: PropertyHolderSchema["repetition"];
     property: Property;
     flattenProperties(): {
         [x: string]: unknown;

@@ -16,6 +16,7 @@ export type PropertyHolderMixin = {
     sourceInfo: PropertyHolderSourceSchema["info"];
     group: PropertyHolderSchema["group"];
     exabyteId: PropertyHolderSchema["exabyteId"];
+    repetition: PropertyHolderSchema["repetition"];
     property: Property;
     flattenProperties(): { [x: string]: unknown }[];
     toRowValues(): PropertyRowValue[];
@@ -48,6 +49,10 @@ export function propertyHolderMixin(item: InMemoryEntity) {
 
         get exabyteId() {
             return this.prop<PropertyHolderSchema["exabyteId"]>("exabyteId");
+        },
+
+        get repetition() {
+            return this.requiredProp<PropertyHolderSchema["repetition"]>("repetition");
         },
 
         get property() {

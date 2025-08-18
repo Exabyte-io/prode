@@ -27,6 +27,9 @@ function propertyHolderMixin(item) {
         get exabyteId() {
             return this.prop("exabyteId");
         },
+        get repetition() {
+            return this.requiredProp("repetition");
+        },
         get property() {
             return PropertyFactory_1.default.create(this.data);
         },
