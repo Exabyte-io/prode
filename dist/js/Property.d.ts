@@ -30,5 +30,4 @@ export default class Property extends NamedInMemoryEntity {
     static readonly scalarsSubTree: import("lodash").Dictionary<PropertyConfig>;
     static readonly nonScalarsSubTree: import("lodash").Dictionary<PropertyConfig>;
     static readonly convergencesSubTree: import("lodash").Dictionary<PropertyConfig>;
-    get repetition(): number;
 }

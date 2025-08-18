@@ -56,7 +56,6 @@ export declare class BandGapsProperty extends Property {
                 occupations?: unknown[];
             }[];
         }[];
-        repetition: number;
     }[];
     flattenProperties(): {
         [x: string]: unknown;

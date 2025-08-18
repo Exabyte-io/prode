@@ -1,5 +1,5 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
-import type Property from "src/js/Property";
+import type Property from "../../Property";
 export interface SpinDependentMixin {
     spin: number[];
 }

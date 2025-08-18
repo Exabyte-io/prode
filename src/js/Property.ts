@@ -74,8 +74,4 @@ export default class Property extends NamedInMemoryEntity {
     static readonly nonScalarsSubTree = pickBy(PROPERTIES_TREE, (val) => !this.isScalar(val));
 
     static readonly convergencesSubTree = pickBy(PROPERTIES_TREE, (val) => this.isConvergence(val));
-
-    get repetition() {
-        return this.requiredProp<PropertyHolderSchema["data"]["repetition"]>("repetition");
-    }
 }

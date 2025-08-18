@@ -81,9 +81,6 @@ class Property extends entity_1.NamedInMemoryEntity {
     static isConvergence(propertyConfig) {
         return Boolean(propertyConfig.isConvergence);
     }
-    get repetition() {
-        return this.requiredProp("repetition");
-    }
 }
 _a = Property;
 Property.scalarsSubTree = (0, pickBy_1.default)(tree_1.default, (val) => _a.isScalar(val));
