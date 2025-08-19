@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConvergenceElectronicProperty = void 0;
-const groupBy_1 = __importDefault(require("lodash/groupBy"));
 const highcharts_1 = require("../../charts/highcharts");
 const Property_1 = __importDefault(require("../../Property"));
 class ConvergenceElectronicConfig extends highcharts_1.HighChartsConfig {
@@ -62,26 +61,6 @@ class ConvergenceElectronicProperty extends Property_1.default {
     get chartConfig() {
         // eslint-disable-next-line no-use-before-define
         return new ConvergenceElectronicConfig(this).config;
-    }
-    /**
-     * Data is transferred in a flat way from Rupy but it is stored in a nested array format on webapp.
-     * This function is a converter (see example).
-     *
-     * @example
-     * _convertData(
-     *   [{index: 0, value: 0},
-     *    {index: 0, value: 1},
-     *    {index: 1, value: 2}]
-     * );
-     * // returns [[0,1], [2]]
-     */
-    // eslint-disable-next-line class-methods-use-this
-    _convertData(currentData = [], newData = []) {
-        const data = currentData
-            .map((values, index) => values.map((value) => ({ index, value })))
-            .flat();
-        const groupedData = Object.values((0, groupBy_1.default)(data.concat(newData), (x) => x.index));
-        return groupedData.map((energies) => energies.map((energy) => energy.value));
     }
 }
 exports.ConvergenceElectronicProperty = ConvergenceElectronicProperty;

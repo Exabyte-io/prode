@@ -1,14 +1,8 @@
 import type { ConvergenceElectronicPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AxisLabelFormatterOptions, IndividualSeriesOptions } from "highcharts";
-import groupBy from "lodash/groupBy";
 
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
 import Property from "../../Property";
-
-interface DataPoint {
-    index: number;
-    value: number;
-}
 
 class ConvergenceElectronicConfig extends HighChartsConfig {
     constructor(monitor: ConvergenceElectronicProperty) {
@@ -73,28 +67,5 @@ export class ConvergenceElectronicProperty extends Property {
     get chartConfig() {
         // eslint-disable-next-line no-use-before-define
         return new ConvergenceElectronicConfig(this).config;
-    }
-
-    /**
-     * Data is transferred in a flat way from Rupy but it is stored in a nested array format on webapp.
-     * This function is a converter (see example).
-     *
-     * @example
-     * _convertData(
-     *   [{index: 0, value: 0},
-     *    {index: 0, value: 1},
-     *    {index: 1, value: 2}]
-     * );
-     * // returns [[0,1], [2]]
-     */
-    // eslint-disable-next-line class-methods-use-this
-    _convertData(currentData: number[][] = [], newData: DataPoint[] = []): number[][] {
-        const data: DataPoint[] = currentData
-            .map((values, index) => values.map((value) => ({ index, value })))
-            .flat();
-
-        const groupedData = Object.values(groupBy(data.concat(newData), (x) => x.index));
-
-        return groupedData.map((energies) => energies.map((energy) => energy.value));
     }
 }
