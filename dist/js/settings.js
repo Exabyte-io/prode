@@ -40,7 +40,6 @@ var PropertyName;
     PropertyName["band_gaps"] = "band_gaps";
     PropertyName["phonon_dispersions"] = "phonon_dispersions";
     PropertyName["phonon_dos"] = "phonon_dos";
-    PropertyName["predicted_properties"] = "predicted_properties";
     PropertyName["final_structure"] = "final_structure";
     PropertyName["is_relaxed"] = "is_relaxed";
     PropertyName["w_ml_predict"] = "workflow:ml_predict";

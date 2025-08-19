@@ -52,7 +52,6 @@ export const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [PropertyName.band_gaps]: BandGapsProperty,
     [PropertyName.phonon_dispersions]: PhononDispersionsProperty,
     [PropertyName.phonon_dos]: PhononDOSProperty,
-    [PropertyName.predicted_properties]: null,
     [PropertyName.final_structure]: StructureProperty,
     [PropertyName.is_relaxed]: null,
     [PropertyName.w_ml_predict]: WorkflowProperty,

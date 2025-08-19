@@ -47,7 +47,6 @@ exports.PROPERTY_CLASS_MAP = {
     [settings_1.PropertyName.band_gaps]: band_gaps_1.BandGapsProperty,
     [settings_1.PropertyName.phonon_dispersions]: phonon_dispersions_1.PhononDispersionsProperty,
     [settings_1.PropertyName.phonon_dos]: phonon_dos_1.PhononDOSProperty,
-    [settings_1.PropertyName.predicted_properties]: null,
     [settings_1.PropertyName.final_structure]: structure_1.StructureProperty,
     [settings_1.PropertyName.is_relaxed]: null,
     [settings_1.PropertyName.w_ml_predict]: workflow_1.WorkflowProperty,

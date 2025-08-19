@@ -30,7 +30,6 @@ export declare enum PropertyName {
     band_gaps = "band_gaps",
     phonon_dispersions = "phonon_dispersions",
     phonon_dos = "phonon_dos",
-    predicted_properties = "predicted_properties",
     final_structure = "final_structure",
     is_relaxed = "is_relaxed",
     w_ml_predict = "workflow:ml_predict",

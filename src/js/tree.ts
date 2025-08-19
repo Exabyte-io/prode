@@ -89,9 +89,6 @@ const propertiesTree: PropertiesTree = {
     [PropertyName.phonon_dos]: {
         type: PropertyType.non_scalar,
     },
-    [PropertyName.predicted_properties]: {
-        type: PropertyType.non_scalar,
-    },
     [PropertyName.final_structure]: {
         type: PropertyType.non_scalar,
     },

@@ -20,7 +20,6 @@ export default class PropertyFactory {
         band_gaps: (new (...args: any[]) => any) | null;
         phonon_dispersions: (new (...args: any[]) => any) | null;
         phonon_dos: (new (...args: any[]) => any) | null;
-        predicted_properties: (new (...args: any[]) => any) | null;
         final_structure: (new (...args: any[]) => any) | null;
         is_relaxed: (new (...args: any[]) => any) | null;
         "workflow:ml_predict": (new (...args: any[]) => any) | null;
