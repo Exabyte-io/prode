@@ -40,7 +40,7 @@
         "@babel/eslint-parser": "^7.16.3",
         "@exabyte-io/eslint-config": "2025.5.13-0",
         "@mat3ra/code": "2025.8.7-0",
-        "@mat3ra/esse": "git+https://github.com/Exabyte-io/esse.git#3aaab58d3ff8ae5378316e9ccc90503abacd98c6",
+        "@mat3ra/esse": "git+https://github.com/Exabyte-io/esse.git#60d8bc30894594f0587fd99f00055f235adc82d9",
         "@mat3ra/made": "git+https://github.com/Exabyte-io/made.git#4f873b90455bbcc91bb33766bc64d9219b463a38",
         "@mat3ra/tsconfig": "2024.6.3-0",
         "@typescript-eslint/eslint-plugin": "^5.9.1",
