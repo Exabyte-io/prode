@@ -32,7 +32,6 @@ export declare enum PropertyName {
     phonon_dos = "phonon_dos",
     final_structure = "final_structure",
     is_relaxed = "is_relaxed",
-    w_ml_predict = "workflow:ml_predict",
     w_pyml_predict = "workflow:pyml_predict",
     file_content = "file_content",
     magnetic_moments = "magnetic_moments",

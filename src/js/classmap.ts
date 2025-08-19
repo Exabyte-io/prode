@@ -54,7 +54,6 @@ export const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [PropertyName.phonon_dos]: PhononDOSProperty,
     [PropertyName.final_structure]: StructureProperty,
     [PropertyName.is_relaxed]: null,
-    [PropertyName.w_ml_predict]: WorkflowProperty,
     [PropertyName.w_pyml_predict]: WorkflowProperty,
     [PropertyName.file_content]: null,
     [PropertyName.magnetic_moments]: null,

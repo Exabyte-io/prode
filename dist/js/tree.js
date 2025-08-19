@@ -85,10 +85,6 @@ const propertiesTree = {
         // only storing the refined status as this is not to be shown in job results
         isRefined: true,
     },
-    [settings_1.PropertyName.w_ml_predict]: {
-        type: settings_1.PropertyType.non_scalar,
-        domain: settings_1.PropertyDomain.workflow,
-    },
     [settings_1.PropertyName.w_pyml_predict]: {
         type: settings_1.PropertyType.non_scalar,
         domain: settings_1.PropertyDomain.workflow,

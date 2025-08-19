@@ -42,7 +42,6 @@ var PropertyName;
     PropertyName["phonon_dos"] = "phonon_dos";
     PropertyName["final_structure"] = "final_structure";
     PropertyName["is_relaxed"] = "is_relaxed";
-    PropertyName["w_ml_predict"] = "workflow:ml_predict";
     PropertyName["w_pyml_predict"] = "workflow:pyml_predict";
     PropertyName["file_content"] = "file_content";
     PropertyName["magnetic_moments"] = "magnetic_moments";

@@ -49,7 +49,6 @@ exports.PROPERTY_CLASS_MAP = {
     [settings_1.PropertyName.phonon_dos]: phonon_dos_1.PhononDOSProperty,
     [settings_1.PropertyName.final_structure]: structure_1.StructureProperty,
     [settings_1.PropertyName.is_relaxed]: null,
-    [settings_1.PropertyName.w_ml_predict]: workflow_1.WorkflowProperty,
     [settings_1.PropertyName.w_pyml_predict]: workflow_1.WorkflowProperty,
     [settings_1.PropertyName.file_content]: null,
     [settings_1.PropertyName.magnetic_moments]: null,
