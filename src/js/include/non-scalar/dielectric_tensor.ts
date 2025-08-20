@@ -71,6 +71,8 @@ export class DielectricTensorConfig extends TwoDimensionalHighChartConfigMixin {
 export class DielectricTensorProperty extends Property {
     declare toJSON: () => DielectricTensorPropertySchema & AnyObject;
 
+    declare name: DielectricTensorPropertySchema["name"];
+
     get values() {
         return this.requiredProp<DielectricTensorPropertySchema["values"]>("values");
     }

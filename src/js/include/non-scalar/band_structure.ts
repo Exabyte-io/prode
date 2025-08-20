@@ -35,7 +35,15 @@ export class BandStructureConfig extends HighChartsConfig {
 
     readonly pointsPath: KPointPath | undefined;
 
-    constructor(property: BandStructureProperty) {
+    constructor(
+        property: SpinDependentMixin &
+            TwoDimensionalPlotMixin & {
+                subtitle: string;
+                yAxisTitle: string;
+                fermiEnergy: number | null;
+                pointsPath: KPointPath | undefined;
+            },
+    ) {
         super({
             subtitle: property.subtitle,
             yAxisTitle: property.yAxisTitle,
@@ -243,9 +251,9 @@ type Base = typeof Property &
 export class BandStructureProperty extends (Property as Base) {
     declare toJSON: () => BandStructureSchema & AnyObject;
 
-    constructor(config: object, ConfigBuilder: typeof BandStructureConfig = BandStructureConfig) {
+    constructor(config: object) {
         super(config);
-        this.chartConfig = new ConfigBuilder(this).config;
+        this.chartConfig = new BandStructureConfig(this).config;
     }
 
     readonly subtitle: string = "Electronic Bandstructure";
@@ -259,6 +267,8 @@ export class BandStructureProperty extends (Property as Base) {
     readonly pointsPath: KPointPath | undefined = undefined;
 
     readonly chartConfig: Options;
+
+    declare name: BandStructureSchema["name"];
 }
 
 twoDimensionalPlotMixin(BandStructureProperty.prototype);

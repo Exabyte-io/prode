@@ -27,5 +27,6 @@ export declare class PotentialProfileProperty extends PotentialProfileProperty_b
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
     readonly chartConfig: Options;
+    name: PotentialProfileSchema["name"];
 }
 export {};

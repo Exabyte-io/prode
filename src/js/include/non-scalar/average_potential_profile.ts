@@ -52,6 +52,8 @@ export class AveragePotentialProfileProperty extends (Property as BaseProperty) 
     readonly xAxisTitle: string = `Coordinate (${this.xAxis.units})`;
 
     readonly chartConfig: Options = new AveragePotentialProfileConfig(this).config;
+
+    declare name: AveragePotentialProfileSchema["name"];
 }
 
 twoDimensionalPlotMixin(AveragePotentialProfileProperty.prototype);

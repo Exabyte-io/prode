@@ -56,6 +56,8 @@ export class PotentialProfileProperty extends (Property as Base) {
     readonly xAxisTitle: string = "Z Coordinate";
 
     readonly chartConfig: Options = new PotentialProfileConfig(this).config;
+
+    declare name: PotentialProfileSchema["name"];
 }
 
 twoDimensionalPlotMixin(PotentialProfileProperty.prototype);

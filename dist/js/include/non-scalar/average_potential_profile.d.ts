@@ -27,5 +27,6 @@ export declare class AveragePotentialProfileProperty extends AveragePotentialPro
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
     readonly chartConfig: Options;
+    name: AveragePotentialProfileSchema["name"];
 }
 export {};

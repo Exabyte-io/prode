@@ -1,1 +1,5 @@
-export { PropertyWithValues as HubbardVNNProperty } from "../../PropertyWithValues";
+import { PropertyWithValues } from "../../PropertyWithValues";
+
+export class HubbardVNNProperty extends PropertyWithValues {
+    declare name: "hubbard_v_nn";
+}

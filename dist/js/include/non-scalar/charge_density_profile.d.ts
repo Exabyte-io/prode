@@ -14,5 +14,6 @@ export declare class ChargeDensityProfileProperty extends ChargeDensityProfilePr
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
     readonly chartConfig: Options;
+    name: ChargeDensityProfileSchema["name"];
 }
 export {};

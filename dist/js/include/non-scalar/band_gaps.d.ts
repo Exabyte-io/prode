@@ -3,6 +3,7 @@ import type { BandGapsSchema } from "@mat3ra/esse/dist/js/types";
 import Property from "../../Property";
 export declare class BandGapsProperty extends Property {
     toJSON: () => BandGapsSchema & AnyObject;
+    name: BandGapsSchema["name"];
     get eigenvalues(): {
         kpoint?: [number, number, number];
         weight?: number;

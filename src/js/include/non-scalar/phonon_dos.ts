@@ -1,6 +1,9 @@
 /* eslint-disable class-methods-use-this */
 // eslint-disable-next-line max-classes-per-file
+import type { DensityOfStatesSchema } from "@mat3ra/esse/dist/js/types";
+
 import type { FormatterScope } from "../../charts/highcharts";
+import { twoDimensionalPlotMixin } from "../mixins/2d_plot";
 import { DensityOfStatesConfig, DensityOfStatesProperty } from "./density_of_states";
 
 class PhononDOSConfig extends DensityOfStatesConfig {
@@ -33,4 +36,8 @@ export class PhononDOSProperty extends DensityOfStatesProperty {
     readonly xAxisTitle: string = `Frequency (${this.xAxis.units})`;
 
     readonly fermiEnergy: null = null;
+
+    declare name: DensityOfStatesSchema["name"];
 }
+
+twoDimensionalPlotMixin(PhononDOSProperty.prototype);

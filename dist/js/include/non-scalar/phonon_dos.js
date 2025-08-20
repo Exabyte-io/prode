@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PhononDOSProperty = void 0;
+const _2d_plot_1 = require("../mixins/2d_plot");
 const density_of_states_1 = require("./density_of_states");
 class PhononDOSConfig extends density_of_states_1.DensityOfStatesConfig {
     tooltipFormatter() {
@@ -27,3 +28,4 @@ class PhononDOSProperty extends density_of_states_1.DensityOfStatesProperty {
     }
 }
 exports.PhononDOSProperty = PhononDOSProperty;
+(0, _2d_plot_1.twoDimensionalPlotMixin)(PhononDOSProperty.prototype);

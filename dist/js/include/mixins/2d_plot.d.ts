@@ -6,6 +6,11 @@ export type TwoDimensionalPlotMixin<S extends {
     yDataSeries: YDataSeries;
     yAxis: DimensionPlotSchema["yAxis"];
     xAxis: DimensionPlotSchema["xAxis"];
+} = {
+    xDataArray: XDataArray;
+    yDataSeries: YDataSeries;
+    yAxis: DimensionPlotSchema["yAxis"];
+    xAxis: DimensionPlotSchema["xAxis"];
 }> = {
     xDataArray: S["xDataArray"];
     yDataSeries: S["yDataSeries"];

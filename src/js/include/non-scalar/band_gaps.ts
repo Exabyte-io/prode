@@ -7,6 +7,8 @@ import Property from "../../Property";
 export class BandGapsProperty extends Property {
     declare toJSON: () => BandGapsSchema & AnyObject;
 
+    declare name: BandGapsSchema["name"];
+
     get eigenvalues() {
         return this.prop<BandGapsSchema["eigenvalues"]>("eigenvalues");
     }

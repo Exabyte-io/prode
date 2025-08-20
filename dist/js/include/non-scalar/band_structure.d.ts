@@ -15,7 +15,12 @@ export declare class BandStructureConfig extends HighChartsConfig {
     readonly pointsDistanceArray: number[];
     readonly fermiEnergy: number | null;
     readonly pointsPath: KPointPath | undefined;
-    constructor(property: BandStructureProperty);
+    constructor(property: SpinDependentMixin & TwoDimensionalPlotMixin & {
+        subtitle: string;
+        yAxisTitle: string;
+        fermiEnergy: number | null;
+        pointsPath: KPointPath | undefined;
+    });
     cleanXDataArray(rawData?: XDataArray): XDataArrayNested;
     calculatePointsDistance(listOfPoints?: XDataArrayNested): number[];
     findSymmetryPointIndex(xDataArray: XDataArrayNested, point: number[]): number;
@@ -163,11 +168,12 @@ type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<BandStructureS
 declare const BandStructureProperty_base: Base;
 export declare class BandStructureProperty extends BandStructureProperty_base {
     toJSON: () => BandStructureSchema & AnyObject;
-    constructor(config: object, ConfigBuilder?: typeof BandStructureConfig);
+    constructor(config: object);
     readonly subtitle: string;
     readonly yAxisTitle: string;
     readonly fermiEnergy: number | null;
     readonly pointsPath: KPointPath | undefined;
     readonly chartConfig: Options;
+    name: BandStructureSchema["name"];
 }
 export {};

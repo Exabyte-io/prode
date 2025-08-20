@@ -29,6 +29,8 @@ export class ChargeDensityProfileProperty extends (Property as BaseProperty) {
     readonly xAxisTitle: string = "Z Coordinate";
 
     readonly chartConfig: Options = new ChargeDensityProfileConfig(this).config;
+
+    declare name: ChargeDensityProfileSchema["name"];
 }
 
 twoDimensionalPlotMixin(ChargeDensityProfileProperty.prototype);

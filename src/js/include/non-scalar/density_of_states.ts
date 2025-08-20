@@ -162,6 +162,8 @@ export class DensityOfStatesProperty extends (Property as Base) {
     get legend() {
         return this.requiredProp<DensityOfStatesSchema["legend"]>("legend");
     }
+
+    declare name: DensityOfStatesSchema["name"];
 }
 
 twoDimensionalPlotMixin(DensityOfStatesProperty.prototype);

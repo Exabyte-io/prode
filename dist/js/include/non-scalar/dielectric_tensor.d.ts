@@ -31,6 +31,7 @@ export declare class DielectricTensorConfig extends TwoDimensionalHighChartConfi
 }
 export declare class DielectricTensorProperty extends Property {
     toJSON: () => DielectricTensorPropertySchema & AnyObject;
+    name: DielectricTensorPropertySchema["name"];
     get values(): {
         part: "real" | "imaginary";
         spin?: number;

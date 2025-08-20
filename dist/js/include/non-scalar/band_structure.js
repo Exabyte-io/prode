@@ -198,7 +198,7 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
 }
 exports.BandStructureConfig = BandStructureConfig;
 class BandStructureProperty extends Property_1.default {
-    constructor(config, ConfigBuilder = BandStructureConfig) {
+    constructor(config) {
         super(config);
         this.subtitle = "Electronic Bandstructure";
         this.yAxisTitle = `Energy (${this.yAxis.units})`;
@@ -206,7 +206,7 @@ class BandStructureProperty extends Property_1.default {
         this.fermiEnergy = null;
         // TODO: Add as config parameter
         this.pointsPath = undefined;
-        this.chartConfig = new ConfigBuilder(this).config;
+        this.chartConfig = new BandStructureConfig(this).config;
     }
 }
 exports.BandStructureProperty = BandStructureProperty;

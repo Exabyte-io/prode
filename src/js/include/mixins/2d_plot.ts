@@ -14,6 +14,11 @@ export type TwoDimensionalPlotMixin<
         yDataSeries: YDataSeries;
         yAxis: DimensionPlotSchema["yAxis"];
         xAxis: DimensionPlotSchema["xAxis"];
+    } = {
+        xDataArray: XDataArray;
+        yDataSeries: YDataSeries;
+        yAxis: DimensionPlotSchema["yAxis"];
+        xAxis: DimensionPlotSchema["xAxis"];
     },
 > = {
     xDataArray: S["xDataArray"];

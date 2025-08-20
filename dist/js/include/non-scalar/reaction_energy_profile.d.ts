@@ -14,5 +14,6 @@ export declare class ReactionEnergyProfileProperty extends ReactionEnergyProfile
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
     readonly chartConfig: Options;
+    name: ReactionEnergyProfileSchema["name"];
 }
 export {};

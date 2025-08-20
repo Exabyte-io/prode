@@ -138,5 +138,6 @@ export declare class DensityOfStatesProperty extends DensityOfStatesProperty_bas
         electronicState?: string;
         spin?: 0.5 | -0.5;
     }[];
+    name: DensityOfStatesSchema["name"];
 }
 export {};

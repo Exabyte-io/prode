@@ -29,6 +29,8 @@ export class ReactionEnergyProfileProperty extends (Property as BaseProperty) {
     readonly xAxisTitle: string = "Reaction Coordinate";
 
     readonly chartConfig: Options = new ReactionEnergyProfileConfig(this).config;
+
+    declare name: ReactionEnergyProfileSchema["name"];
 }
 
 twoDimensionalPlotMixin(ReactionEnergyProfileProperty.prototype);
