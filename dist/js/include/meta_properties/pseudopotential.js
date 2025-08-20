@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Pseudopotential = void 0;
 const uniqBy_1 = __importDefault(require("lodash/uniqBy"));
 const MetaProperty_1 = __importDefault(require("../../MetaProperty"));
 var CompatibleExchangeCorrelationKey;
@@ -171,7 +170,7 @@ class Pseudopotential extends MetaProperty_1.default {
         return pseudos.filter((pseudo) => pseudo.type.includes(pseudoType));
     }
 }
-exports.Pseudopotential = Pseudopotential;
 Pseudopotential.compatibleExchangeCorrelation = {
     hse06: ["pbe", "hse06"],
 };
+exports.default = Pseudopotential;

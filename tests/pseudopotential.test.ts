@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import { Pseudopotential } from "../src/js/include/meta_properties/pseudopotential";
+import Pseudopotential from "../src/js/include/meta_properties/Pseudopotential";
 
 const PSEUDO_CONFIGS = [
     {

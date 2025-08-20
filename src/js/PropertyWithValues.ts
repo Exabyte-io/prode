@@ -5,6 +5,6 @@ import Property from "./Property";
 
 type NamedPropertyWithValuesBase = typeof Property & Constructor<PropertyWithValuesMixin>;
 
-export class PropertyWithValues extends (Property as NamedPropertyWithValuesBase) {}
+export default class PropertyWithValues extends (Property as NamedPropertyWithValuesBase) {}
 
 propertyWithValuesMixin(PropertyWithValues.prototype);

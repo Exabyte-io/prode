@@ -3,6 +3,6 @@ import { type PropertyWithValuesMixin } from "./mixins/PropertyWithValues";
 import Property from "./Property";
 type NamedPropertyWithValuesBase = typeof Property & Constructor<PropertyWithValuesMixin>;
 declare const PropertyWithValues_base: NamedPropertyWithValuesBase;
-export declare class PropertyWithValues extends PropertyWithValues_base {
+export default class PropertyWithValues extends PropertyWithValues_base {
 }
 export {};

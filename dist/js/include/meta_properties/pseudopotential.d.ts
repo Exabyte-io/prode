@@ -9,7 +9,7 @@ type RawDataObject = {
 declare enum CompatibleExchangeCorrelationKey {
     hse06 = "hse06"
 }
-export declare class Pseudopotential extends MetaProperty {
+export default class Pseudopotential extends MetaProperty {
     static readonly compatibleExchangeCorrelation: {
         hse06: string[];
     };

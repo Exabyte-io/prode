@@ -1,23 +1,23 @@
-import { ConvergenceElectronicProperty } from "./include/convergence/convergence_electronic";
-import { ConvergenceIonicProperty } from "./include/convergence/convergence_ionic";
-import { Pseudopotential } from "./include/meta_properties/pseudopotential";
-import { AveragePotentialProfileProperty } from "./include/non-scalar/average_potential_profile";
-import { BandGapsProperty } from "./include/non-scalar/band_gaps";
-import { BandStructureProperty } from "./include/non-scalar/band_structure";
-import { ChargeDensityProfileProperty } from "./include/non-scalar/charge_density_profile";
-import { DensityOfStatesProperty } from "./include/non-scalar/density_of_states";
-import { DielectricTensorProperty } from "./include/non-scalar/dielectric_tensor";
-import { HubbardUProperty } from "./include/non-scalar/hubbard_u";
-import { HubbardVProperty } from "./include/non-scalar/hubbard_v";
-import { HubbardVNNProperty } from "./include/non-scalar/hubbard_v_nn";
-import { PhononDispersionsProperty } from "./include/non-scalar/phonon_dispersions";
-import { PhononDOSProperty } from "./include/non-scalar/phonon_dos";
-import { PotentialProfileProperty } from "./include/non-scalar/potential_profile";
-import { ReactionEnergyProfileProperty } from "./include/non-scalar/reaction_energy_profile";
-import { StructureProperty } from "./include/non-scalar/structure";
-import { WorkflowProperty } from "./include/non-scalar/workflow";
-import { ObjectProperty } from "./include/primitive/object";
-import { TensorProperty } from "./include/primitive/tensor";
+import ConvergenceElectronicProperty from "./include/convergence/ConvergenceElectronicProperty";
+import ConvergenceIonicProperty from "./include/convergence/ConvergenceIonicProperty";
+import Pseudopotential from "./include/meta_properties/Pseudopotential";
+import AveragePotentialProfileProperty from "./include/non-scalar/AveragePotentialProfileProperty";
+import BandGapsProperty from "./include/non-scalar/BandGapsProperty";
+import BandStructureProperty from "./include/non-scalar/BandStructureProperty";
+import ChargeDensityProfileProperty from "./include/non-scalar/ChargeDensityProfileProperty";
+import DensityOfStatesProperty from "./include/non-scalar/DensityOfStatesProperty";
+import DielectricTensorProperty from "./include/non-scalar/DielectricTensorProperty";
+import FinalStructureProperty from "./include/non-scalar/FinalStructureProperty";
+import HubbardUProperty from "./include/non-scalar/HubbardUProperty";
+import HubbardVNNProperty from "./include/non-scalar/HubbardVNNProperty";
+import HubbardVProperty from "./include/non-scalar/HubbardVProperty";
+import PhononDispersionsProperty from "./include/non-scalar/PhononDispersionsProperty";
+import PhononDOSProperty from "./include/non-scalar/PhononDOSProperty";
+import PotentialProfileProperty from "./include/non-scalar/PotentialProfileProperty";
+import ReactionEnergyProfileProperty from "./include/non-scalar/ReactionEnergyProfileProperty";
+import WorkflowProperty from "./include/non-scalar/WorkflowProperty";
+import ObjectProperty from "./include/primitive/ObjectProperty";
+import TensorProperty from "./include/primitive/TensorProperty";
 import PropertyClass from "./Property";
 import { PropertyName, PropertyType } from "./settings";
 
@@ -52,7 +52,7 @@ export const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [PropertyName.band_gaps]: BandGapsProperty,
     [PropertyName.phonon_dispersions]: PhononDispersionsProperty,
     [PropertyName.phonon_dos]: PhononDOSProperty,
-    [PropertyName.final_structure]: StructureProperty,
+    [PropertyName.final_structure]: FinalStructureProperty,
     [PropertyName.is_relaxed]: null,
     [PropertyName.w_pyml_predict]: WorkflowProperty,
     [PropertyName.file_content]: null,
