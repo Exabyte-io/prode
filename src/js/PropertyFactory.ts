@@ -1,3 +1,5 @@
+import type { PropertyHolderSchema, ProtoPropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
+
 import { PROPERTY_CLASS_MAP } from "./classmap";
 import Property from "./Property";
 import type { PropertyName } from "./settings";
@@ -8,10 +10,15 @@ export default class PropertyFactory {
     static methodsTree: Record<string, () => void> = {};
 
     static create(
-        config: `${PropertyName}` | { name: `${PropertyName}` },
+        config:
+            | `${PropertyName}`
+            | PropertyHolderSchema["data"]
+            | ProtoPropertyHolderSchema["data"],
         methodType?: string,
     ): Property {
         const name = typeof config === "string" ? config : config.name;
+        // TODO: fix this
+        // @ts-expect-error - this is a workaround to allow the propertyMixin to be used with any type of entity
         const PropertyClass = PROPERTY_CLASS_MAP[name];
         const precisionFn = this._precisionFunctionByMethodType(methodType);
 
