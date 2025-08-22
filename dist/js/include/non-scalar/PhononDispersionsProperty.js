@@ -14,7 +14,7 @@ class PhononDispersionsConfig extends BandStructureProperty_1.BandStructureConfi
 }
 class PhononDispersionsProperty extends Property_1.default {
     constructor(config) {
-        super(config);
+        super({ ...config, name: "phonon_dispersions" });
         this.subtitle = "Phonon Dispersions";
         this.yAxisTitle = `Frequency (${this.yAxis.units})`;
         // unset property

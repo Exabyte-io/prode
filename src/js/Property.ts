@@ -18,6 +18,8 @@ export default class Property extends NamedInMemoryEntity {
 
     declare _json: PropertySchemaJSON;
 
+    declare name: `${PropertyName}`;
+
     readonly propertyBranch = Property.propertyBranch(this.name);
 
     readonly prettyName = Property.prettifyName(this.name);
@@ -34,7 +36,7 @@ export default class Property extends NamedInMemoryEntity {
 
     readonly isAbleToReturnMultipleResults = this.propertyBranch.isAbleToReturnMultipleResults;
 
-    readonly type: PropertyType | null = this.propertyBranch.type ?? null;
+    readonly propertyType: PropertyType | null = this.propertyBranch.type ?? null;
 
     readonly isRefined = this.name in REFINED_PROPERTIES_SUBTREE;
 
@@ -52,12 +54,12 @@ export default class Property extends NamedInMemoryEntity {
         return (name.charAt(0).toUpperCase() + name.slice(1)).replace("_", " ");
     }
 
-    static propertyBranch(propertyName: string): PropertyConfig {
+    static propertyBranch(propertyName: `${PropertyName}`): PropertyConfig {
         // safely return empty object in case the tree does not contain the name key
-        return PROPERTIES_TREE[propertyName as PropertyName] || {};
+        return PROPERTIES_TREE[propertyName] || {};
     }
 
-    static omitInResults(propertyName: string) {
+    static omitInResults(propertyName: `${PropertyName}`) {
         return Boolean(this.propertyBranch(propertyName).omitInResults);
     }
 

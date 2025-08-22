@@ -2,7 +2,7 @@
 /* eslint-disable max-classes-per-file */
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types.js";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
-import type { DensityOfStatesSchema } from "@mat3ra/esse/dist/js/types";
+import type { DensityOfStatesPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import zip from "lodash/zip";
 
@@ -14,14 +14,16 @@ import {
     twoDimensionalPlotMixin,
 } from "../mixins/2d_plot";
 
+type Schema = DensityOfStatesPropertySchema;
+
 export class DensityOfStatesConfig extends HighChartsConfig {
     readonly yDataSeries: YDataSeries;
 
     readonly fermiEnergy: number | null;
 
-    readonly xDataArray: DensityOfStatesSchema["xDataArray"];
+    readonly xDataArray: Schema["xDataArray"];
 
-    readonly legends: DensityOfStatesSchema["legend"];
+    readonly legends: Schema["legend"];
 
     get overrideConfig() {
         return {
@@ -58,9 +60,9 @@ export class DensityOfStatesConfig extends HighChartsConfig {
         yAxisTitle: string;
         xAxisTitle: string;
         yDataSeries: YDataSeries;
-        legend?: DensityOfStatesSchema["legend"];
+        legend?: Schema["legend"];
         fermiEnergy: number | null;
-        xDataArray: DensityOfStatesSchema["xDataArray"];
+        xDataArray: Schema["xDataArray"];
     }) {
         super({
             subtitle: property.subtitle,
@@ -76,7 +78,7 @@ export class DensityOfStatesConfig extends HighChartsConfig {
     }
 
     // shifting values wrt fermi energy here
-    cleanXDataArray(rawData: DensityOfStatesSchema["xDataArray"]) {
+    cleanXDataArray(rawData: Schema["xDataArray"]) {
         return rawData.flat().map((x) => {
             const value = this.fermiEnergy ? x - this.fermiEnergy : x;
             return +value.toPrecision(4);
@@ -144,18 +146,20 @@ export class DensityOfStatesConfig extends HighChartsConfig {
     }
 }
 
-type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<DensityOfStatesSchema>>;
+type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<Schema>>;
 
-export default class DensityOfStatesProperty extends (Property as Base) {
+export default class DensityOfStatesProperty extends (Property as Base) implements Schema {
     constructor(
         config: object,
         ConfigBuilder: typeof DensityOfStatesConfig = DensityOfStatesConfig,
     ) {
-        super(config);
+        super({ ...config, name: "density_of_states" });
         this.chartConfig = new ConfigBuilder(this).config;
     }
 
-    declare toJSON: () => DensityOfStatesSchema & AnyObject;
+    declare readonly name: Schema["name"];
+
+    declare toJSON: () => Schema & AnyObject;
 
     readonly subtitle: string = "Density Of States";
 
@@ -168,10 +172,8 @@ export default class DensityOfStatesProperty extends (Property as Base) {
     readonly chartConfig: Options;
 
     get legend() {
-        return this.requiredProp<DensityOfStatesSchema["legend"]>("legend");
+        return this.requiredProp<Schema["legend"]>("legend");
     }
-
-    declare name: DensityOfStatesSchema["name"];
 }
 
 twoDimensionalPlotMixin(DensityOfStatesProperty.prototype);

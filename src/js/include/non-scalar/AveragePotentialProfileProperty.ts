@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
-import type { AveragePotentialProfileSchema } from "@mat3ra/esse/dist/js/types";
+import type { AveragePotentialProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import lodash from "lodash";
 
@@ -42,7 +42,7 @@ export class AveragePotentialProfileConfig extends TwoDimensionalHighChartConfig
 }
 
 type BaseProperty = typeof Property &
-    Constructor<TwoDimensionalPlotMixin<AveragePotentialProfileSchema>>;
+    Constructor<TwoDimensionalPlotMixin<AveragePotentialProfilePropertySchema>>;
 
 export default class AveragePotentialProfileProperty extends (Property as BaseProperty) {
     readonly subtitle: string = "Average Potential Profile";
@@ -53,7 +53,11 @@ export default class AveragePotentialProfileProperty extends (Property as BasePr
 
     readonly chartConfig: Options = new AveragePotentialProfileConfig(this).config;
 
-    declare name: AveragePotentialProfileSchema["name"];
+    declare readonly name: AveragePotentialProfilePropertySchema["name"];
+
+    constructor(config: object) {
+        super({ ...config, name: "average_potential_profile" });
+    }
 }
 
 twoDimensionalPlotMixin(AveragePotentialProfileProperty.prototype);

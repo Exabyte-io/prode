@@ -30,12 +30,12 @@ const propertiesTree = {
         type: settings_1.PropertyType.scalar,
         isRefined: true,
     },
-    [settings_1.PropertyName.convergence_elec]: {
+    [settings_1.PropertyName.convergence_electronic]: {
         type: settings_1.PropertyType.non_scalar,
         domain: settings_1.PropertyDomain.workflow,
         isConvergence: true,
     },
-    [settings_1.PropertyName.convergence_ion]: {
+    [settings_1.PropertyName.convergence_ionic]: {
         type: settings_1.PropertyType.non_scalar,
         domain: settings_1.PropertyDomain.workflow,
         isConvergence: true,
@@ -47,7 +47,7 @@ const propertiesTree = {
     [settings_1.PropertyName.zero_point_energy]: {
         type: settings_1.PropertyType.scalar,
     },
-    [settings_1.PropertyName.total_energy_contrib]: {
+    [settings_1.PropertyName.total_energy_contributions]: {
         type: settings_1.PropertyType.object,
         isAuxiliary: true,
     },
@@ -60,7 +60,7 @@ const propertiesTree = {
     [settings_1.PropertyName.stress_tensor]: {
         type: settings_1.PropertyType.tensor,
     },
-    [settings_1.PropertyName.dos]: {
+    [settings_1.PropertyName.density_of_states]: {
         type: settings_1.PropertyType.non_scalar,
         isRefined: true,
     },
@@ -85,7 +85,7 @@ const propertiesTree = {
         // only storing the refined status as this is not to be shown in job results
         isRefined: true,
     },
-    [settings_1.PropertyName.w_pyml_predict]: {
+    [settings_1.PropertyName.workflow_pyml_predict]: {
         type: settings_1.PropertyType.non_scalar,
         domain: settings_1.PropertyDomain.workflow,
     },
@@ -96,12 +96,12 @@ const propertiesTree = {
     [settings_1.PropertyName.magnetic_moments]: {
         type: settings_1.PropertyType.tensor,
     },
-    [settings_1.PropertyName.rxn_energy_barrier]: {
+    [settings_1.PropertyName.reaction_energy_barrier]: {
         type: settings_1.PropertyType.scalar,
         isRefined: true,
         isAuxiliary: true,
     },
-    [settings_1.PropertyName.rxn_energy_profile]: {
+    [settings_1.PropertyName.reaction_energy_profile]: {
         type: settings_1.PropertyType.non_scalar,
         isRefined: true,
     },
@@ -113,7 +113,7 @@ const propertiesTree = {
         type: settings_1.PropertyType.non_scalar,
         isRefined: true,
     },
-    [settings_1.PropertyName.jupyter_nb_endpoint]: {
+    [settings_1.PropertyName.jupyter_notebook_endpoint]: {
         type: settings_1.PropertyType.non_scalar,
         domain: settings_1.PropertyDomain.workflow,
     },

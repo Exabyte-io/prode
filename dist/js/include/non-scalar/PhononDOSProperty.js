@@ -23,7 +23,7 @@ class PhononDOSConfig extends DensityOfStatesProperty_1.DensityOfStatesConfig {
 }
 class PhononDOSProperty extends Property_1.default {
     constructor(config) {
-        super(config);
+        super({ ...config, name: "phonon_dos" });
         this.subtitle = "Phonon Density Of States";
         this.yAxisTitle = `Density Of States (${this.yAxis.units})`;
         this.xAxisTitle = `Frequency (${this.xAxis.units})`;

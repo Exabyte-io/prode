@@ -3,7 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const PropertyWithValues_1 = __importDefault(require("../../PropertyWithValues"));
-class HubbardVProperty extends PropertyWithValues_1.default {
+const ValuesUnitsProperty_1 = __importDefault(require("../primitive/ValuesUnitsProperty"));
+class HubbardVProperty extends ValuesUnitsProperty_1.default {
+    constructor(config) {
+        super(config, "hubbard_v");
+    }
 }
 exports.default = HubbardVProperty;

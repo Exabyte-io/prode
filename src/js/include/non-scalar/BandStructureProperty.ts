@@ -4,7 +4,7 @@ import { math as codeJSMath } from "@mat3ra/code/dist/js/math";
 import { deepClone } from "@mat3ra/code/dist/js/utils";
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
-import type { BandStructureSchema } from "@mat3ra/esse/dist/js/types";
+import type { BandStructurePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { KPointPath } from "@mat3ra/made/dist/js/lattice/reciprocal/lattice_reciprocal";
 import type { Options, PlotLines } from "highcharts";
 import lodash from "lodash";
@@ -245,14 +245,14 @@ export class BandStructureConfig extends HighChartsConfig {
 }
 
 type Base = typeof Property &
-    Constructor<TwoDimensionalPlotMixin<BandStructureSchema>> &
+    Constructor<TwoDimensionalPlotMixin<BandStructurePropertySchema>> &
     Constructor<SpinDependentMixin>;
 
 export default class BandStructureProperty extends (Property as Base) {
-    declare toJSON: () => BandStructureSchema & AnyObject;
+    declare toJSON: () => BandStructurePropertySchema & AnyObject;
 
     constructor(config: object) {
-        super(config);
+        super({ ...config, name: "band_structure" });
         this.chartConfig = new BandStructureConfig(this).config;
     }
 
@@ -268,7 +268,7 @@ export default class BandStructureProperty extends (Property as Base) {
 
     readonly chartConfig: Options;
 
-    declare name: BandStructureSchema["name"];
+    declare readonly name: BandStructurePropertySchema["name"];
 }
 
 twoDimensionalPlotMixin(BandStructureProperty.prototype);

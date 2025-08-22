@@ -32,8 +32,11 @@ class ConvergenceIonicConfig extends highcharts_1.HighChartsConfig {
 }
 class ConvergenceIonicProperty extends Property_1.default {
     constructor(config, ConfigBuilder = ConvergenceIonicConfig) {
-        super(config);
+        super({ ...config, name: "convergence_ionic" });
         this.chartConfig = new ConfigBuilder(this).config;
+    }
+    get tolerance() {
+        return this.prop("tolerance");
     }
     get data() {
         return this.requiredProp("data");

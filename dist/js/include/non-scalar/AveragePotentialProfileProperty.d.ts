@@ -1,5 +1,5 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
-import type { AveragePotentialProfileSchema } from "@mat3ra/esse/dist/js/types";
+import type { AveragePotentialProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import Property from "../../Property";
 import { type TwoDimensionalPlotMixin, TwoDimensionalHighChartConfigMixin } from "../mixins/2d_plot";
@@ -20,13 +20,14 @@ export declare class AveragePotentialProfileConfig extends TwoDimensionalHighCha
         };
     };
 }
-type BaseProperty = typeof Property & Constructor<TwoDimensionalPlotMixin<AveragePotentialProfileSchema>>;
+type BaseProperty = typeof Property & Constructor<TwoDimensionalPlotMixin<AveragePotentialProfilePropertySchema>>;
 declare const AveragePotentialProfileProperty_base: BaseProperty;
 export default class AveragePotentialProfileProperty extends AveragePotentialProfileProperty_base {
     readonly subtitle: string;
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
     readonly chartConfig: Options;
-    name: AveragePotentialProfileSchema["name"];
+    readonly name: AveragePotentialProfilePropertySchema["name"];
+    constructor(config: object);
 }
 export {};

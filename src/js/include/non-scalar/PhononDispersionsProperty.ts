@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
-import type { PhononBandStructureSchema } from "@mat3ra/esse/dist/js/types";
+import type { PhononBandStructurePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { KPointPath } from "@mat3ra/made/dist/js/lattice/reciprocal/lattice_reciprocal";
 import type { Options } from "highcharts";
 
@@ -20,12 +20,12 @@ class PhononDispersionsConfig extends BandStructureConfig {
 }
 
 type Base = typeof Property &
-    Constructor<TwoDimensionalPlotMixin<PhononBandStructureSchema>> &
+    Constructor<TwoDimensionalPlotMixin<PhononBandStructurePropertySchema>> &
     Constructor<SpinDependentMixin>;
 
 export default class PhononDispersionsProperty extends (Property as Base) {
     constructor(config: object) {
-        super(config);
+        super({ ...config, name: "phonon_dispersions" });
         this.chartConfig = new PhononDispersionsConfig(this).config;
     }
 
@@ -41,7 +41,7 @@ export default class PhononDispersionsProperty extends (Property as Base) {
 
     readonly chartConfig: Options;
 
-    declare name: PhononBandStructureSchema["name"];
+    declare readonly name: PhononBandStructurePropertySchema["name"];
 }
 
 twoDimensionalPlotMixin(PhononDispersionsProperty.prototype);

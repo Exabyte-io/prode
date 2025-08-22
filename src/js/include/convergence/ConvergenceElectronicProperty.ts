@@ -4,6 +4,8 @@ import type { AxisLabelFormatterOptions, IndividualSeriesOptions } from "highcha
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
 import Property from "../../Property";
 
+type Schema = ConvergenceElectronicPropertySchema;
+
 class ConvergenceElectronicConfig extends HighChartsConfig {
     constructor(monitor: ConvergenceElectronicProperty) {
         let iteration = 1;
@@ -55,13 +57,15 @@ class ConvergenceElectronicConfig extends HighChartsConfig {
     }
 }
 
-export default class ConvergenceElectronicProperty extends Property {
+export default class ConvergenceElectronicProperty extends Property implements Schema {
+    declare name: Schema["name"];
+
     get data() {
-        return this.requiredProp<ConvergenceElectronicPropertySchema["data"]>("data");
+        return this.requiredProp<Schema["data"]>("data");
     }
 
     get units() {
-        return this.requiredProp<ConvergenceElectronicPropertySchema["units"]>("units");
+        return this.requiredProp<Schema["units"]>("units");
     }
 
     get chartConfig() {

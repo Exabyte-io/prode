@@ -4,6 +4,7 @@ import type { Options } from "highcharts";
 import type { FormatterScope } from "src/js/charts/highcharts";
 import Property from "../../Property";
 import { TwoDimensionalHighChartConfigMixin } from "../mixins/2d_plot";
+type Schema = DielectricTensorPropertySchema;
 export declare class DielectricTensorConfig extends TwoDimensionalHighChartConfigMixin {
     get series(): {
         animation: boolean;
@@ -29,9 +30,10 @@ export declare class DielectricTensorConfig extends TwoDimensionalHighChartConfi
         };
     };
 }
-export default class DielectricTensorProperty extends Property {
-    toJSON: () => DielectricTensorPropertySchema & AnyObject;
-    name: DielectricTensorPropertySchema["name"];
+export default class DielectricTensorProperty extends Property implements Schema {
+    toJSON: () => Schema & AnyObject;
+    readonly name: Schema["name"];
+    constructor(config: object);
     get values(): {
         part: "real" | "imaginary";
         spin?: number;
@@ -46,3 +48,4 @@ export default class DielectricTensorProperty extends Property {
     private getComplementaryPairs;
     private getAllChartConfigs;
 }
+export {};

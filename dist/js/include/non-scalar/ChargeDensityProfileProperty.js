@@ -17,8 +17,8 @@ class ChargeDensityProfileConfig extends _2d_plot_1.TwoDimensionalHighChartConfi
 }
 exports.ChargeDensityProfileConfig = ChargeDensityProfileConfig;
 class ChargeDensityProfileProperty extends Property_1.default {
-    constructor() {
-        super(...arguments);
+    constructor(config) {
+        super({ ...config, name: "charge_density_profile" });
         this.subtitle = "Charge Density Profile";
         this.yAxisTitle = `Charge Density (${this.yAxis.units})`;
         this.xAxisTitle = "Z Coordinate";

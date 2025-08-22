@@ -1,20 +1,24 @@
 import { deepClone, flattenObject } from "@mat3ra/code/dist/js/utils";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
-import type { BandGapsSchema } from "@mat3ra/esse/dist/js/types";
+import type { BandGapsPropertySchema } from "@mat3ra/esse/dist/js/types";
 
 import Property from "../../Property";
 
 export default class BandGapsProperty extends Property {
-    declare toJSON: () => BandGapsSchema & AnyObject;
+    declare toJSON: () => BandGapsPropertySchema & AnyObject;
 
-    declare name: BandGapsSchema["name"];
+    declare readonly name: BandGapsPropertySchema["name"];
+
+    constructor(config: object) {
+        super({ ...config, name: "band_gaps" });
+    }
 
     get eigenvalues() {
-        return this.prop<BandGapsSchema["eigenvalues"]>("eigenvalues");
+        return this.prop<BandGapsPropertySchema["eigenvalues"]>("eigenvalues");
     }
 
     get values() {
-        return this.requiredProp<BandGapsSchema["values"]>("values");
+        return this.requiredProp<BandGapsPropertySchema["values"]>("values");
     }
 
     toRowValues(group: string) {
@@ -39,7 +43,7 @@ export default class BandGapsProperty extends Property {
      */
     private toJSONByType(type: string, group: string) {
         const ch = this.toJSON();
-        const bandGapByType = deepClone(ch) as BandGapsSchema;
+        const bandGapByType = deepClone(ch) as BandGapsPropertySchema;
         const directData = this.values.find((x) => x.type === type);
         const name = `band_gaps:${type}`;
 

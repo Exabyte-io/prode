@@ -53,7 +53,7 @@ class Property extends entity_1.NamedInMemoryEntity {
         this.isObject = this.propertyBranch.type === settings_1.PropertyType.object;
         this.isConvergence = _a.isConvergence(this.propertyBranch);
         this.isAbleToReturnMultipleResults = this.propertyBranch.isAbleToReturnMultipleResults;
-        this.type = (_b = this.propertyBranch.type) !== null && _b !== void 0 ? _b : null;
+        this.propertyType = (_b = this.propertyBranch.type) !== null && _b !== void 0 ? _b : null;
         this.isRefined = this.name in tree_1.REFINED_PROPERTIES_SUBTREE;
     }
     toRowValues(group, slug) {

@@ -110,7 +110,7 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
 exports.DensityOfStatesConfig = DensityOfStatesConfig;
 class DensityOfStatesProperty extends Property_1.default {
     constructor(config, ConfigBuilder = DensityOfStatesConfig) {
-        super(config);
+        super({ ...config, name: "density_of_states" });
         this.subtitle = "Density Of States";
         this.yAxisTitle = `Density Of States (${this.yAxis.units})`;
         this.xAxisTitle = `Energy (${this.xAxis.units})`;

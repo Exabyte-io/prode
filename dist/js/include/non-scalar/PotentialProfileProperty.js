@@ -41,8 +41,8 @@ class PotentialProfileConfig extends _2d_plot_1.TwoDimensionalHighChartConfigMix
 }
 exports.PotentialProfileConfig = PotentialProfileConfig;
 class PotentialProfileProperty extends Property_1.default {
-    constructor() {
-        super(...arguments);
+    constructor(config) {
+        super({ ...config, name: "potential_profile" });
         this.subtitle = "Potential Profile";
         this.yAxisTitle = `Energy (${this.yAxis.units})`;
         this.xAxisTitle = "Z Coordinate";

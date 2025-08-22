@@ -1,15 +1,16 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types.js";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
-import type { DensityOfStatesSchema } from "@mat3ra/esse/dist/js/types";
+import type { DensityOfStatesPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
 import Property from "../../Property";
 import { type TwoDimensionalPlotMixin, type YDataSeries } from "../mixins/2d_plot";
+type Schema = DensityOfStatesPropertySchema;
 export declare class DensityOfStatesConfig extends HighChartsConfig {
     readonly yDataSeries: YDataSeries;
     readonly fermiEnergy: number | null;
-    readonly xDataArray: DensityOfStatesSchema["xDataArray"];
-    readonly legends: DensityOfStatesSchema["legend"];
+    readonly xDataArray: Schema["xDataArray"];
+    readonly legends: Schema["legend"];
     get overrideConfig(): {
         colors: string[];
         credits: {
@@ -32,11 +33,11 @@ export declare class DensityOfStatesConfig extends HighChartsConfig {
         yAxisTitle: string;
         xAxisTitle: string;
         yDataSeries: YDataSeries;
-        legend?: DensityOfStatesSchema["legend"];
+        legend?: Schema["legend"];
         fermiEnergy: number | null;
-        xDataArray: DensityOfStatesSchema["xDataArray"];
+        xDataArray: Schema["xDataArray"];
     });
-    cleanXDataArray(rawData: DensityOfStatesSchema["xDataArray"]): number[];
+    cleanXDataArray(rawData: Schema["xDataArray"]): number[];
     get series(): {
         data: [number, number][];
         name: string;
@@ -130,11 +131,12 @@ export declare class DensityOfStatesConfig extends HighChartsConfig {
         visible?: boolean;
     };
 }
-type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<DensityOfStatesSchema>>;
+type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<Schema>>;
 declare const DensityOfStatesProperty_base: Base;
-export default class DensityOfStatesProperty extends DensityOfStatesProperty_base {
+export default class DensityOfStatesProperty extends DensityOfStatesProperty_base implements Schema {
     constructor(config: object, ConfigBuilder?: typeof DensityOfStatesConfig);
-    toJSON: () => DensityOfStatesSchema & AnyObject;
+    readonly name: Schema["name"];
+    toJSON: () => Schema & AnyObject;
     readonly subtitle: string;
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
@@ -146,6 +148,5 @@ export default class DensityOfStatesProperty extends DensityOfStatesProperty_bas
         electronicState?: string;
         spin?: 0.5 | -0.5;
     }[];
-    name: DensityOfStatesSchema["name"];
 }
 export {};

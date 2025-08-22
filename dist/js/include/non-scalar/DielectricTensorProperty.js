@@ -63,8 +63,8 @@ class DielectricTensorConfig extends _2d_plot_1.TwoDimensionalHighChartConfigMix
 }
 exports.DielectricTensorConfig = DielectricTensorConfig;
 class DielectricTensorProperty extends Property_1.default {
-    constructor() {
-        super(...arguments);
+    constructor(config) {
+        super({ ...config, name: "dielectric_tensor" });
         this.subtitle = "Dielectric Tensor";
         this.yAxisTitle = "Dielectric Tensor Component";
         this.xAxisTitle = "Frequency (eV)";

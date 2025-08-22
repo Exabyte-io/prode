@@ -1,5 +1,5 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
-import type { PotentialProfileSchema } from "@mat3ra/esse/dist/js/types";
+import type { PotentialProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import Property from "../../Property";
 import { type TwoDimensionalPlotMixin, TwoDimensionalHighChartConfigMixin } from "../mixins/2d_plot";
@@ -20,13 +20,14 @@ export declare class PotentialProfileConfig extends TwoDimensionalHighChartConfi
         };
     };
 }
-type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<PotentialProfileSchema>>;
+type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<PotentialProfilePropertySchema>>;
 declare const PotentialProfileProperty_base: Base;
 export default class PotentialProfileProperty extends PotentialProfileProperty_base {
     readonly subtitle: string;
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
     readonly chartConfig: Options;
-    name: PotentialProfileSchema["name"];
+    readonly name: PotentialProfilePropertySchema["name"];
+    constructor(config: object);
 }
 export {};

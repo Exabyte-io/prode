@@ -1,7 +1,7 @@
 import { NamedInMemoryEntity } from "@mat3ra/code/dist/js/entity";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { PropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
-import { PropertyType } from "./settings";
+import { type PropertyName, PropertyType } from "./settings";
 import { type PropertyConfig } from "./tree";
 export type PropertySchemaJSON = PropertyHolderSchema["data"] & AnyObject;
 export type PropertyRowValue = PropertySchemaJSON & {
@@ -11,6 +11,7 @@ export type PropertyRowValue = PropertySchemaJSON & {
 export default class Property extends NamedInMemoryEntity {
     toJSON: (exclude?: string[]) => PropertySchemaJSON;
     _json: PropertySchemaJSON;
+    name: `${PropertyName}`;
     readonly propertyBranch: PropertyConfig;
     readonly prettyName: string;
     readonly omitInResults: boolean;
@@ -19,12 +20,12 @@ export default class Property extends NamedInMemoryEntity {
     readonly isObject: boolean;
     readonly isConvergence: boolean;
     readonly isAbleToReturnMultipleResults: boolean | undefined;
-    readonly type: PropertyType | null;
+    readonly propertyType: PropertyType | null;
     readonly isRefined: boolean;
     toRowValues(group?: string, slug?: string): PropertyRowValue[];
     static prettifyName(name: string): string;
-    static propertyBranch(propertyName: string): PropertyConfig;
-    static omitInResults(propertyName: string): boolean;
+    static propertyBranch(propertyName: `${PropertyName}`): PropertyConfig;
+    static omitInResults(propertyName: `${PropertyName}`): boolean;
     static isScalar(propertyConfig: PropertyConfig): boolean;
     static isConvergence(propertyConfig: PropertyConfig): boolean;
     static readonly scalarsSubTree: import("lodash").Dictionary<PropertyConfig>;

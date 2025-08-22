@@ -1,9 +1,10 @@
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
-import type { BandGapsSchema } from "@mat3ra/esse/dist/js/types";
+import type { BandGapsPropertySchema } from "@mat3ra/esse/dist/js/types";
 import Property from "../../Property";
 export default class BandGapsProperty extends Property {
-    toJSON: () => BandGapsSchema & AnyObject;
-    name: BandGapsSchema["name"];
+    toJSON: () => BandGapsPropertySchema & AnyObject;
+    readonly name: BandGapsPropertySchema["name"];
+    constructor(config: object);
     get eigenvalues(): {
         kpoint?: [number, number, number];
         weight?: number;

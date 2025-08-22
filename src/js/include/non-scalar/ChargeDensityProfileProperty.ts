@@ -2,7 +2,7 @@
 /* eslint-disable max-classes-per-file */
 
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
-import type { ChargeDensityProfileSchema } from "@mat3ra/esse/dist/js/types";
+import type { ChargeDensityProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 
 import Property from "../../Property";
@@ -19,7 +19,7 @@ export class ChargeDensityProfileConfig extends TwoDimensionalHighChartConfigMix
 }
 
 type BaseProperty = typeof Property &
-    Constructor<TwoDimensionalPlotMixin<ChargeDensityProfileSchema>>;
+    Constructor<TwoDimensionalPlotMixin<ChargeDensityProfilePropertySchema>>;
 
 export default class ChargeDensityProfileProperty extends (Property as BaseProperty) {
     readonly subtitle: string = "Charge Density Profile";
@@ -30,7 +30,11 @@ export default class ChargeDensityProfileProperty extends (Property as BasePrope
 
     readonly chartConfig: Options = new ChargeDensityProfileConfig(this).config;
 
-    declare name: ChargeDensityProfileSchema["name"];
+    declare readonly name: ChargeDensityProfilePropertySchema["name"];
+
+    constructor(config: object) {
+        super({ ...config, name: "charge_density_profile" });
+    }
 }
 
 twoDimensionalPlotMixin(ChargeDensityProfileProperty.prototype);

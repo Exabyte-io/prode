@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("@mat3ra/code/dist/js/utils");
 const Property_1 = __importDefault(require("../../Property"));
 class BandGapsProperty extends Property_1.default {
+    constructor(config) {
+        super({ ...config, name: "band_gaps" });
+    }
     get eigenvalues() {
         return this.prop("eigenvalues");
     }

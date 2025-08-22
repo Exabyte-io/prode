@@ -3,7 +3,7 @@ import type { WorkflowPropertySchema } from "@mat3ra/esse/dist/js/types";
 import Property from "../../Property";
 
 export default class WorkflowProperty extends Property implements WorkflowPropertySchema {
-    declare name: WorkflowPropertySchema["name"];
+    declare readonly name: WorkflowPropertySchema["name"];
 
     constructor(config: object) {
         super({ ...config, name: "workflow:pyml_predict" });

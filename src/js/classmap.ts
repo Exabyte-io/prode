@@ -11,15 +11,29 @@ import FinalStructureProperty from "./include/non-scalar/FinalStructureProperty"
 import HubbardUProperty from "./include/non-scalar/HubbardUProperty";
 import HubbardVNNProperty from "./include/non-scalar/HubbardVNNProperty";
 import HubbardVProperty from "./include/non-scalar/HubbardVProperty";
+import IsRelaxedProperty from "./include/non-scalar/IsRelaxedProperty";
+import JupyterNotebookEndpointProperty from "./include/non-scalar/JupyterNotebookEndpointProperty";
 import PhononDispersionsProperty from "./include/non-scalar/PhononDispersionsProperty";
 import PhononDOSProperty from "./include/non-scalar/PhononDOSProperty";
 import PotentialProfileProperty from "./include/non-scalar/PotentialProfileProperty";
 import ReactionEnergyProfileProperty from "./include/non-scalar/ReactionEnergyProfileProperty";
 import WorkflowProperty from "./include/non-scalar/WorkflowProperty";
-import ObjectProperty from "./include/primitive/ObjectProperty";
-import TensorProperty from "./include/primitive/TensorProperty";
-import PropertyClass from "./Property";
-import { PropertyName, PropertyType } from "./settings";
+import AtomicConstraintsProperty from "./include/primitive/AtomicConstraintsProperty";
+import AtomicForcesProperty from "./include/primitive/AtomicForcesProperty";
+import BoundaryConditionsProperty from "./include/primitive/BoundaryConditionsProperty";
+import FermiEnergyProperty from "./include/primitive/FermiEnergyProperty";
+import FileContentProperty from "./include/primitive/FileContentProperty";
+import MagneticMomentsProperty from "./include/primitive/MagneticMomentsProperty";
+import PressureProperty from "./include/primitive/PressureProperty";
+import ReactionEnergyBarrierProperty from "./include/primitive/ReactionEnergyBarrierProperty";
+import StressTensorProperty from "./include/primitive/StressTensorProperty";
+import SurfaceEnergyProperty from "./include/primitive/SurfaceEnergyProperty";
+import TotalEnergyContributionsProperty from "./include/primitive/TotalEnergyContributionsProperty";
+import TotalEnergyProperty from "./include/primitive/TotalEnergyProperty";
+import TotalForcesProperty from "./include/primitive/TotalForcesProperty";
+import ValenceBandOffsetProperty from "./include/primitive/ValenceBandOffsetProperty";
+import ZeroPointEnergyProperty from "./include/primitive/ZeroPointEnergyProperty";
+import { PropertyName } from "./settings";
 
 /**
  * @description Type for property class constructor
@@ -29,52 +43,51 @@ type PropertyClassConstructor = new (...args: any[]) => any;
 /**
  * @description Type for the property class map
  */
-type PropertyClassMap = Record<PropertyName, PropertyClassConstructor | null>;
+type PropertyClassMap = {
+    [key in PropertyName]: PropertyClassConstructor;
+};
 
 /**
  * @desc Used in property factory to map property names to property classes.
  */
 export const PROPERTY_CLASS_MAP: PropertyClassMap = {
-    [PropertyName.pressure]: null,
-    [PropertyName.total_force]: null,
-    [PropertyName.total_energy]: null,
-    [PropertyName.surface_energy]: null,
-    [PropertyName.convergence_elec]: ConvergenceElectronicProperty,
-    [PropertyName.convergence_ion]: ConvergenceIonicProperty,
-    [PropertyName.fermi_energy]: null,
-    [PropertyName.zero_point_energy]: null,
-    [PropertyName.total_energy_contrib]: null,
-    [PropertyName.atomic_forces]: null,
-    [PropertyName.atomic_constraints]: null,
-    [PropertyName.stress_tensor]: null,
-    [PropertyName.dos]: DensityOfStatesProperty,
+    [PropertyName.pressure]: PressureProperty,
+    [PropertyName.total_force]: TotalForcesProperty,
+    [PropertyName.total_energy]: TotalEnergyProperty,
+    [PropertyName.surface_energy]: SurfaceEnergyProperty,
+    [PropertyName.convergence_electronic]: ConvergenceElectronicProperty,
+    [PropertyName.convergence_ionic]: ConvergenceIonicProperty,
+    [PropertyName.fermi_energy]: FermiEnergyProperty,
+    [PropertyName.zero_point_energy]: ZeroPointEnergyProperty,
+    [PropertyName.total_energy_contributions]: TotalEnergyContributionsProperty,
+    [PropertyName.atomic_forces]: AtomicForcesProperty,
+    [PropertyName.stress_tensor]: StressTensorProperty,
+    [PropertyName.density_of_states]: DensityOfStatesProperty,
     [PropertyName.band_structure]: BandStructureProperty,
     [PropertyName.band_gaps]: BandGapsProperty,
     [PropertyName.phonon_dispersions]: PhononDispersionsProperty,
     [PropertyName.phonon_dos]: PhononDOSProperty,
     [PropertyName.final_structure]: FinalStructureProperty,
-    [PropertyName.is_relaxed]: null,
-    [PropertyName.w_pyml_predict]: WorkflowProperty,
-    [PropertyName.file_content]: null,
-    [PropertyName.magnetic_moments]: null,
-    [PropertyName.rxn_energy_barrier]: null,
-    [PropertyName.rxn_energy_profile]: ReactionEnergyProfileProperty,
+    [PropertyName.is_relaxed]: IsRelaxedProperty,
+    [PropertyName.workflow_pyml_predict]: WorkflowProperty,
+    [PropertyName.magnetic_moments]: MagneticMomentsProperty,
+    [PropertyName.reaction_energy_barrier]: ReactionEnergyBarrierProperty,
+    [PropertyName.reaction_energy_profile]: ReactionEnergyProfileProperty,
     [PropertyName.potential_profile]: PotentialProfileProperty,
     [PropertyName.charge_density_profile]: ChargeDensityProfileProperty,
-    [PropertyName.jupyter_nb_endpoint]: null,
     [PropertyName.average_potential_profile]: AveragePotentialProfileProperty,
-    [PropertyName.valence_band_offset]: null,
-    [PropertyName.pseudopotential]: Pseudopotential,
-    [PropertyName.boundary_conditions]: null,
+    [PropertyName.valence_band_offset]: ValenceBandOffsetProperty,
+    [PropertyName.file_content]: FileContentProperty,
     [PropertyName.dielectric_tensor]: DielectricTensorProperty,
     [PropertyName.hubbard_u]: HubbardUProperty,
     [PropertyName.hubbard_v_nn]: HubbardVNNProperty,
     [PropertyName.hubbard_v]: HubbardVProperty,
-};
+    [PropertyName.jupyter_notebook_endpoint]: JupyterNotebookEndpointProperty,
 
-export const PROPERTY_BRANCH_MAP: { [key in PropertyType]: PropertyClassConstructor } = {
-    [PropertyType.tensor]: TensorProperty,
-    [PropertyType.object]: ObjectProperty,
-    [PropertyType.non_scalar]: PropertyClass,
-    [PropertyType.scalar]: PropertyClass,
+    // meta
+    [PropertyName.pseudopotential]: Pseudopotential,
+
+    // proto
+    [PropertyName.boundary_conditions]: BoundaryConditionsProperty,
+    [PropertyName.atomic_constraints]: AtomicConstraintsProperty,
 };

@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 // eslint-disable-next-line max-classes-per-file
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
-import type { PhononDensityOfStatesSchema } from "@mat3ra/esse/dist/js/types";
+import type { PhononDensityOfStatesPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 
 import type { FormatterScope } from "../../charts/highcharts";
@@ -27,11 +27,12 @@ class PhononDOSConfig extends DensityOfStatesConfig {
     }
 }
 
-type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<PhononDensityOfStatesSchema>>;
+type Base = typeof Property &
+    Constructor<TwoDimensionalPlotMixin<PhononDensityOfStatesPropertySchema>>;
 
 export default class PhononDOSProperty extends (Property as Base) {
     constructor(config: object) {
-        super(config);
+        super({ ...config, name: "phonon_dos" });
         this.chartConfig = new PhononDOSConfig(this).config;
     }
 
@@ -45,7 +46,7 @@ export default class PhononDOSProperty extends (Property as Base) {
 
     readonly fermiEnergy = null;
 
-    declare name: PhononDensityOfStatesSchema["name"];
+    declare readonly name: PhononDensityOfStatesPropertySchema["name"];
 }
 
 twoDimensionalPlotMixin(PhononDOSProperty.prototype);

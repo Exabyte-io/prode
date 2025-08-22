@@ -17,8 +17,8 @@ class ReactionEnergyProfileConfig extends _2d_plot_1.TwoDimensionalHighChartConf
 }
 exports.ReactionEnergyProfileConfig = ReactionEnergyProfileConfig;
 class ReactionEnergyProfileProperty extends Property_1.default {
-    constructor() {
-        super(...arguments);
+    constructor(config) {
+        super({ ...config, name: "reaction_energy_profile" });
         this.subtitle = "Reaction Energy Profile";
         this.yAxisTitle = `Energy (${this.yAxis.units})`;
         this.xAxisTitle = "Reaction Coordinate";

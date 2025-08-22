@@ -1,5 +1,11 @@
-import PropertyWithValues from "../../PropertyWithValues";
+import type { HubbardVNNParametersPropertySchema } from "@mat3ra/esse/dist/js/types";
 
-export default class HubbardVNNProperty extends PropertyWithValues {
-    declare name: "hubbard_v_nn";
+import ValuesUnitsProperty from "../primitive/ValuesUnitsProperty";
+
+type Schema = HubbardVNNParametersPropertySchema;
+
+export default class HubbardVNNProperty extends ValuesUnitsProperty<Schema> implements Schema {
+    constructor(config: object) {
+        super(config, "hubbard_v_nn");
+    }
 }

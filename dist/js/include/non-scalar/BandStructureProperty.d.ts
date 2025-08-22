@@ -1,6 +1,6 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
-import type { BandStructureSchema } from "@mat3ra/esse/dist/js/types";
+import type { BandStructurePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { KPointPath } from "@mat3ra/made/dist/js/lattice/reciprocal/lattice_reciprocal";
 import type { Options, PlotLines } from "highcharts";
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
@@ -164,16 +164,16 @@ export declare class BandStructureConfig extends HighChartsConfig {
         };
     };
 }
-type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<BandStructureSchema>> & Constructor<SpinDependentMixin>;
+type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<BandStructurePropertySchema>> & Constructor<SpinDependentMixin>;
 declare const BandStructureProperty_base: Base;
 export default class BandStructureProperty extends BandStructureProperty_base {
-    toJSON: () => BandStructureSchema & AnyObject;
+    toJSON: () => BandStructurePropertySchema & AnyObject;
     constructor(config: object);
     readonly subtitle: string;
     readonly yAxisTitle: string;
     readonly fermiEnergy: number | null;
     readonly pointsPath: KPointPath | undefined;
     readonly chartConfig: Options;
-    name: BandStructureSchema["name"];
+    readonly name: BandStructurePropertySchema["name"];
 }
 export {};

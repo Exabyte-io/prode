@@ -41,12 +41,12 @@ const propertiesTree: PropertiesTree = {
         type: PropertyType.scalar,
         isRefined: true,
     },
-    [PropertyName.convergence_elec]: {
+    [PropertyName.convergence_electronic]: {
         type: PropertyType.non_scalar,
         domain: PropertyDomain.workflow,
         isConvergence: true,
     },
-    [PropertyName.convergence_ion]: {
+    [PropertyName.convergence_ionic]: {
         type: PropertyType.non_scalar,
         domain: PropertyDomain.workflow,
         isConvergence: true,
@@ -58,7 +58,7 @@ const propertiesTree: PropertiesTree = {
     [PropertyName.zero_point_energy]: {
         type: PropertyType.scalar,
     },
-    [PropertyName.total_energy_contrib]: {
+    [PropertyName.total_energy_contributions]: {
         type: PropertyType.object,
         isAuxiliary: true,
     },
@@ -71,7 +71,7 @@ const propertiesTree: PropertiesTree = {
     [PropertyName.stress_tensor]: {
         type: PropertyType.tensor,
     },
-    [PropertyName.dos]: {
+    [PropertyName.density_of_states]: {
         type: PropertyType.non_scalar,
         isRefined: true,
     },
@@ -96,7 +96,7 @@ const propertiesTree: PropertiesTree = {
         // only storing the refined status as this is not to be shown in job results
         isRefined: true,
     },
-    [PropertyName.w_pyml_predict]: {
+    [PropertyName.workflow_pyml_predict]: {
         type: PropertyType.non_scalar,
         domain: PropertyDomain.workflow,
     },
@@ -107,12 +107,12 @@ const propertiesTree: PropertiesTree = {
     [PropertyName.magnetic_moments]: {
         type: PropertyType.tensor,
     },
-    [PropertyName.rxn_energy_barrier]: {
+    [PropertyName.reaction_energy_barrier]: {
         type: PropertyType.scalar,
         isRefined: true,
         isAuxiliary: true,
     },
-    [PropertyName.rxn_energy_profile]: {
+    [PropertyName.reaction_energy_profile]: {
         type: PropertyType.non_scalar,
         isRefined: true,
     },
@@ -124,7 +124,7 @@ const propertiesTree: PropertiesTree = {
         type: PropertyType.non_scalar,
         isRefined: true,
     },
-    [PropertyName.jupyter_nb_endpoint]: {
+    [PropertyName.jupyter_notebook_endpoint]: {
         type: PropertyType.non_scalar,
         domain: PropertyDomain.workflow,
     },

@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable max-classes-per-file */
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
-import type { PotentialProfileSchema } from "@mat3ra/esse/dist/js/types";
+import type { PotentialProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import lodash from "lodash";
 
@@ -46,7 +46,7 @@ export class PotentialProfileConfig extends TwoDimensionalHighChartConfigMixin {
     }
 }
 
-type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<PotentialProfileSchema>>;
+type Base = typeof Property & Constructor<TwoDimensionalPlotMixin<PotentialProfilePropertySchema>>;
 
 export default class PotentialProfileProperty extends (Property as Base) {
     readonly subtitle: string = "Potential Profile";
@@ -57,7 +57,11 @@ export default class PotentialProfileProperty extends (Property as Base) {
 
     readonly chartConfig: Options = new PotentialProfileConfig(this).config;
 
-    declare name: PotentialProfileSchema["name"];
+    declare readonly name: PotentialProfilePropertySchema["name"];
+
+    constructor(config: object) {
+        super({ ...config, name: "potential_profile" });
+    }
 }
 
 twoDimensionalPlotMixin(PotentialProfileProperty.prototype);

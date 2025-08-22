@@ -37,8 +37,8 @@ class AveragePotentialProfileConfig extends _2d_plot_1.TwoDimensionalHighChartCo
 }
 exports.AveragePotentialProfileConfig = AveragePotentialProfileConfig;
 class AveragePotentialProfileProperty extends Property_1.default {
-    constructor() {
-        super(...arguments);
+    constructor(config) {
+        super({ ...config, name: "average_potential_profile" });
         this.subtitle = "Average Potential Profile";
         this.yAxisTitle = `Energy (${this.yAxis.units})`;
         this.xAxisTitle = `Coordinate (${this.xAxis.units})`;

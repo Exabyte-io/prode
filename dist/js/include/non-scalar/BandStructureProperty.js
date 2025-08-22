@@ -199,7 +199,7 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
 exports.BandStructureConfig = BandStructureConfig;
 class BandStructureProperty extends Property_1.default {
     constructor(config) {
-        super(config);
+        super({ ...config, name: "band_structure" });
         this.subtitle = "Electronic Bandstructure";
         this.yAxisTitle = `Energy (${this.yAxis.units})`;
         // TODO: Add as config parameter

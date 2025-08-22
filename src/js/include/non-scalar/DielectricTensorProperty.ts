@@ -9,6 +9,8 @@ import type { FormatterScope } from "src/js/charts/highcharts";
 import Property from "../../Property";
 import { TwoDimensionalHighChartConfigMixin } from "../mixins/2d_plot";
 
+type Schema = DielectricTensorPropertySchema;
+
 export class DielectricTensorConfig extends TwoDimensionalHighChartConfigMixin {
     get series() {
         return this.yDataSeries.map((item, index) => {
@@ -68,13 +70,17 @@ export class DielectricTensorConfig extends TwoDimensionalHighChartConfigMixin {
     }
 }
 
-export default class DielectricTensorProperty extends Property {
-    declare toJSON: () => DielectricTensorPropertySchema & AnyObject;
+export default class DielectricTensorProperty extends Property implements Schema {
+    declare toJSON: () => Schema & AnyObject;
 
-    declare name: DielectricTensorPropertySchema["name"];
+    declare readonly name: Schema["name"];
+
+    constructor(config: object) {
+        super({ ...config, name: "dielectric_tensor" });
+    }
 
     get values() {
-        return this.requiredProp<DielectricTensorPropertySchema["values"]>("values");
+        return this.requiredProp<Schema["values"]>("values");
     }
 
     readonly subtitle = "Dielectric Tensor";
@@ -102,7 +108,7 @@ export default class DielectricTensorProperty extends Property {
     }
 
     private getComplementaryPairs(precision = 3) {
-        const groupedBySpin: Record<string, DielectricTensorPropertySchema["values"]> = {};
+        const groupedBySpin: Record<string, Schema["values"]> = {};
 
         this.values.forEach((item) => {
             // Round the spin value to mitigate floating-point precision issues

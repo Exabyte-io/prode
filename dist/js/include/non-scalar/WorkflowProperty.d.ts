@@ -1,7 +1,7 @@
 import type { WorkflowPropertySchema } from "@mat3ra/esse/dist/js/types";
 import Property from "../../Property";
 export default class WorkflowProperty extends Property implements WorkflowPropertySchema {
-    name: WorkflowPropertySchema["name"];
+    readonly name: WorkflowPropertySchema["name"];
     constructor(config: object);
     get subworkflows(): {
         units: ({
@@ -31,8 +31,8 @@ export default class WorkflowProperty extends Property implements WorkflowProper
                 };
                 overwrite?: boolean;
                 pathname?: string;
-                basename?: string;
-                filetype?: string;
+                basename: string;
+                filetype: string;
                 [k: string]: unknown;
             })[];
             _id?: string;
@@ -457,8 +457,8 @@ export default class WorkflowProperty extends Property implements WorkflowProper
             };
             overwrite?: boolean;
             pathname?: string;
-            basename?: string;
-            filetype?: string;
+            basename: string;
+            filetype: string;
             [k: string]: unknown;
         })[];
         _id?: string;
