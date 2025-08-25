@@ -154,6 +154,9 @@ const propertiesTree: PropertiesTree = {
     [PropertyName.hubbard_v]: {
         type: PropertyType.non_scalar,
     },
+    [PropertyName.ionization_potential]: {
+        type: PropertyType.scalar,
+    },
 };
 
 export default propertiesTree;

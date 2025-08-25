@@ -23,6 +23,7 @@ import AtomicForcesProperty from "./include/primitive/AtomicForcesProperty";
 import BoundaryConditionsProperty from "./include/primitive/BoundaryConditionsProperty";
 import FermiEnergyProperty from "./include/primitive/FermiEnergyProperty";
 import FileContentProperty from "./include/primitive/FileContentProperty";
+import IonizationPotentialElementalProperty from "./include/primitive/IonizationPotentialElementalProperty";
 import MagneticMomentsProperty from "./include/primitive/MagneticMomentsProperty";
 import PressureProperty from "./include/primitive/PressureProperty";
 import ReactionEnergyBarrierProperty from "./include/primitive/ReactionEnergyBarrierProperty";
@@ -77,6 +78,7 @@ export const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [PropertyName.charge_density_profile]: ChargeDensityProfileProperty,
     [PropertyName.average_potential_profile]: AveragePotentialProfileProperty,
     [PropertyName.valence_band_offset]: ValenceBandOffsetProperty,
+    [PropertyName.ionization_potential]: IonizationPotentialElementalProperty,
     [PropertyName.file_content]: FileContentProperty,
     [PropertyName.dielectric_tensor]: DielectricTensorProperty,
     [PropertyName.hubbard_u]: HubbardUProperty,

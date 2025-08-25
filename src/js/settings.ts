@@ -48,6 +48,7 @@ export enum PropertyName {
     jupyter_notebook_endpoint = "jupyter_notebook_endpoint",
     average_potential_profile = "average_potential_profile",
     valence_band_offset = "valence_band_offset",
+    ionization_potential = "ionization_potential",
     pseudopotential = "pseudopotential",
     boundary_conditions = "boundary_conditions",
     dielectric_tensor = "dielectric_tensor",
