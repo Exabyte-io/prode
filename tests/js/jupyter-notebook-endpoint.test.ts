@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import JupyterNotebookEndpointProperty from "../../src/js/include/non-scalar/JupyterNotebookEndpointProperty";
+import JupyterNotebookEndpointProperty from "../../src/js/properties/non-scalar/JupyterNotebookEndpointProperty";
 
 describe("JupyterNotebookEndpointProperty", () => {
     it("should create a jupyter notebook endpoint property with host, port, and token", () => {

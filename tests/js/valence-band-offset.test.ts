@@ -1,10 +1,11 @@
+import type { ValenceBandOffsetPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import ValenceBandOffsetProperty from "../../src/js/include/primitive/ValenceBandOffsetProperty";
+import ValenceBandOffsetProperty from "../../src/js/properties/scalar/ValenceBandOffsetProperty";
 
 describe("ValenceBandOffsetProperty", () => {
     it("should create a valence band offset property with value and units", () => {
-        const config = {
+        const config: ValenceBandOffsetPropertySchema = {
             name: "valence_band_offset",
             value: 0.5,
             units: "eV",
@@ -18,10 +19,18 @@ describe("ValenceBandOffsetProperty", () => {
     });
 
     it("should support different energy units", () => {
-        const units = ["kJ/mol", "eV", "J/mol", "hartree", "cm-1", "Ry", "eV/atom", "eV/A^2"];
-
+        const units: ValenceBandOffsetPropertySchema["units"][] = [
+            "kJ/mol",
+            "eV",
+            "J/mol",
+            "hartree",
+            "cm-1",
+            "Ry",
+            "eV/atom",
+            "eV/A^2",
+        ];
         units.forEach((unit) => {
-            const config = {
+            const config: ValenceBandOffsetPropertySchema = {
                 name: "valence_band_offset",
                 value: 1.0,
                 units: unit,
@@ -33,7 +42,7 @@ describe("ValenceBandOffsetProperty", () => {
     });
 
     it("should handle positive valence band offsets", () => {
-        const config = {
+        const config: ValenceBandOffsetPropertySchema = {
             name: "valence_band_offset",
             value: 1.2,
             units: "eV",
@@ -46,7 +55,7 @@ describe("ValenceBandOffsetProperty", () => {
     });
 
     it("should handle negative valence band offsets", () => {
-        const config = {
+        const config: ValenceBandOffsetPropertySchema = {
             name: "valence_band_offset",
             value: -0.8,
             units: "hartree",
@@ -59,7 +68,7 @@ describe("ValenceBandOffsetProperty", () => {
     });
 
     it("should handle zero valence band offset", () => {
-        const config = {
+        const config: ValenceBandOffsetPropertySchema = {
             name: "valence_band_offset",
             value: 0.0,
             units: "Ry",
@@ -72,7 +81,7 @@ describe("ValenceBandOffsetProperty", () => {
     });
 
     it("should handle small valence band offsets", () => {
-        const config = {
+        const config: ValenceBandOffsetPropertySchema = {
             name: "valence_band_offset",
             value: 0.05,
             units: "eV",

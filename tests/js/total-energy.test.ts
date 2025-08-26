@@ -1,10 +1,11 @@
+import type { TotalEnergyPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import TotalEnergyProperty from "../../src/js/include/primitive/TotalEnergyProperty";
+import TotalEnergyProperty from "../../src/js/properties/scalar/TotalEnergyProperty";
 
 describe("TotalEnergyProperty", () => {
     it("should create a total energy property with value and units", () => {
-        const config = {
+        const config: TotalEnergyPropertySchema = {
             name: "total_energy",
             value: -1234.56,
             units: "eV",
@@ -18,10 +19,18 @@ describe("TotalEnergyProperty", () => {
     });
 
     it("should support different energy units", () => {
-        const units = ["kJ/mol", "eV", "J/mol", "hartree", "cm-1", "Ry", "eV/atom", "eV/A^2"];
-
+        const units: TotalEnergyPropertySchema["units"][] = [
+            "kJ/mol",
+            "eV",
+            "J/mol",
+            "hartree",
+            "cm-1",
+            "Ry",
+            "eV/atom",
+            "eV/A^2",
+        ];
         units.forEach((unit) => {
-            const config = {
+            const config: TotalEnergyPropertySchema = {
                 name: "total_energy",
                 value: 1.0,
                 units: unit,
@@ -33,7 +42,7 @@ describe("TotalEnergyProperty", () => {
     });
 
     it("should handle negative energy values", () => {
-        const config = {
+        const config: TotalEnergyPropertySchema = {
             name: "total_energy",
             value: -5678.9,
             units: "hartree",

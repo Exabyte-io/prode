@@ -1,10 +1,11 @@
+import type { IsRelaxedPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import IsRelaxedProperty from "../../src/js/include/non-scalar/IsRelaxedProperty";
+import IsRelaxedProperty from "../../src/js/properties/non-scalar/IsRelaxedProperty";
 
 describe("IsRelaxedProperty", () => {
     it("should create an is relaxed property with basic structure data", () => {
-        const config = {
+        const config: IsRelaxedPropertySchema = {
             name: "is_relaxed",
             formula: "Si",
             unitCellFormula: "Si8",
@@ -46,7 +47,7 @@ describe("IsRelaxedProperty", () => {
     });
 
     it("should handle derived properties", () => {
-        const config = {
+        const config: IsRelaxedPropertySchema = {
             name: "is_relaxed",
             basis: {
                 elements: [{ value: "Si", id: 1 }],
@@ -92,7 +93,7 @@ describe("IsRelaxedProperty", () => {
     });
 
     it("should handle external source information", () => {
-        const config = {
+        const config: IsRelaxedPropertySchema = {
             name: "is_relaxed",
             basis: {
                 elements: [{ value: "Si", id: 1 }],
@@ -123,7 +124,7 @@ describe("IsRelaxedProperty", () => {
     });
 
     it("should handle consistency checks", () => {
-        const config = {
+        const config: IsRelaxedPropertySchema = {
             name: "is_relaxed",
             basis: {
                 elements: [{ value: "Si", id: 1 }],
@@ -155,7 +156,7 @@ describe("IsRelaxedProperty", () => {
     });
 
     it("should handle optional fields", () => {
-        const config = {
+        const config: IsRelaxedPropertySchema = {
             name: "is_relaxed",
             basis: {
                 elements: [{ value: "Si", id: 1 }],

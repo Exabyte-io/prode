@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PropertyName = exports.PropertyDomain = exports.PropertyType = exports.ExternalSource = void 0;
+exports.PropertyName = exports.PropertyType = exports.ExternalSource = void 0;
 var ExternalSource;
 (function (ExternalSource) {
     ExternalSource["materials_project"] = "MaterialsProject";
@@ -15,12 +15,6 @@ var PropertyType;
     PropertyType["tensor"] = "tensor";
     PropertyType["object"] = "object";
 })(PropertyType || (exports.PropertyType = PropertyType = {}));
-var PropertyDomain;
-(function (PropertyDomain) {
-    // by data type
-    PropertyDomain["material"] = "material";
-    PropertyDomain["workflow"] = "workflow";
-})(PropertyDomain || (exports.PropertyDomain = PropertyDomain = {}));
 var PropertyName;
 (function (PropertyName) {
     PropertyName["pressure"] = "pressure";
@@ -52,6 +46,7 @@ var PropertyName;
     PropertyName["jupyter_notebook_endpoint"] = "jupyter_notebook_endpoint";
     PropertyName["average_potential_profile"] = "average_potential_profile";
     PropertyName["valence_band_offset"] = "valence_band_offset";
+    PropertyName["ionization_potential"] = "ionization_potential";
     PropertyName["pseudopotential"] = "pseudopotential";
     PropertyName["boundary_conditions"] = "boundary_conditions";
     PropertyName["dielectric_tensor"] = "dielectric_tensor";

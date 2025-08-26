@@ -1,10 +1,11 @@
+import type { ReactionEnergyBarrierPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import ReactionEnergyBarrierProperty from "../../src/js/include/primitive/ReactionEnergyBarrierProperty";
+import ReactionEnergyBarrierProperty from "../../src/js/properties/scalar/ReactionEnergyBarrierProperty";
 
 describe("ReactionEnergyBarrierProperty", () => {
     it("should create a reaction energy barrier property with value and units", () => {
-        const config = {
+        const config: ReactionEnergyBarrierPropertySchema = {
             name: "reaction_energy_barrier",
             value: 25.5,
             units: "kJ/mol",
@@ -18,13 +19,22 @@ describe("ReactionEnergyBarrierProperty", () => {
     });
 
     it("should support different energy units", () => {
-        const units = ["kJ/mol", "eV", "J/mol", "hartree", "cm-1", "Ry", "eV/atom", "eV/A^2"];
+        const units: ReactionEnergyBarrierPropertySchema["units"][] = [
+            "kJ/mol",
+            "eV",
+            "J/mol",
+            "hartree",
+            "cm-1",
+            "Ry",
+            "eV/atom",
+            "eV/A^2",
+        ];
 
         units.forEach((unit) => {
-            const config = {
+            const config: ReactionEnergyBarrierPropertySchema = {
                 name: "reaction_energy_barrier",
                 value: 1.0,
-                units: unit as any,
+                units: unit,
             };
 
             const reactionEnergyBarrierProperty = new ReactionEnergyBarrierProperty(config);
@@ -33,7 +43,7 @@ describe("ReactionEnergyBarrierProperty", () => {
     });
 
     it("should handle high energy barriers", () => {
-        const config = {
+        const config: ReactionEnergyBarrierPropertySchema = {
             name: "reaction_energy_barrier",
             value: 150.0,
             units: "kJ/mol",
@@ -46,7 +56,7 @@ describe("ReactionEnergyBarrierProperty", () => {
     });
 
     it("should handle low energy barriers", () => {
-        const config = {
+        const config: ReactionEnergyBarrierPropertySchema = {
             name: "reaction_energy_barrier",
             value: 0.5,
             units: "eV",
@@ -59,7 +69,7 @@ describe("ReactionEnergyBarrierProperty", () => {
     });
 
     it("should handle zero energy barrier", () => {
-        const config = {
+        const config: ReactionEnergyBarrierPropertySchema = {
             name: "reaction_energy_barrier",
             value: 0.0,
             units: "hartree",
@@ -72,7 +82,7 @@ describe("ReactionEnergyBarrierProperty", () => {
     });
 
     it("should handle negative energy barriers (exothermic reactions)", () => {
-        const config = {
+        const config: ReactionEnergyBarrierPropertySchema = {
             name: "reaction_energy_barrier",
             value: -10.2,
             units: "kJ/mol",

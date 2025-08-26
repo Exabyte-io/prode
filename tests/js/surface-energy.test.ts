@@ -1,10 +1,11 @@
+import type { SurfaceEnergyPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import SurfaceEnergyProperty from "../../src/js/include/primitive/SurfaceEnergyProperty";
+import SurfaceEnergyProperty from "../../src/js/properties/scalar/SurfaceEnergyProperty";
 
 describe("SurfaceEnergyProperty", () => {
     it("should create a surface energy property with value and units", () => {
-        const config = {
+        const config: SurfaceEnergyPropertySchema = {
             name: "surface_energy",
             value: 2.5,
             units: "eV/A^2",
@@ -18,10 +19,18 @@ describe("SurfaceEnergyProperty", () => {
     });
 
     it("should support different energy units", () => {
-        const units = ["kJ/mol", "eV", "J/mol", "hartree", "cm-1", "Ry", "eV/atom", "eV/A^2"];
-
+        const units: SurfaceEnergyPropertySchema["units"][] = [
+            "kJ/mol",
+            "eV",
+            "J/mol",
+            "hartree",
+            "cm-1",
+            "Ry",
+            "eV/atom",
+            "eV/A^2",
+        ];
         units.forEach((unit) => {
-            const config = {
+            const config: SurfaceEnergyPropertySchema = {
                 name: "surface_energy",
                 value: 1.0,
                 units: unit,
@@ -33,7 +42,7 @@ describe("SurfaceEnergyProperty", () => {
     });
 
     it("should handle positive surface energy values", () => {
-        const config = {
+        const config: SurfaceEnergyPropertySchema = {
             name: "surface_energy",
             value: 0.85,
             units: "J/mol",

@@ -1,10 +1,11 @@
+import type { ZeroPointEnergyPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import ZeroPointEnergyProperty from "../../src/js/include/primitive/ZeroPointEnergyProperty";
+import ZeroPointEnergyProperty from "../../src/js/properties/scalar/ZeroPointEnergyProperty";
 
 describe("ZeroPointEnergyProperty", () => {
     it("should create a zero point energy property with value and units", () => {
-        const config = {
+        const config: ZeroPointEnergyPropertySchema = {
             name: "zero_point_energy",
             value: 0.15,
             units: "eV",
@@ -18,10 +19,18 @@ describe("ZeroPointEnergyProperty", () => {
     });
 
     it("should support different energy units", () => {
-        const units = ["kJ/mol", "eV", "J/mol", "hartree", "cm-1", "Ry", "eV/atom", "eV/A^2"];
-
+        const units: ZeroPointEnergyPropertySchema["units"][] = [
+            "kJ/mol",
+            "eV",
+            "J/mol",
+            "hartree",
+            "cm-1",
+            "Ry",
+            "eV/atom",
+            "eV/A^2",
+        ];
         units.forEach((unit) => {
-            const config = {
+            const config: ZeroPointEnergyPropertySchema = {
                 name: "zero_point_energy",
                 value: 1.0,
                 units: unit,
@@ -33,7 +42,7 @@ describe("ZeroPointEnergyProperty", () => {
     });
 
     it("should handle small zero point energy values", () => {
-        const config = {
+        const config: ZeroPointEnergyPropertySchema = {
             name: "zero_point_energy",
             value: 0.001,
             units: "hartree",

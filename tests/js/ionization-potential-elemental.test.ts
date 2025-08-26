@@ -1,7 +1,7 @@
 import type { IonizationPotentialElementalPropertySchema as Schema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import IonizationPotentialElementalProperty from "../../src/js/include/primitive/IonizationPotentialElementalProperty";
+import IonizationPotentialElementalProperty from "../../src/js/properties/scalar/IonizationPotentialElementalProperty";
 
 describe("IonizationPotentialElementalProperty", () => {
     it("should create an ionization potential property with value and units", () => {
@@ -77,7 +77,7 @@ describe("IonizationPotentialElementalProperty", () => {
         const ionizationPotentialProperty = new IonizationPotentialElementalProperty(config);
 
         expect(ionizationPotentialProperty.value).equal(5.1);
-        expect(ionizationPotentialProperty.units).equal(undefined);
+        expect(ionizationPotentialProperty.units).equal("eV");
     });
 
     it("should handle fractional ionization potentials", () => {

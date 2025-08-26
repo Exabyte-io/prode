@@ -1,10 +1,11 @@
+import type { MagneticMomentsPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import MagneticMomentsProperty from "../../src/js/include/primitive/MagneticMomentsProperty";
+import MagneticMomentsProperty from "../../src/js/properties/tensor/MagneticMomentsProperty";
 
 describe("MagneticMomentsProperty", () => {
     it("should create a magnetic moments property with values and units", () => {
-        const config = {
+        const config: MagneticMomentsPropertySchema = {
             name: "magnetic_moments",
             units: "uB",
             values: [
@@ -31,7 +32,7 @@ describe("MagneticMomentsProperty", () => {
     });
 
     it("should handle ferromagnetic alignment", () => {
-        const config = {
+        const config: MagneticMomentsPropertySchema = {
             name: "magnetic_moments",
             units: "uB",
             values: [
@@ -59,7 +60,7 @@ describe("MagneticMomentsProperty", () => {
     });
 
     it("should handle antiferromagnetic alignment", () => {
-        const config = {
+        const config: MagneticMomentsPropertySchema = {
             name: "magnetic_moments",
             units: "uB",
             values: [
@@ -92,7 +93,7 @@ describe("MagneticMomentsProperty", () => {
     });
 
     it("should handle non-collinear magnetic moments", () => {
-        const config = {
+        const config: MagneticMomentsPropertySchema = {
             name: "magnetic_moments",
             units: "uB",
             values: [
@@ -119,7 +120,7 @@ describe("MagneticMomentsProperty", () => {
     });
 
     it("should handle zero magnetic moments", () => {
-        const config = {
+        const config: MagneticMomentsPropertySchema = {
             name: "magnetic_moments",
             units: "uB",
             values: [
@@ -143,7 +144,7 @@ describe("MagneticMomentsProperty", () => {
     });
 
     it("should handle fractional magnetic moments", () => {
-        const config = {
+        const config: MagneticMomentsPropertySchema = {
             name: "magnetic_moments",
             units: "uB",
             values: [

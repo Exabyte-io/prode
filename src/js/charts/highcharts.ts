@@ -2,7 +2,7 @@
 
 import type { AxisOptions, IndividualSeriesOptions, Options, PlotLines } from "highcharts";
 
-import type { XDataArray } from "../include/mixins/2d_plot";
+import type { XDataArray } from "../properties/include/mixins/2d_plot";
 
 /**
  * Callback JavaScript function to format the data label. Note that if a format is defined, the format takes

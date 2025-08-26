@@ -2,7 +2,7 @@ import type { InMemoryEntity } from "@mat3ra/code/dist/js/entity";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { MetaPropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
 
-import Pseudopotential from "../../include/meta_properties/Pseudopotential";
+import Pseudopotential from "../../meta_properties/PseudopotentialProperty";
 
 export interface MetaPropertySchemaJSON extends MetaPropertyHolderSchema, AnyObject {}
 

@@ -1,10 +1,11 @@
+import type { StressTensorPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import StressTensorProperty from "../../src/js/include/primitive/StressTensorProperty";
+import StressTensorProperty from "../../src/js/properties/tensor/StressTensorProperty";
 
 describe("StressTensorProperty", () => {
     it("should create a stress tensor property with value and units", () => {
-        const config = {
+        const config: StressTensorPropertySchema = {
             name: "stress_tensor",
             units: "kbar",
             value: [
@@ -26,7 +27,7 @@ describe("StressTensorProperty", () => {
     });
 
     it("should support pa units", () => {
-        const config = {
+        const config: StressTensorPropertySchema = {
             name: "stress_tensor",
             units: "pa",
             value: [
@@ -43,7 +44,7 @@ describe("StressTensorProperty", () => {
     });
 
     it("should handle symmetric stress tensor", () => {
-        const config = {
+        const config: StressTensorPropertySchema = {
             name: "stress_tensor",
             units: "kbar",
             value: [
@@ -62,7 +63,7 @@ describe("StressTensorProperty", () => {
     });
 
     it("should handle diagonal stress tensor", () => {
-        const config = {
+        const config: StressTensorPropertySchema = {
             name: "stress_tensor",
             units: "kbar",
             value: [
@@ -83,7 +84,7 @@ describe("StressTensorProperty", () => {
     });
 
     it("should handle negative stress components", () => {
-        const config = {
+        const config: StressTensorPropertySchema = {
             name: "stress_tensor",
             units: "kbar",
             value: [

@@ -1,10 +1,11 @@
+import type { AtomicForcesPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import AtomicForcesProperty from "../../src/js/include/primitive/AtomicForcesProperty";
+import AtomicForcesProperty from "../../src/js/properties/tensor/AtomicForcesProperty";
 
 describe("AtomicForcesProperty", () => {
     it("should create an atomic forces property with values and units", () => {
-        const config = {
+        const config: AtomicForcesPropertySchema = {
             name: "atomic_forces",
             units: "eV/bohr",
             values: [
@@ -31,10 +32,17 @@ describe("AtomicForcesProperty", () => {
     });
 
     it("should support different force units", () => {
-        const units = ["eV/bohr", "eV/angstrom", "Ry/a.u.", "newton", "kg*m/s^2", "eV/a.u."];
+        const units: AtomicForcesPropertySchema["units"][] = [
+            "eV/bohr",
+            "eV/angstrom",
+            "Ry/a.u.",
+            "newton",
+            "kg*m/s^2",
+            "eV/a.u.",
+        ];
 
         units.forEach((unit) => {
-            const config = {
+            const config: AtomicForcesPropertySchema = {
                 name: "atomic_forces",
                 units: unit,
                 values: [
@@ -51,7 +59,7 @@ describe("AtomicForcesProperty", () => {
     });
 
     it("should handle empty values array", () => {
-        const config = {
+        const config: AtomicForcesPropertySchema = {
             name: "atomic_forces",
             units: "eV/bohr",
             values: [],
@@ -64,7 +72,7 @@ describe("AtomicForcesProperty", () => {
     });
 
     it("should handle missing optional fields", () => {
-        const config = {
+        const config: AtomicForcesPropertySchema = {
             name: "atomic_forces",
             units: "eV/bohr", // units is required
             values: [
@@ -82,7 +90,7 @@ describe("AtomicForcesProperty", () => {
     });
 
     it("should handle 3D force vectors", () => {
-        const config = {
+        const config: AtomicForcesPropertySchema = {
             name: "atomic_forces",
             units: "newton",
             values: [

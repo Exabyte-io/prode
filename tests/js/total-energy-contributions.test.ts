@@ -1,10 +1,11 @@
+import type { TotalEnergyContributionsPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import TotalEnergyContributionsProperty from "../../src/js/include/primitive/TotalEnergyContributionsProperty";
+import TotalEnergyContributionsProperty from "../../src/js/properties/object/TotalEnergyContributionsProperty";
 
 describe("TotalEnergyContributionsProperty", () => {
     it("should create a total energy contributions property with basic fields", () => {
-        const config = {
+        const config: TotalEnergyContributionsPropertySchema = {
             name: "total_energy_contributions",
             units: "eV",
             hartree: {
@@ -26,7 +27,7 @@ describe("TotalEnergyContributionsProperty", () => {
     });
 
     it("should handle all energy contribution fields", () => {
-        const config = {
+        const config: TotalEnergyContributionsPropertySchema = {
             name: "total_energy_contributions",
             units: "hartree",
             temperatureEntropy: { value: 0.1 },
@@ -62,7 +63,15 @@ describe("TotalEnergyContributionsProperty", () => {
     });
 
     it("should support different energy units", () => {
-        const units = ["kJ/mol", "eV", "J/mol", "hartree", "cm-1", "Ry", "eV/atom"];
+        const units: TotalEnergyContributionsPropertySchema["units"][] = [
+            "kJ/mol",
+            "eV",
+            "J/mol",
+            "hartree",
+            "cm-1",
+            "Ry",
+            "eV/atom",
+        ];
 
         units.forEach((unit) => {
             const config = {
@@ -77,7 +86,7 @@ describe("TotalEnergyContributionsProperty", () => {
     });
 
     it("should handle missing optional fields", () => {
-        const config = {
+        const config: TotalEnergyContributionsPropertySchema = {
             name: "total_energy_contributions",
             units: "eV",
             hartree: { value: -15.2 },

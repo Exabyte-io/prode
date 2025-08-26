@@ -1,154 +1,163 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
+// import pickBy from "lodash/pickBy";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.REFINED_PROPERTIES_SUBTREE = void 0;
-const pickBy_1 = __importDefault(require("lodash/pickBy"));
-const settings_1 = require("./settings");
-/**
- * @description For more details about types and object keys below
- * check the [ESSE repository](https://github.com/Exabyte-io/esse).
- */
-const propertiesTree = {
-    [settings_1.PropertyName.pressure]: {
-        //        "name": "pressure",  // name is same as key unless specified explicitly
-        //        "domain": PropertyDomain.material,  // default domain is assumed to be "material"
-        //        "isAuxiliary": false,  // by default the property is non-auxiliary
-        type: settings_1.PropertyType.scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.total_force]: {
-        type: settings_1.PropertyType.scalar,
-    },
-    [settings_1.PropertyName.total_energy]: {
-        type: settings_1.PropertyType.scalar,
-        isRefined: true,
-        isAuxiliary: true,
-    },
-    [settings_1.PropertyName.surface_energy]: {
-        type: settings_1.PropertyType.scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.convergence_electronic]: {
-        type: settings_1.PropertyType.non_scalar,
-        domain: settings_1.PropertyDomain.workflow,
-        isConvergence: true,
-    },
-    [settings_1.PropertyName.convergence_ionic]: {
-        type: settings_1.PropertyType.non_scalar,
-        domain: settings_1.PropertyDomain.workflow,
-        isConvergence: true,
-    },
-    [settings_1.PropertyName.fermi_energy]: {
-        type: settings_1.PropertyType.scalar,
-        isAuxiliary: true,
-    },
-    [settings_1.PropertyName.zero_point_energy]: {
-        type: settings_1.PropertyType.scalar,
-    },
-    [settings_1.PropertyName.total_energy_contributions]: {
-        type: settings_1.PropertyType.object,
-        isAuxiliary: true,
-    },
-    [settings_1.PropertyName.atomic_forces]: {
-        type: settings_1.PropertyType.tensor,
-    },
-    [settings_1.PropertyName.atomic_constraints]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.stress_tensor]: {
-        type: settings_1.PropertyType.tensor,
-    },
-    [settings_1.PropertyName.density_of_states]: {
-        type: settings_1.PropertyType.non_scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.band_structure]: {
-        type: settings_1.PropertyType.non_scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.band_gaps]: {
-        type: settings_1.PropertyType.non_scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.phonon_dispersions]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.phonon_dos]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.final_structure]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.is_relaxed]: {
-        // only storing the refined status as this is not to be shown in job results
-        isRefined: true,
-    },
-    [settings_1.PropertyName.workflow_pyml_predict]: {
-        type: settings_1.PropertyType.non_scalar,
-        domain: settings_1.PropertyDomain.workflow,
-    },
-    [settings_1.PropertyName.file_content]: {
-        type: settings_1.PropertyType.non_scalar,
-        isAbleToReturnMultipleResults: true,
-    },
-    [settings_1.PropertyName.magnetic_moments]: {
-        type: settings_1.PropertyType.tensor,
-    },
-    [settings_1.PropertyName.reaction_energy_barrier]: {
-        type: settings_1.PropertyType.scalar,
-        isRefined: true,
-        isAuxiliary: true,
-    },
-    [settings_1.PropertyName.reaction_energy_profile]: {
-        type: settings_1.PropertyType.non_scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.potential_profile]: {
-        type: settings_1.PropertyType.non_scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.charge_density_profile]: {
-        type: settings_1.PropertyType.non_scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.jupyter_notebook_endpoint]: {
-        type: settings_1.PropertyType.non_scalar,
-        domain: settings_1.PropertyDomain.workflow,
-    },
-    [settings_1.PropertyName.average_potential_profile]: {
-        type: settings_1.PropertyType.non_scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.valence_band_offset]: {
-        type: settings_1.PropertyType.scalar,
-        isRefined: true,
-    },
-    [settings_1.PropertyName.pseudopotential]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.boundary_conditions]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.dielectric_tensor]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.hubbard_u]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.hubbard_v_nn]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-    [settings_1.PropertyName.hubbard_v]: {
-        type: settings_1.PropertyType.non_scalar,
-    },
-};
-exports.default = propertiesTree;
-exports.REFINED_PROPERTIES_SUBTREE = (0, pickBy_1.default)(propertiesTree, (propertyConfig) => {
-    // eslint-disable-next-line no-prototype-builtins
-    if (propertyConfig.hasOwnProperty("isRefined")) {
-        return Boolean(propertyConfig.isRefined);
-    }
-    return false;
-});
+// import { PropertyName, PropertyType } from "./settings";
+// export interface PropertyConfig {
+//     type?: PropertyType;
+//     isRefined?: boolean;
+//     isConvergence?: boolean;
+//     isAbleToReturnMultipleResults?: boolean;
+//     omitInResults?: boolean;
+// }
+// /**
+//  * @description Type for the properties tree configuration
+//  */
+// export type PropertiesTree = Record<PropertyName, PropertyConfig>;
+// /**
+//  * @description For more details about types and object keys below
+//  * check the [ESSE repository](https://github.com/Exabyte-io/esse).
+//  */
+// const propertiesTree: PropertiesTree = {
+//     [PropertyName.pressure]: {
+//         type: PropertyType.scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.total_force]: {
+//         type: PropertyType.scalar,
+//     },
+//     [PropertyName.total_energy]: {
+//         type: PropertyType.scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.surface_energy]: {
+//         type: PropertyType.scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.convergence_electronic]: {
+//         type: PropertyType.non_scalar,
+//         isConvergence: true,
+//     },
+//     [PropertyName.convergence_ionic]: {
+//         type: PropertyType.non_scalar,
+//         isConvergence: true,
+//     },
+//     [PropertyName.fermi_energy]: {
+//         type: PropertyType.scalar,
+//     },
+//     [PropertyName.zero_point_energy]: {
+//         type: PropertyType.scalar,
+//     },
+//     [PropertyName.total_energy_contributions]: {
+//         type: PropertyType.object,
+//     },
+//     [PropertyName.atomic_forces]: {
+//         type: PropertyType.tensor,
+//     },
+//     [PropertyName.atomic_constraints]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.stress_tensor]: {
+//         type: PropertyType.tensor,
+//     },
+//     [PropertyName.density_of_states]: {
+//         type: PropertyType.non_scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.band_structure]: {
+//         type: PropertyType.non_scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.band_gaps]: {
+//         type: PropertyType.non_scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.phonon_dispersions]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.phonon_dos]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.final_structure]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.is_relaxed]: {
+//         type: PropertyType.non_scalar,
+//         // only storing the refined status as this is not to be shown in job results
+//         isRefined: true,
+//     },
+//     [PropertyName.workflow_pyml_predict]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.file_content]: {
+//         type: PropertyType.non_scalar,
+//         isAbleToReturnMultipleResults: true,
+//     },
+//     [PropertyName.magnetic_moments]: {
+//         type: PropertyType.tensor,
+//     },
+//     [PropertyName.reaction_energy_barrier]: {
+//         type: PropertyType.scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.reaction_energy_profile]: {
+//         type: PropertyType.non_scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.potential_profile]: {
+//         type: PropertyType.non_scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.charge_density_profile]: {
+//         type: PropertyType.non_scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.jupyter_notebook_endpoint]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.average_potential_profile]: {
+//         type: PropertyType.non_scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.valence_band_offset]: {
+//         type: PropertyType.scalar,
+//         isRefined: true,
+//     },
+//     [PropertyName.pseudopotential]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.boundary_conditions]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.dielectric_tensor]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.hubbard_u]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.hubbard_v_nn]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.hubbard_v]: {
+//         type: PropertyType.non_scalar,
+//     },
+//     [PropertyName.ionization_potential]: {
+//         type: PropertyType.scalar,
+//     },
+// };
+// export default propertiesTree;
+// export const REFINED_PROPERTIES_SUBTREE = pickBy(propertiesTree, (propertyConfig) => {
+//     // eslint-disable-next-line no-prototype-builtins
+//     if (propertyConfig.hasOwnProperty("isRefined")) {
+//         return Boolean(propertyConfig.isRefined);
+//     }
+//     return false;
+// });
+// export const SCALARS_SUBTREE = pickBy(propertiesTree, (propertyConfig) => {
+//     return propertyConfig.type === PropertyType.scalar;
+// });
+// export const NON_SCALARS_SUBTREE = pickBy(propertiesTree, (propertyConfig) => {
+//     return propertyConfig.type !== PropertyType.scalar;
+// });
+// export const CONVERGENCES_SUBTREE = pickBy(propertiesTree, (propertyConfig) => {
+//     return propertyConfig.isConvergence;
+// });

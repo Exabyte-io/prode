@@ -1,10 +1,11 @@
+import type { FileContentPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import FileContentProperty from "../../src/js/include/primitive/FileContentProperty";
+import FileContentProperty from "../../src/js/properties/non-scalar/FileContentProperty";
 
 describe("FileContentProperty", () => {
     it("should create a file content property with text file data", () => {
-        const config = {
+        const config: FileContentPropertySchema = {
             name: "file_content",
             filetype: "text",
             objectData: {
@@ -31,7 +32,7 @@ describe("FileContentProperty", () => {
     });
 
     it("should handle image file data", () => {
-        const config = {
+        const config: FileContentPropertySchema = {
             name: "file_content",
             filetype: "image",
             objectData: {
@@ -54,7 +55,7 @@ describe("FileContentProperty", () => {
     });
 
     it("should handle CSV file data", () => {
-        const config = {
+        const config: FileContentPropertySchema = {
             name: "file_content",
             filetype: "csv",
             objectData: {
@@ -78,7 +79,7 @@ describe("FileContentProperty", () => {
     });
 
     it("should handle minimal object data", () => {
-        const config = {
+        const config: FileContentPropertySchema = {
             name: "file_content",
             filetype: "text",
             objectData: {
@@ -100,10 +101,10 @@ describe("FileContentProperty", () => {
     });
 
     it("should support all file types", () => {
-        const filetypes = ["image", "text", "csv"];
+        const filetypes: FileContentPropertySchema["filetype"][] = ["image", "text", "csv"];
 
         filetypes.forEach((filetype) => {
-            const config = {
+            const config: FileContentPropertySchema = {
                 name: "file_content",
                 filetype,
                 objectData: {

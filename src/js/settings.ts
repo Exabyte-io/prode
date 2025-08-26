@@ -12,12 +12,6 @@ export enum PropertyType {
     object = "object",
 }
 
-export enum PropertyDomain {
-    // by data type
-    material = "material",
-    workflow = "workflow",
-}
-
 export enum PropertyName {
     pressure = "pressure",
     total_force = "total_force",

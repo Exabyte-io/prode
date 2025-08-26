@@ -1,10 +1,11 @@
+import type { BoundaryConditionsPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
-import BoundaryConditionsProperty from "../../src/js/include/primitive/BoundaryConditionsProperty";
+import BoundaryConditionsProperty from "../../src/js/proto_properties/BoundaryConditionsProperty";
 
 describe("BoundaryConditionsProperty", () => {
     it("should create a boundary conditions property with type and offset", () => {
-        const config = {
+        const config: BoundaryConditionsPropertySchema = {
             name: "boundary_conditions",
             type: "pbc",
             offset: 0.0,
@@ -18,10 +19,10 @@ describe("BoundaryConditionsProperty", () => {
     });
 
     it("should support all boundary condition types", () => {
-        const types = ["pbc", "bc1", "bc2", "bc3"];
+        const types: BoundaryConditionsPropertySchema["type"][] = ["pbc", "bc1", "bc2", "bc3"];
 
         types.forEach((boundaryType) => {
-            const config = {
+            const config: BoundaryConditionsPropertySchema = {
                 name: "boundary_conditions",
                 type: boundaryType,
                 offset: 0.0,
@@ -36,7 +37,7 @@ describe("BoundaryConditionsProperty", () => {
         const offsets = [0.0, 0.5, 1.0, -0.5, 2.0];
 
         offsets.forEach((offset) => {
-            const config = {
+            const config: BoundaryConditionsPropertySchema = {
                 name: "boundary_conditions",
                 type: "pbc",
                 offset,
@@ -48,7 +49,7 @@ describe("BoundaryConditionsProperty", () => {
     });
 
     it("should handle periodic boundary conditions", () => {
-        const config = {
+        const config: BoundaryConditionsPropertySchema = {
             name: "boundary_conditions",
             type: "pbc",
             offset: 0.0,
@@ -61,7 +62,7 @@ describe("BoundaryConditionsProperty", () => {
     });
 
     it("should handle boundary condition type 1", () => {
-        const config = {
+        const config: BoundaryConditionsPropertySchema = {
             name: "boundary_conditions",
             type: "bc1",
             offset: 0.5,
@@ -74,7 +75,7 @@ describe("BoundaryConditionsProperty", () => {
     });
 
     it("should handle boundary condition type 2", () => {
-        const config = {
+        const config: BoundaryConditionsPropertySchema = {
             name: "boundary_conditions",
             type: "bc2",
             offset: 1.0,
@@ -87,7 +88,7 @@ describe("BoundaryConditionsProperty", () => {
     });
 
     it("should handle boundary condition type 3", () => {
-        const config = {
+        const config: BoundaryConditionsPropertySchema = {
             name: "boundary_conditions",
             type: "bc3",
             offset: -0.5,
