@@ -32,6 +32,9 @@ class Property extends entity_1.NamedInMemoryEntity {
     static get isObject() {
         return this.propertyType === settings_1.PropertyType.object;
     }
+    get propertyClass() {
+        return this.constructor;
+    }
     toRowValues(group, slug) {
         return [
             {
