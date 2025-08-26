@@ -46,6 +46,10 @@ export default class Property extends NamedInMemoryEntity {
         return this.propertyType === PropertyType.object;
     }
 
+    get propertyClass(): typeof Property {
+        return this.constructor as typeof Property;
+    }
+
     toRowValues(group?: string, slug?: string): PropertyRowValue[] {
         return [
             {
