@@ -1,9 +1,12 @@
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { FinalStructurePropertySchema } from "@mat3ra/esse/dist/js/types";
 import { PropertyName } from "../../settings";
 import NonScalarProperty from "./base/NonScalarProperty";
 type Schema = FinalStructurePropertySchema;
 export default class FinalStructureProperty extends NonScalarProperty<Schema> implements Schema {
     static readonly propertyName = PropertyName.final_structure;
+    toJSON: (exclude?: string[]) => Schema & AnyObject;
+    _json: Schema & AnyObject;
     constructor(config: Omit<Schema, "name">);
     get isRelaxed(): boolean;
     get formula(): string | undefined;

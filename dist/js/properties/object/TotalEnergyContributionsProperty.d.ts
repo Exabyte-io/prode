@@ -1,4 +1,5 @@
 import type { TotalEnergyContributionsPropertySchema } from "@mat3ra/esse/dist/js/types";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import Property from "../../Property";
 import { PropertyName, PropertyType } from "../../settings";
 type Schema = TotalEnergyContributionsPropertySchema;
@@ -6,6 +7,8 @@ export default class TotalEnergyContributionsProperty extends Property implement
     readonly name: Schema["name"];
     static readonly propertyType = PropertyType.object;
     static readonly propertyName = PropertyName.total_energy_contributions;
+    toJSON: (exclude?: string[]) => Schema & AnyObject;
+    _json: Schema & AnyObject;
     constructor(config: Omit<Schema, "name">);
     get temperatureEntropy(): {
         name?: "temperature_entropy";

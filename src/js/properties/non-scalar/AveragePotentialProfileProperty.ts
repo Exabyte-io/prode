@@ -1,5 +1,6 @@
 /* eslint-disable max-classes-per-file */
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { AveragePotentialProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 import lodash from "lodash";
@@ -60,6 +61,10 @@ export default class AveragePotentialProfileProperty extends (NonScalarProperty 
     static readonly isRefined = true;
 
     static readonly propertyName = PropertyName.average_potential_profile;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: AveragePotentialProfileProperty.propertyName });

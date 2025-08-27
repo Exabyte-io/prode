@@ -1,9 +1,12 @@
 import type { WorkflowPropertySchema } from "@mat3ra/esse/dist/js/types";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import { PropertyName } from "../../settings";
 import NonScalarProperty from "./base/NonScalarProperty";
 type Schema = WorkflowPropertySchema;
 export default class WorkflowProperty extends NonScalarProperty<Schema> implements Schema {
     static readonly propertyName = PropertyName.workflow_pyml_predict;
+    toJSON: (exclude?: string[]) => Schema & AnyObject;
+    _json: Schema & AnyObject;
     constructor(config: Omit<Schema, "name">);
     get subworkflows(): {
         units: ({

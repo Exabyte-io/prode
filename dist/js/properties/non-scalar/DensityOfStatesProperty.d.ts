@@ -144,6 +144,7 @@ export default class DensityOfStatesProperty extends DensityOfStatesProperty_bas
     static readonly propertyName = PropertyName.density_of_states;
     constructor(config: object, ConfigBuilder?: typeof DensityOfStatesConfig);
     toJSON: () => Schema & AnyObject;
+    _json: Schema & AnyObject;
     get legend(): {
         element?: string;
         index?: number;

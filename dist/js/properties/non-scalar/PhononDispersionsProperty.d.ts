@@ -1,5 +1,6 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 import type { PhononBandStructurePropertySchema } from "@mat3ra/esse/dist/js/types";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { KPointPath } from "@mat3ra/made/dist/js/lattice/reciprocal/lattice_reciprocal";
 import type { Options } from "highcharts";
 import { PropertyName } from "../../settings";
@@ -11,6 +12,8 @@ type Schema = PhononBandStructurePropertySchema;
 declare const PhononDispersionsProperty_base: Base;
 declare class PhononDispersionsProperty extends PhononDispersionsProperty_base implements Schema {
     static readonly propertyName = PropertyName.phonon_dispersions;
+    toJSON: (exclude?: string[]) => Schema & AnyObject;
+    _json: Schema & AnyObject;
     readonly subtitle = "Phonon Dispersions";
     readonly yAxisTitle: string;
     readonly fermiEnergy: number | null;

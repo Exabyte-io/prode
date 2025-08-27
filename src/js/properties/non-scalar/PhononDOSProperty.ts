@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 // eslint-disable-next-line max-classes-per-file
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { PhononDensityOfStatesPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 
@@ -44,6 +45,10 @@ export default class PhononDOSProperty extends (NonScalarProperty as Base) imple
     readonly fermiEnergy = null;
 
     static readonly propertyName = PropertyName.phonon_dos;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: PhononDOSProperty.propertyName });

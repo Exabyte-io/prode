@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { PhononBandStructurePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { KPointPath } from "@mat3ra/made/dist/js/lattice/reciprocal/lattice_reciprocal";
 import type { Options } from "highcharts";
@@ -28,6 +29,10 @@ type Schema = PhononBandStructurePropertySchema;
 
 class PhononDispersionsProperty extends (NonScalarProperty as Base) implements Schema {
     static readonly propertyName = PropertyName.phonon_dispersions;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     readonly subtitle = "Phonon Dispersions";
 

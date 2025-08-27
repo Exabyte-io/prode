@@ -1,3 +1,4 @@
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { PressurePropertySchema } from "@mat3ra/esse/dist/js/types";
 
 import { PropertyName } from "../../settings";
@@ -9,6 +10,10 @@ export default class PressureProperty extends ScalarProperty<Schema> implements 
     static readonly isRefined = true;
 
     static readonly propertyName = PropertyName.pressure;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: PressureProperty.propertyName });

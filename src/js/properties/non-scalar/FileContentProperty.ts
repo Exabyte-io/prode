@@ -1,3 +1,4 @@
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { FileContentPropertySchema } from "@mat3ra/esse/dist/js/types";
 
 import { PropertyName } from "../../settings";
@@ -9,6 +10,10 @@ export default class FileContentProperty extends NonScalarProperty<Schema> imple
     static readonly isAbleToReturnMultipleResults = true;
 
     static readonly propertyName = PropertyName.file_content;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: FileContentProperty.propertyName });

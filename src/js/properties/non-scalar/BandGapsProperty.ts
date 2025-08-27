@@ -14,6 +14,8 @@ export default class BandGapsProperty extends NonScalarProperty<Schema> implemen
 
     declare toJSON: () => BandGapsPropertySchema & AnyObject;
 
+    declare _json: Schema & AnyObject;
+
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: BandGapsProperty.propertyName });
     }

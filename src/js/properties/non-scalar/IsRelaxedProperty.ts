@@ -1,3 +1,4 @@
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { IsRelaxedPropertySchema } from "@mat3ra/esse/dist/js/types";
 
 import { PropertyName } from "../../settings";
@@ -9,6 +10,10 @@ export default class IsRelaxedProperty extends NonScalarProperty<Schema> impleme
     static readonly isRefined = true;
 
     static readonly propertyName = PropertyName.is_relaxed;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: IsRelaxedProperty.propertyName });

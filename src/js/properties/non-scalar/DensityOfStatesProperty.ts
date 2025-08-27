@@ -174,6 +174,8 @@ export default class DensityOfStatesProperty extends (NonScalarProperty as Base)
 
     declare toJSON: () => Schema & AnyObject;
 
+    declare _json: Schema & AnyObject;
+
     get legend() {
         return this.requiredProp<Schema["legend"]>("legend");
     }

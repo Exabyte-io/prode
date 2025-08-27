@@ -22,6 +22,5 @@ class FileContentProperty extends NonScalarProperty_1.default {
         return this.requiredProp("basename");
     }
 }
-FileContentProperty.isAbleToReturnMultipleResults = true;
 FileContentProperty.propertyName = settings_1.PropertyName.file_content;
 exports.default = FileContentProperty;

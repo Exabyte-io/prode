@@ -1,3 +1,4 @@
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { FinalStructurePropertySchema } from "@mat3ra/esse/dist/js/types";
 
 import { PropertyName } from "../../settings";
@@ -7,6 +8,10 @@ type Schema = FinalStructurePropertySchema;
 
 export default class FinalStructureProperty extends NonScalarProperty<Schema> implements Schema {
     static readonly propertyName = PropertyName.final_structure;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: FinalStructureProperty.propertyName });

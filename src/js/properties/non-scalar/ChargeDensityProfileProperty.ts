@@ -2,6 +2,7 @@
 /* eslint-disable max-classes-per-file */
 
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { ChargeDensityProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 
@@ -35,6 +36,10 @@ class ChargeDensityProfileProperty extends (NonScalarProperty as Base) implement
     static readonly isRefined = true;
 
     static readonly propertyName = PropertyName.charge_density_profile;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: ChargeDensityProfileProperty.propertyName });

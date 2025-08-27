@@ -1,3 +1,4 @@
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { TotalEnergyContributionsPropertySchema } from "@mat3ra/esse/dist/js/types";
 
 import Property from "../../Property";
@@ -11,6 +12,10 @@ export default class TotalEnergyContributionsProperty extends Property implement
     static readonly propertyType = PropertyType.object;
 
     static readonly propertyName = PropertyName.total_energy_contributions;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: TotalEnergyContributionsProperty.propertyName });

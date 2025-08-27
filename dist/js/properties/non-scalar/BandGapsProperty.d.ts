@@ -7,6 +7,7 @@ export default class BandGapsProperty extends NonScalarProperty<Schema> implemen
     static readonly isRefined = true;
     static readonly propertyName = PropertyName.band_gaps;
     toJSON: () => BandGapsPropertySchema & AnyObject;
+    _json: Schema & AnyObject;
     constructor(config: Omit<Schema, "name">);
     get eigenvalues(): {
         kpoint?: [number, number, number];

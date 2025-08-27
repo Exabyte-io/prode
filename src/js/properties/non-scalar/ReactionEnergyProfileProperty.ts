@@ -2,6 +2,7 @@
 /* eslint-disable max-classes-per-file */
 
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
+import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { ReactionEnergyProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
 
@@ -35,6 +36,10 @@ class ReactionEnergyProfileProperty extends (NonScalarProperty as Base) implemen
     static readonly isRefined = true;
 
     static readonly propertyName = PropertyName.reaction_energy_profile;
+
+    declare toJSON: (exclude?: string[]) => Schema & AnyObject;
+
+    declare _json: Schema & AnyObject;
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: ReactionEnergyProfileProperty.propertyName });

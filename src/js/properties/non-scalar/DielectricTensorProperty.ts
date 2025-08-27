@@ -74,6 +74,8 @@ export class DielectricTensorConfig extends TwoDimensionalHighChartConfigMixin {
 export default class DielectricTensorProperty extends NonScalarProperty<Schema> implements Schema {
     declare toJSON: () => Schema & AnyObject;
 
+    declare _json: Schema & AnyObject;
+
     readonly subtitle = "Dielectric Tensor";
 
     readonly yAxisTitle = "Dielectric Tensor Component";
