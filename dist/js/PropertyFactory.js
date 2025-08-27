@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PROPERTY_CLASS_MAP = void 0;
 const PseudopotentialProperty_1 = __importDefault(require("./meta_properties/PseudopotentialProperty"));
 const AveragePotentialProfileProperty_1 = __importDefault(require("./properties/non-scalar/AveragePotentialProfileProperty"));
 const BandGapsProperty_1 = __importDefault(require("./properties/non-scalar/BandGapsProperty"));
@@ -41,7 +40,7 @@ const StressTensorProperty_1 = __importDefault(require("./properties/tensor/Stre
 const AtomicConstraintsProperty_1 = __importDefault(require("./proto_properties/AtomicConstraintsProperty"));
 const BoundaryConditionsProperty_1 = __importDefault(require("./proto_properties/BoundaryConditionsProperty"));
 const settings_1 = require("./settings");
-exports.PROPERTY_CLASS_MAP = {
+const PROPERTY_CLASS_MAP = {
     [PressureProperty_1.default.propertyName]: PressureProperty_1.default,
     [TotalForceProperty_1.default.propertyName]: TotalForceProperty_1.default,
     [TotalEnergyProperty_1.default.propertyName]: TotalEnergyProperty_1.default,
@@ -75,31 +74,21 @@ exports.PROPERTY_CLASS_MAP = {
     [HubbardVNNProperty_1.default.propertyName]: HubbardVNNProperty_1.default,
     [HubbardVProperty_1.default.propertyName]: HubbardVProperty_1.default,
     [JupyterNotebookEndpointProperty_1.default.propertyName]: JupyterNotebookEndpointProperty_1.default,
-    // meta
+};
+const META_PROPERTY_CLASS_MAP = {
     [PseudopotentialProperty_1.default.propertyName]: PseudopotentialProperty_1.default,
-    // proto
+};
+const PROTO_PROPERTY_CLASS_MAP = {
     [BoundaryConditionsProperty_1.default.propertyName]: BoundaryConditionsProperty_1.default,
     [AtomicConstraintsProperty_1.default.propertyName]: AtomicConstraintsProperty_1.default,
 };
 class PropertyFactory {
-    /**
-     * Get all PropertyName values for properties that have isRefined = true
-     * @returns Array of PropertyName values for refined properties
-     */
     static getRefinedPropertyNames() {
         return this.filterPropertyNames((Property) => Property.isRefined);
     }
-    /**
-     * Get all PropertyName values for properties that have isConvergence = true
-     * @returns Array of PropertyName values for convergence properties
-     */
     static getConvergencePropertyNames() {
         return this.filterPropertyNames((Property) => Property.isConvergence);
     }
-    /**
-     * Get all PropertyName values for properties that have isAbleToReturnMultipleResults = true
-     * @returns Array of PropertyName values for properties that can return multiple results
-     */
     static getMultipleResultsPropertyNames() {
         return this.filterPropertyNames((Property) => Property.isAbleToReturnMultipleResults);
     }
@@ -110,24 +99,26 @@ class PropertyFactory {
         return this.filterPropertyNames((PropertyClass) => PropertyClass.isNonScalar);
     }
     static filterPropertyNames(filterFn) {
-        return Object.values(exports.PROPERTY_CLASS_MAP)
+        return Object.values(PROPERTY_CLASS_MAP)
+            .concat(Object.values(META_PROPERTY_CLASS_MAP))
+            .concat(Object.values(PROTO_PROPERTY_CLASS_MAP))
             .filter(filterFn)
             .map((PropertyClass) => PropertyClass.propertyName);
     }
-    static create(config, methodType) {
+    static createProperty(config) {
         const name = typeof config === "string" ? config : config.name;
-        // TODO: fix this
-        // @ts-expect-error - this is a workaround to allow the propertyMixin to be used with any type of entity
-        const PropertyClass = exports.PROPERTY_CLASS_MAP[name];
-        const precisionFn = this._precisionFunctionByMethodType(methodType);
-        // add precision function directly to avoid mixins
-        PropertyClass.prototype.calculatePrecision = precisionFn;
+        const PropertyClass = PROPERTY_CLASS_MAP[name];
         return new PropertyClass(config);
     }
-    // TODO: generalize the tree
-    static _precisionFunctionByMethodType(methodType = "DFTPseudopotential") {
-        // eslint-disable-next-line func-names, @typescript-eslint/no-empty-function
-        return this.methodsTree[methodType] || function () { }; // return empty function (class) by default
+    static createMetaProperty(config) {
+        const { name } = config;
+        const PropertyClass = META_PROPERTY_CLASS_MAP[name];
+        return new PropertyClass(config);
+    }
+    static createProtoProperty(config) {
+        const { name } = config;
+        const PropertyClass = PROTO_PROPERTY_CLASS_MAP[name];
+        return new PropertyClass(config);
     }
 }
 PropertyFactory.methodsTree = {};

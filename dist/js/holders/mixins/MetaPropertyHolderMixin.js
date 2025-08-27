@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.metaPropertyHolderMixin = metaPropertyHolderMixin;
-const PseudopotentialProperty_1 = __importDefault(require("../../meta_properties/PseudopotentialProperty"));
+const PropertyFactory_1 = __importDefault(require("../../PropertyFactory"));
 function metaPropertyHolderMixin(item) {
     // @ts-expect-error - this is a workaround to allow the metaPropertyMixin to be used with any type of entity
     const properties = {
@@ -12,7 +12,7 @@ function metaPropertyHolderMixin(item) {
             return this.requiredProp("data");
         },
         get property() {
-            return new PseudopotentialProperty_1.default(this.data);
+            return PropertyFactory_1.default.createMetaProperty(this.data);
         },
     };
     Object.defineProperties(item, Object.getOwnPropertyDescriptors(properties));

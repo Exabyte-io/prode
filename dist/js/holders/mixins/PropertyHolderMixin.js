@@ -31,7 +31,7 @@ function propertyHolderMixin(item) {
             return this.requiredProp("repetition");
         },
         get property() {
-            return PropertyFactory_1.default.create(this.data);
+            return PropertyFactory_1.default.createProperty(this.data);
         },
         flattenProperties() {
             try {

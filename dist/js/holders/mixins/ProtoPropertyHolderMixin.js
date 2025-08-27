@@ -15,7 +15,7 @@ function protoPropertyHolderMixin(item) {
             return this.requiredProp("source");
         },
         get property() {
-            return PropertyFactory_1.default.create(this.data);
+            return PropertyFactory_1.default.createProtoProperty(this.data);
         },
     };
     Object.defineProperties(item, Object.getOwnPropertyDescriptors(properties));
