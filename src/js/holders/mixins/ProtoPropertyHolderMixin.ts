@@ -27,7 +27,7 @@ export function protoPropertyHolderMixin(item: InMemoryEntity) {
         },
 
         get property() {
-            return PropertyFactory.create(this.data);
+            return PropertyFactory.createProtoProperty(this.data);
         },
     };
 

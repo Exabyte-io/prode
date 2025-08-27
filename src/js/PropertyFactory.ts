@@ -1,5 +1,10 @@
-import type { PropertyHolderSchema, ProtoPropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
+import type {
+    MetaPropertyHolderSchema,
+    PropertyHolderSchema,
+    ProtoPropertyHolderSchema,
+} from "@mat3ra/esse/dist/js/types";
 
+import type MetaProperty from "./meta_properties/MetaProperty";
 import Pseudopotential from "./meta_properties/PseudopotentialProperty";
 import AveragePotentialProfileProperty from "./properties/non-scalar/AveragePotentialProfileProperty";
 import BandGapsProperty from "./properties/non-scalar/BandGapsProperty";
@@ -37,13 +42,32 @@ import StressTensorProperty from "./properties/tensor/StressTensorProperty";
 import type Property from "./Property";
 import AtomicConstraintsProperty from "./proto_properties/AtomicConstraintsProperty";
 import BoundaryConditionsProperty from "./proto_properties/BoundaryConditionsProperty";
+import type ProtoProperty from "./proto_properties/ProtoProperty";
 import { PropertyName, PropertyType } from "./settings";
 
+// TODO: Missing properties from esse
+// electron_affinity
+// formation_energy
+// vibrational_spectrum
+// functional_group
+// ring
+// special_bond
+
+type AnyProperty = PropertyHolderSchema["data"];
+
 type PropertyClassMap = {
-    [key in PropertyName]: typeof Property;
+    [key in PropertyHolderSchema["data"]["name"]]: typeof Property;
 };
 
-export const PROPERTY_CLASS_MAP: PropertyClassMap = {
+type MetaPropertyClassMap = {
+    [key in MetaPropertyHolderSchema["data"]["name"]]: typeof MetaProperty;
+};
+
+type ProtoPropertyClassMap = {
+    [key in ProtoPropertyHolderSchema["data"]["name"]]: typeof ProtoProperty;
+};
+
+const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [PressureProperty.propertyName]: PressureProperty,
     [TotalForcesProperty.propertyName]: TotalForcesProperty,
     [TotalEnergyProperty.propertyName]: TotalEnergyProperty,
@@ -77,11 +101,13 @@ export const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [HubbardVNNProperty.propertyName]: HubbardVNNProperty,
     [HubbardVProperty.propertyName]: HubbardVProperty,
     [JupyterNotebookEndpointProperty.propertyName]: JupyterNotebookEndpointProperty,
+};
 
-    // meta
+const META_PROPERTY_CLASS_MAP: MetaPropertyClassMap = {
     [Pseudopotential.propertyName]: Pseudopotential,
+};
 
-    // proto
+const PROTO_PROPERTY_CLASS_MAP: ProtoPropertyClassMap = {
     [BoundaryConditionsProperty.propertyName]: BoundaryConditionsProperty,
     [AtomicConstraintsProperty.propertyName]: AtomicConstraintsProperty,
 };
@@ -89,26 +115,14 @@ export const PROPERTY_CLASS_MAP: PropertyClassMap = {
 export default class PropertyFactory {
     static methodsTree: Record<string, () => void> = {};
 
-    /**
-     * Get all PropertyName values for properties that have isRefined = true
-     * @returns Array of PropertyName values for refined properties
-     */
     static getRefinedPropertyNames(): PropertyName[] {
         return this.filterPropertyNames((Property) => Property.isRefined);
     }
 
-    /**
-     * Get all PropertyName values for properties that have isConvergence = true
-     * @returns Array of PropertyName values for convergence properties
-     */
     static getConvergencePropertyNames(): PropertyName[] {
         return this.filterPropertyNames((Property) => Property.isConvergence);
     }
 
-    /**
-     * Get all PropertyName values for properties that have isAbleToReturnMultipleResults = true
-     * @returns Array of PropertyName values for properties that can return multiple results
-     */
     static getMultipleResultsPropertyNames(): PropertyName[] {
         return this.filterPropertyNames((Property) => Property.isAbleToReturnMultipleResults);
     }
@@ -125,33 +139,29 @@ export default class PropertyFactory {
         filterFn: (PropertyClass: typeof Property) => boolean,
     ): PropertyName[] {
         return Object.values(PROPERTY_CLASS_MAP)
+            .concat(Object.values(META_PROPERTY_CLASS_MAP))
+            .concat(Object.values(PROTO_PROPERTY_CLASS_MAP))
             .filter(filterFn)
             .map((PropertyClass) => PropertyClass.propertyName);
     }
 
-    static create(
-        config:
-            | `${PropertyName}`
-            | PropertyHolderSchema["data"]
-            | ProtoPropertyHolderSchema["data"],
-        methodType?: string,
-    ): Property {
+    static createProperty(config: AnyProperty | AnyProperty["name"]): Property {
         const name = typeof config === "string" ? config : config.name;
-        // TODO: fix this
-        // @ts-expect-error - this is a workaround to allow the propertyMixin to be used with any type of entity
         const PropertyClass = PROPERTY_CLASS_MAP[name];
-        const precisionFn = this._precisionFunctionByMethodType(methodType);
 
-        // add precision function directly to avoid mixins
-        PropertyClass.prototype.calculatePrecision = precisionFn;
+        return new PropertyClass(config as PropertyHolderSchema["data"]);
+    }
 
+    static createMetaProperty(config: MetaPropertyHolderSchema["data"]): MetaProperty {
+        const { name } = config;
+        const PropertyClass = META_PROPERTY_CLASS_MAP[name];
         return new PropertyClass(config);
     }
 
-    // TODO: generalize the tree
-    static _precisionFunctionByMethodType(methodType = "DFTPseudopotential") {
-        // eslint-disable-next-line func-names, @typescript-eslint/no-empty-function
-        return this.methodsTree[methodType] || function () {}; // return empty function (class) by default
+    static createProtoProperty(config: ProtoPropertyHolderSchema["data"]) {
+        const { name } = config;
+        const PropertyClass = PROTO_PROPERTY_CLASS_MAP[name];
+        return new PropertyClass(config);
     }
 
     // TODO: move to web-app

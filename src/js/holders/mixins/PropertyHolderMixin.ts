@@ -56,7 +56,7 @@ export function propertyHolderMixin(item: InMemoryEntity) {
         },
 
         get property() {
-            return PropertyFactory.create(this.data);
+            return PropertyFactory.createProperty(this.data);
         },
 
         flattenProperties() {
