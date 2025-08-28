@@ -72,19 +72,5 @@ export default class BandGapsProperty extends NonScalarProperty<Schema> implemen
      * @param type {String}
      */
     private toJSONByType;
-    /**
-     * @summary Converts QueryBuilder selector into mongo selector by value.
-     * @param name band_gaps:direct/band_gaps:indirect
-     * @param selector Mongo selector
-     */
-    static normalizeSelectorByDataField(name: string, selector: object): {
-        name: string;
-        values: {
-            $elemMatch: {
-                type: string;
-                value: object;
-            };
-        };
-    };
 }
 export {};

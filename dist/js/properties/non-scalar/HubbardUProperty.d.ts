@@ -1,5 +1,5 @@
-import type { HubbardUParametersPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { HubbardUParametersPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { PropertyName } from "../../settings";
 import ValuesUnitsProperty from "./base/ValuesUnitsProperty";
 type Schema = HubbardUParametersPropertySchema;

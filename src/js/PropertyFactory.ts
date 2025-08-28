@@ -1,3 +1,4 @@
+import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 import type {
     MetaPropertyHolderSchema,
     PropertyHolderSchema,
@@ -5,7 +6,7 @@ import type {
 } from "@mat3ra/esse/dist/js/types";
 
 import type MetaProperty from "./meta_properties/MetaProperty";
-import Pseudopotential from "./meta_properties/PseudopotentialProperty";
+import PseudopotentialProperty from "./meta_properties/PseudopotentialProperty";
 import AveragePotentialProfileProperty from "./properties/non-scalar/AveragePotentialProfileProperty";
 import BandGapsProperty from "./properties/non-scalar/BandGapsProperty";
 import BandStructureProperty from "./properties/non-scalar/BandStructureProperty";
@@ -42,7 +43,6 @@ import StressTensorProperty from "./properties/tensor/StressTensorProperty";
 import type Property from "./Property";
 import AtomicConstraintsProperty from "./proto_properties/AtomicConstraintsProperty";
 import BoundaryConditionsProperty from "./proto_properties/BoundaryConditionsProperty";
-import type ProtoProperty from "./proto_properties/ProtoProperty";
 import { PropertyName, PropertyType } from "./settings";
 
 // TODO: Missing properties from esse
@@ -56,15 +56,50 @@ import { PropertyName, PropertyType } from "./settings";
 type AnyProperty = PropertyHolderSchema["data"];
 
 type PropertyClassMap = {
-    [key in PropertyHolderSchema["data"]["name"]]: typeof Property;
+    [key in PropertyHolderSchema["data"]["name"]]:
+        | Constructor<PressureProperty>
+        | Constructor<TotalForcesProperty>
+        | Constructor<TotalEnergyProperty>
+        | Constructor<SurfaceEnergyProperty>
+        | Constructor<ConvergenceElectronicProperty>
+        | Constructor<ConvergenceIonicProperty>
+        | Constructor<FermiEnergyProperty>
+        | Constructor<ZeroPointEnergyProperty>
+        | Constructor<TotalEnergyContributionsProperty>
+        | Constructor<AtomicForcesProperty>
+        | Constructor<StressTensorProperty>
+        | Constructor<DensityOfStatesProperty>
+        | Constructor<BandStructureProperty>
+        | Constructor<BandGapsProperty>
+        | Constructor<PhononDispersionsProperty>
+        | Constructor<PhononDOSProperty>
+        | Constructor<FinalStructureProperty>
+        | Constructor<IsRelaxedProperty>
+        | Constructor<WorkflowProperty>
+        | Constructor<MagneticMomentsProperty>
+        | Constructor<ReactionEnergyBarrierProperty>
+        | Constructor<ReactionEnergyProfileProperty>
+        | Constructor<PotentialProfileProperty>
+        | Constructor<ChargeDensityProfileProperty>
+        | Constructor<AveragePotentialProfileProperty>
+        | Constructor<ValenceBandOffsetProperty>
+        | Constructor<IonizationPotentialElementalProperty>
+        | Constructor<FileContentProperty>
+        | Constructor<DielectricTensorProperty>
+        | Constructor<HubbardUProperty>
+        | Constructor<HubbardVNNProperty>
+        | Constructor<HubbardVProperty>
+        | Constructor<JupyterNotebookEndpointProperty>;
 };
 
 type MetaPropertyClassMap = {
-    [key in MetaPropertyHolderSchema["data"]["name"]]: typeof MetaProperty;
+    [key in MetaPropertyHolderSchema["data"]["name"]]: Constructor<PseudopotentialProperty>;
 };
 
 type ProtoPropertyClassMap = {
-    [key in ProtoPropertyHolderSchema["data"]["name"]]: typeof ProtoProperty;
+    [key in ProtoPropertyHolderSchema["data"]["name"]]:
+        | Constructor<BoundaryConditionsProperty>
+        | Constructor<AtomicConstraintsProperty>;
 };
 
 const PROPERTY_CLASS_MAP: PropertyClassMap = {
@@ -104,7 +139,7 @@ const PROPERTY_CLASS_MAP: PropertyClassMap = {
 };
 
 const META_PROPERTY_CLASS_MAP: MetaPropertyClassMap = {
-    [Pseudopotential.propertyName]: Pseudopotential,
+    [PseudopotentialProperty.propertyName]: PseudopotentialProperty,
 };
 
 const PROTO_PROPERTY_CLASS_MAP: ProtoPropertyClassMap = {
@@ -116,40 +151,51 @@ export default class PropertyFactory {
     static methodsTree: Record<string, () => void> = {};
 
     static getRefinedPropertyNames(): PropertyName[] {
-        return this.filterPropertyNames((Property) => Property.isRefined);
+        return this.filterPropertyNames((PropertyClass) => {
+            return (PropertyClass as typeof Property).isRefined;
+        });
     }
 
     static getConvergencePropertyNames(): PropertyName[] {
-        return this.filterPropertyNames((Property) => Property.isConvergence);
+        return this.filterPropertyNames((PropertyClass) => {
+            return (PropertyClass as typeof Property).isConvergence;
+        });
     }
 
     static getMultipleResultsPropertyNames(): PropertyName[] {
-        return this.filterPropertyNames((Property) => Property.isAbleToReturnMultipleResults);
+        return this.filterPropertyNames((PropertyClass) => {
+            return (PropertyClass as typeof Property).isAbleToReturnMultipleResults;
+        });
     }
 
     static getScalarPropertyNames(): PropertyName[] {
-        return this.filterPropertyNames(({ propertyType }) => propertyType === PropertyType.scalar);
+        return this.filterPropertyNames((PropertyClass) => {
+            return (PropertyClass as typeof Property).propertyType === PropertyType.scalar;
+        });
     }
 
     static getNonScalarPropertyNames(): PropertyName[] {
-        return this.filterPropertyNames((PropertyClass) => PropertyClass.isNonScalar);
+        return this.filterPropertyNames((PropertyClass) => {
+            return (PropertyClass as typeof Property).isNonScalar;
+        });
     }
 
     private static filterPropertyNames(
-        filterFn: (PropertyClass: typeof Property) => boolean,
+        filterFn: (PropertyClass: Constructor<Property>) => boolean,
     ): PropertyName[] {
-        return Object.values(PROPERTY_CLASS_MAP)
+        const properties: Constructor<Property>[] = Object.values(PROPERTY_CLASS_MAP);
+
+        return properties
             .concat(Object.values(META_PROPERTY_CLASS_MAP))
             .concat(Object.values(PROTO_PROPERTY_CLASS_MAP))
             .filter(filterFn)
-            .map((PropertyClass) => PropertyClass.propertyName);
+            .map((PropertyClass) => (PropertyClass as typeof Property).propertyName);
     }
 
-    static createProperty(config: AnyProperty | AnyProperty["name"]): Property {
-        const name = typeof config === "string" ? config : config.name;
-        const PropertyClass = PROPERTY_CLASS_MAP[name];
+    static createProperty(config: AnyProperty): Property {
+        const PropertyClass = PROPERTY_CLASS_MAP[config.name];
 
-        return new PropertyClass(config as PropertyHolderSchema["data"]);
+        return new PropertyClass(config);
     }
 
     static createMetaProperty(config: MetaPropertyHolderSchema["data"]): MetaProperty {

@@ -1,5 +1,5 @@
-import type { FermiEnergyPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { FermiEnergyPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { PropertyName } from "../../settings";
 import ScalarProperty from "./base/ScalarProperty";
 type Schema = FermiEnergyPropertySchema;

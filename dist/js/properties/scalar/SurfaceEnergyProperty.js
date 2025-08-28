@@ -10,5 +10,6 @@ class SurfaceEnergyProperty extends ScalarProperty_1.default {
         super({ ...config, name: SurfaceEnergyProperty.propertyName });
     }
 }
+SurfaceEnergyProperty.isRefined = true;
 SurfaceEnergyProperty.propertyName = settings_1.PropertyName.surface_energy;
 exports.default = SurfaceEnergyProperty;

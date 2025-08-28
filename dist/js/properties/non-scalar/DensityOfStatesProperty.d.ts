@@ -142,7 +142,7 @@ export default class DensityOfStatesProperty extends DensityOfStatesProperty_bas
     readonly chartConfig: Options;
     static readonly isRefined = true;
     static readonly propertyName = PropertyName.density_of_states;
-    constructor(config: object, ConfigBuilder?: typeof DensityOfStatesConfig);
+    constructor(config: Omit<Schema, "name">);
     toJSON: () => Schema & AnyObject;
     _json: Schema & AnyObject;
     get legend(): {

@@ -164,12 +164,9 @@ export default class DensityOfStatesProperty extends (NonScalarProperty as Base)
 
     static readonly propertyName = PropertyName.density_of_states;
 
-    constructor(
-        config: object,
-        ConfigBuilder: typeof DensityOfStatesConfig = DensityOfStatesConfig,
-    ) {
+    constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: DensityOfStatesProperty.propertyName });
-        this.chartConfig = new ConfigBuilder(this).config;
+        this.chartConfig = new DensityOfStatesConfig(this).config;
     }
 
     declare toJSON: () => Schema & AnyObject;

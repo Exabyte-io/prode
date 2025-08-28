@@ -1,5 +1,5 @@
-import type { TotalEnergyContributionsPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { TotalEnergyContributionsPropertySchema } from "@mat3ra/esse/dist/js/types";
 import Property from "../../Property";
 import { PropertyName, PropertyType } from "../../settings";
 type Schema = TotalEnergyContributionsPropertySchema;

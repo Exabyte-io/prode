@@ -110,13 +110,13 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
 }
 exports.DensityOfStatesConfig = DensityOfStatesConfig;
 class DensityOfStatesProperty extends NonScalarProperty_1.default {
-    constructor(config, ConfigBuilder = DensityOfStatesConfig) {
+    constructor(config) {
         super({ ...config, name: DensityOfStatesProperty.propertyName });
         this.subtitle = "Density Of States";
         this.yAxisTitle = `Density Of States (${this.yAxis.units})`;
         this.xAxisTitle = `Energy (${this.xAxis.units})`;
         this.fermiEnergy = 0;
-        this.chartConfig = new ConfigBuilder(this).config;
+        this.chartConfig = new DensityOfStatesConfig(this).config;
     }
     get legend() {
         return this.requiredProp("legend");

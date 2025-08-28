@@ -1,5 +1,5 @@
-import type { ReactionEnergyBarrierPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { ReactionEnergyBarrierPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { PropertyName } from "../../settings";
 import ScalarProperty from "./base/ScalarProperty";
 type Schema = ReactionEnergyBarrierPropertySchema;

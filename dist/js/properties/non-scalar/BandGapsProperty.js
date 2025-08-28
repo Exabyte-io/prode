@@ -49,24 +49,6 @@ class BandGapsProperty extends NonScalarProperty_1.default {
             group,
         };
     }
-    /**
-     * @summary Converts QueryBuilder selector into mongo selector by value.
-     * @param name band_gaps:direct/band_gaps:indirect
-     * @param selector Mongo selector
-     */
-    static normalizeSelectorByDataField(name, selector) {
-        // name is in 'band_gaps:direct' format
-        const type = name.split(":")[1]; // direct/indirect
-        return {
-            name: "band_gaps",
-            values: {
-                $elemMatch: {
-                    type,
-                    value: selector,
-                },
-            },
-        };
-    }
 }
 BandGapsProperty.isRefined = true;
 BandGapsProperty.propertyName = settings_1.PropertyName.band_gaps;

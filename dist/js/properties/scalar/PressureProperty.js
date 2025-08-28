@@ -10,5 +10,6 @@ class PressureProperty extends ScalarProperty_1.default {
         super({ ...config, name: PressureProperty.propertyName });
     }
 }
+PressureProperty.isRefined = true;
 PressureProperty.propertyName = settings_1.PropertyName.pressure;
 exports.default = PressureProperty;

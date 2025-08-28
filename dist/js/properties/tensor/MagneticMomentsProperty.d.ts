@@ -1,5 +1,5 @@
-import type { MagneticMomentsPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { MagneticMomentsPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { PropertyName } from "../../settings";
 import TensorValuesProperty from "./base/TensorValuesProperty";
 type Schema = MagneticMomentsPropertySchema;

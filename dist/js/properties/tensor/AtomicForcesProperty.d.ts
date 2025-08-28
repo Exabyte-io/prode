@@ -1,5 +1,5 @@
-import type { AtomicForcesPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { AtomicForcesPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { PropertyName } from "../../settings";
 import TensorValuesUnitsProperty from "./base/TensorValuesProperty";
 type Schema = AtomicForcesPropertySchema;

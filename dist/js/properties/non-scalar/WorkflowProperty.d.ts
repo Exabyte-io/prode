@@ -1,5 +1,5 @@
-import type { WorkflowPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { WorkflowPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { PropertyName } from "../../settings";
 import NonScalarProperty from "./base/NonScalarProperty";
 type Schema = WorkflowPropertySchema;

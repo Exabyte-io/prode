@@ -1,5 +1,5 @@
-import type { StressTensorPropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
+import type { StressTensorPropertySchema } from "@mat3ra/esse/dist/js/types";
 import { PropertyName } from "../../settings";
 import TensorValueProperty from "./base/TensorValueProperty";
 type Schema = StressTensorPropertySchema;

@@ -10,5 +10,6 @@ class ValenceBandOffsetProperty extends ScalarProperty_1.default {
         super({ ...config, name: ValenceBandOffsetProperty.propertyName });
     }
 }
+ValenceBandOffsetProperty.isRefined = true;
 ValenceBandOffsetProperty.propertyName = settings_1.PropertyName.valence_band_offset;
 exports.default = ValenceBandOffsetProperty;

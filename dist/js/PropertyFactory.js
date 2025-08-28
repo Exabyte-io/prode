@@ -84,30 +84,40 @@ const PROTO_PROPERTY_CLASS_MAP = {
 };
 class PropertyFactory {
     static getRefinedPropertyNames() {
-        return this.filterPropertyNames((Property) => Property.isRefined);
+        return this.filterPropertyNames((PropertyClass) => {
+            return PropertyClass.isRefined;
+        });
     }
     static getConvergencePropertyNames() {
-        return this.filterPropertyNames((Property) => Property.isConvergence);
+        return this.filterPropertyNames((PropertyClass) => {
+            return PropertyClass.isConvergence;
+        });
     }
     static getMultipleResultsPropertyNames() {
-        return this.filterPropertyNames((Property) => Property.isAbleToReturnMultipleResults);
+        return this.filterPropertyNames((PropertyClass) => {
+            return PropertyClass.isAbleToReturnMultipleResults;
+        });
     }
     static getScalarPropertyNames() {
-        return this.filterPropertyNames(({ propertyType }) => propertyType === settings_1.PropertyType.scalar);
+        return this.filterPropertyNames((PropertyClass) => {
+            return PropertyClass.propertyType === settings_1.PropertyType.scalar;
+        });
     }
     static getNonScalarPropertyNames() {
-        return this.filterPropertyNames((PropertyClass) => PropertyClass.isNonScalar);
+        return this.filterPropertyNames((PropertyClass) => {
+            return PropertyClass.isNonScalar;
+        });
     }
     static filterPropertyNames(filterFn) {
-        return Object.values(PROPERTY_CLASS_MAP)
+        const properties = Object.values(PROPERTY_CLASS_MAP);
+        return properties
             .concat(Object.values(META_PROPERTY_CLASS_MAP))
             .concat(Object.values(PROTO_PROPERTY_CLASS_MAP))
             .filter(filterFn)
             .map((PropertyClass) => PropertyClass.propertyName);
     }
     static createProperty(config) {
-        const name = typeof config === "string" ? config : config.name;
-        const PropertyClass = PROPERTY_CLASS_MAP[name];
+        const PropertyClass = PROPERTY_CLASS_MAP[config.name];
         return new PropertyClass(config);
     }
     static createMetaProperty(config) {
