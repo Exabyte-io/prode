@@ -28,7 +28,7 @@ export default class BandGapsProperty extends NonScalarProperty<Schema> implemen
         return this.requiredProp<BandGapsPropertySchema["values"]>("values");
     }
 
-    toRowValues(group: string) {
+    toRowValues(group?: string) {
         return [this.toJSONByType("direct", group), this.toJSONByType("indirect", group)];
     }
 
@@ -48,7 +48,7 @@ export default class BandGapsProperty extends NonScalarProperty<Schema> implemen
      * Characteristic name will be `band_gaps:<type>`
      * @param type {String}
      */
-    private toJSONByType(type: string, group: string) {
+    private toJSONByType(type: string, group?: string) {
         const ch = this.toJSON();
         const bandGapByType = deepClone(ch) as BandGapsPropertySchema;
         const directData = this.values.find((x) => x.type === type);

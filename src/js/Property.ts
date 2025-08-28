@@ -50,7 +50,7 @@ export default class Property extends NamedInMemoryEntity {
         return this.constructor as typeof Property;
     }
 
-    toRowValues(group?: string, slug?: string): PropertyRowValue[] {
+    toRowValues(group: string | undefined, slug: string | undefined): PropertyRowValue[] {
         return [
             {
                 ...this.toJSON(),

@@ -22,6 +22,6 @@ export default class Property extends NamedInMemoryEntity {
     static get isTensor(): boolean;
     static get isObject(): boolean;
     get propertyClass(): typeof Property;
-    toRowValues(group?: string, slug?: string): PropertyRowValue[];
+    toRowValues(group: string | undefined, slug: string | undefined): PropertyRowValue[];
     static prettifyName(name: string): string;
 }

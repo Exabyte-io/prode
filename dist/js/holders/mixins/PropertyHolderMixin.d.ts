@@ -1,7 +1,7 @@
 import type { InMemoryEntity } from "@mat3ra/code/dist/js/entity";
 import type { PropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
-import type Property from "../../Property";
 import type { PropertyRowValue } from "../../Property";
+import PropertyFactory from "../../PropertyFactory";
 export type PropertyHolderSourceSchema = PropertyHolderSchema["source"];
 export type PropertyHolderMixin = {
     data: PropertyHolderSchema["data"];
@@ -11,7 +11,7 @@ export type PropertyHolderMixin = {
     group: PropertyHolderSchema["group"];
     exabyteId: PropertyHolderSchema["exabyteId"];
     repetition: PropertyHolderSchema["repetition"];
-    property: Property;
+    property: ReturnType<typeof PropertyFactory.createProperty>;
     flattenProperties(): {
         [x: string]: unknown;
     }[];

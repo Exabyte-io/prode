@@ -28,7 +28,7 @@ export default class BandGapsProperty extends NonScalarProperty<Schema> implemen
         units?: "kJ/mol" | "eV" | "J/mol" | "hartree" | "cm-1" | "Ry" | "eV/atom";
         value: number;
     }[];
-    toRowValues(group: string): {
+    toRowValues(group?: string): {
         data: {
             name: string;
             kpointConduction?: [number, number, number];
@@ -41,7 +41,7 @@ export default class BandGapsProperty extends NonScalarProperty<Schema> implemen
             value?: number | undefined;
         };
         slug: string;
-        group: string;
+        group: string | undefined;
         name: "band_gaps";
         values: {
             kpointConduction?: [number, number, number];

@@ -192,7 +192,7 @@ export default class PropertyFactory {
             .map((PropertyClass) => (PropertyClass as typeof Property).propertyName);
     }
 
-    static createProperty(config: AnyProperty): Property {
+    static createProperty(config: AnyProperty) {
         const PropertyClass = PROPERTY_CLASS_MAP[config.name];
 
         return new PropertyClass(config);
