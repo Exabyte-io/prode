@@ -8,6 +8,5 @@ export default class StressTensorProperty extends TensorValueProperty<Schema> im
     toJSON: (exclude?: string[]) => Schema & AnyObject;
     _json: Schema & AnyObject;
     constructor(config: Omit<Schema, "name">);
-    get values(): [[number, number, number], [number, number, number], [number, number, number]];
 }
 export {};

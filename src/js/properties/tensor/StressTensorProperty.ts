@@ -16,10 +16,4 @@ export default class StressTensorProperty extends TensorValueProperty<Schema> im
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: StressTensorProperty.propertyName });
     }
-
-    // We expect all tensor properties to have a values array, but we do not define it in the StressTensorPropertySchema in esse
-    // TODO: modify the StressTensorPropertySchema and write a migration for web-app?
-    get values() {
-        return this.value;
-    }
 }
