@@ -2,11 +2,11 @@ import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { AtomicForcesPropertySchema } from "@mat3ra/esse/dist/js/types";
 
 import { PropertyName } from "../../settings";
-import TensorValuesUnitsProperty from "./base/TensorValuesProperty";
+import TensorValuesProperty from "./base/TensorValuesProperty";
 
 type Schema = AtomicForcesPropertySchema;
 
-class AtomicForcesProperty extends TensorValuesUnitsProperty<Schema> implements Schema {
+class AtomicForcesProperty extends TensorValuesProperty<Schema> implements Schema {
     static readonly propertyName = PropertyName.atomic_forces;
 
     declare toJSON: (exclude?: string[]) => Schema & AnyObject;
