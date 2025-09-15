@@ -31,11 +31,11 @@ describe("TotalEnergyContributionsProperty", () => {
             name: "total_energy_contributions",
             units: "hartree",
             temperatureEntropy: { value: 0.1 },
-            harrisFoulkes: { value: -2.3 },
-            oneElectron: { value: 12.5 },
+            harris_foulkes: { value: -2.3 },
+            one_electron: { value: 12.5 },
             hartree: { value: -15.2 },
             exchange: { value: -8.5 },
-            exchangeCorrelation: { value: -3.1 },
+            exchange_correlation: { value: -3.1 },
             ewald: { value: 5.2 },
             alphaZ: { value: -1.8 },
             atomicEnergy: { value: 2.1 },
@@ -48,8 +48,8 @@ describe("TotalEnergyContributionsProperty", () => {
         const property = new TotalEnergyContributionsProperty(config);
 
         expect(property.temperatureEntropy?.value).equal(0.1);
-        expect(property.harrisFoulkes?.value).equal(-2.3);
-        expect(property.oneElectron?.value).equal(12.5);
+        expect(property.harris_foulkes?.value).equal(-2.3);
+        expect(property.one_electron?.value).equal(12.5);
         expect(property.hartree?.value).equal(-15.2);
         expect(property.exchange?.value).equal(-8.5);
         expect(property.exchangeCorrelation?.value).equal(-3.1);

@@ -25,12 +25,12 @@ export default class TotalEnergyContributionsProperty extends Property implement
         return this.prop<Schema["temperatureEntropy"]>("temperatureEntropy");
     }
 
-    get harrisFoulkes() {
-        return this.prop<Schema["harrisFoulkes"]>("harrisFoulkes");
+    get harris_foulkes() {
+        return this.prop<Schema["harris_foulkes"]>("harris_foulkes");
     }
 
-    get oneElectron() {
-        return this.prop<Schema["oneElectron"]>("oneElectron");
+    get one_electron() {
+        return this.prop<Schema["one_electron"]>("one_electron");
     }
 
     get hartree() {
@@ -42,7 +42,11 @@ export default class TotalEnergyContributionsProperty extends Property implement
     }
 
     get exchangeCorrelation() {
-        return this.prop<Schema["exchangeCorrelation"]>("exchangeCorrelation");
+        return this.prop<Schema["exchange_correlation"]>("exchange_correlation");
+    }
+
+    get exchange_correlation() {
+        return this.prop<Schema["exchange_correlation"]>("exchange_correlation");
     }
 
     get ewald() {

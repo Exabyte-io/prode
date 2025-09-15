@@ -14,11 +14,11 @@ export default class TotalEnergyContributionsProperty extends Property implement
         name?: "temperature_entropy";
         value: number;
     } | undefined;
-    get harrisFoulkes(): {
+    get harris_foulkes(): {
         name?: "harris_foulkes";
         value: number;
     } | undefined;
-    get oneElectron(): {
+    get one_electron(): {
         name?: "one_electron";
         value: number;
     } | undefined;
@@ -31,6 +31,10 @@ export default class TotalEnergyContributionsProperty extends Property implement
         value: number;
     } | undefined;
     get exchangeCorrelation(): {
+        name?: "exchange_correlation";
+        value: number;
+    } | undefined;
+    get exchange_correlation(): {
         name?: "exchange_correlation";
         value: number;
     } | undefined;

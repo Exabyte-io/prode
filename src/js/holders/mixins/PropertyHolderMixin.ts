@@ -16,6 +16,7 @@ export type PropertyHolderMixin = {
     group: PropertyHolderSchema["group"];
     exabyteId: PropertyHolderSchema["exabyteId"];
     repetition: PropertyHolderSchema["repetition"];
+    systemTags: PropertyHolderSchema["systemTags"];
     property: ReturnType<typeof PropertyFactory.createProperty>;
     flattenProperties(): { [x: string]: unknown }[];
     toRowValues(): PropertyRowValue[];
@@ -56,6 +57,10 @@ export function propertyHolderMixin(item: InMemoryEntity) {
 
         get property() {
             return PropertyFactory.createProperty(this.data);
+        },
+
+        get systemTags() {
+            return this.prop<PropertyHolderSchema["systemTags"]>("systemTags");
         },
 
         flattenProperties() {

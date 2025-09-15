@@ -12,11 +12,11 @@ class TotalEnergyContributionsProperty extends Property_1.default {
     get temperatureEntropy() {
         return this.prop("temperatureEntropy");
     }
-    get harrisFoulkes() {
-        return this.prop("harrisFoulkes");
+    get harris_foulkes() {
+        return this.prop("harris_foulkes");
     }
-    get oneElectron() {
-        return this.prop("oneElectron");
+    get one_electron() {
+        return this.prop("one_electron");
     }
     get hartree() {
         return this.prop("hartree");
@@ -25,7 +25,10 @@ class TotalEnergyContributionsProperty extends Property_1.default {
         return this.prop("exchange");
     }
     get exchangeCorrelation() {
-        return this.prop("exchangeCorrelation");
+        return this.prop("exchange_correlation");
+    }
+    get exchange_correlation() {
+        return this.prop("exchange_correlation");
     }
     get ewald() {
         return this.prop("ewald");

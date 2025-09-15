@@ -37,7 +37,7 @@ export default class WorkflowProperty extends NonScalarProperty<Schema> implemen
                 overwrite?: boolean;
                 pathname?: string;
                 basename: string;
-                filetype: string;
+                filetype?: string;
                 [k: string]: unknown;
             })[];
             _id?: string;
@@ -403,7 +403,7 @@ export default class WorkflowProperty extends NonScalarProperty<Schema> implemen
         isDraft?: boolean;
         _id?: string;
         name: string;
-        properties?: (string | {})[];
+        properties?: string[];
         compute?: {
             queue: "D" | "OR" | "OF" | "OFplus" | "SR" | "SF" | "SFplus" | "GPOF" | "GP2OF" | "GP4OF" | "GPSF" | "GP2SF" | "GP4SF" | "OR4" | "OR8" | "OR16" | "SR4" | "SR8" | "SR16" | "GOF" | "G4OF" | "G8OF" | "GSF" | "G4SF" | "G8SF";
             nodes: number;
@@ -432,7 +432,7 @@ export default class WorkflowProperty extends NonScalarProperty<Schema> implemen
                 traceback?: string;
             }[];
             excludeFilesPattern?: string;
-        } | null;
+        };
     }[];
     get units(): ({
         [k: string]: unknown;
@@ -463,7 +463,7 @@ export default class WorkflowProperty extends NonScalarProperty<Schema> implemen
             overwrite?: boolean;
             pathname?: string;
             basename: string;
-            filetype: string;
+            filetype?: string;
             [k: string]: unknown;
         })[];
         _id?: string;

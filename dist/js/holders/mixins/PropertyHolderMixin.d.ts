@@ -11,6 +11,7 @@ export type PropertyHolderMixin = {
     group: PropertyHolderSchema["group"];
     exabyteId: PropertyHolderSchema["exabyteId"];
     repetition: PropertyHolderSchema["repetition"];
+    systemTags: PropertyHolderSchema["systemTags"];
     property: ReturnType<typeof PropertyFactory.createProperty>;
     flattenProperties(): {
         [x: string]: unknown;

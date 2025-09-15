@@ -33,6 +33,9 @@ function propertyHolderMixin(item) {
         get property() {
             return PropertyFactory_1.default.createProperty(this.data);
         },
+        get systemTags() {
+            return this.prop("systemTags");
+        },
         flattenProperties() {
             try {
                 return [(0, utils_1.flattenObject)(this.data)];
