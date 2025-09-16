@@ -3,7 +3,7 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types.js";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { DensityOfStatesPropertySchema } from "@mat3ra/esse/dist/js/types";
-import type { Options } from "highcharts";
+import type { IndividualSeriesOptions, Options } from "highcharts";
 import zip from "lodash/zip";
 
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
@@ -86,7 +86,7 @@ export class DensityOfStatesConfig extends HighChartsConfig {
         });
     }
 
-    get series() {
+    get series(): IndividualSeriesOptions[] {
         const series_ = this.yDataSeries.map((item, index) => {
             const legend = this.legends[index];
             const { spin } = legend;
@@ -99,8 +99,8 @@ export class DensityOfStatesConfig extends HighChartsConfig {
             return {
                 data: zip(
                     this.xDataArray,
-                    item.map((x) => Number(x).toPrecision(4) as unknown as number),
-                ) as [number, number][],
+                    item.map((x) => +(x as number).toPrecision(4)),
+                ) as IndividualSeriesOptions["data"],
                 name,
                 color: name === "Total" ? "#000000" : undefined,
                 animation: false,
