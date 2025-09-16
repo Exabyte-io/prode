@@ -99,7 +99,7 @@ export class DensityOfStatesConfig extends HighChartsConfig {
             return {
                 data: zip(
                     this.xDataArray,
-                    item.map((x) => +(x as number).toPrecision(4)),
+                    item.map((x) => Number(Number(x).toPrecision(4))),
                 ) as IndividualSeriesOptions["data"],
                 name,
                 color: name === "Total" ? "#000000" : undefined,
