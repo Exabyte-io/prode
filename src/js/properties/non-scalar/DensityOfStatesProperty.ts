@@ -82,12 +82,12 @@ export class DensityOfStatesConfig extends HighChartsConfig {
     cleanXDataArray(rawData: Schema["xDataArray"]) {
         return rawData.flat().map((x) => {
             const value = this.fermiEnergy ? x - this.fermiEnergy : x;
-            return +value.toPrecision(4);
+            return Number(value.toPrecision(4));
         });
     }
 
     get series(): IndividualSeriesOptions[] {
-        const series_ = this.yDataSeries.map((item, index) => {
+        return this.yDataSeries.map((item, index) => {
             const legend = this.legends[index];
             const { spin } = legend;
             const spinText = spin ? ` ${spin > 0 ? "↑" : "↓"}` : "";
@@ -106,8 +106,6 @@ export class DensityOfStatesConfig extends HighChartsConfig {
                 animation: false,
             };
         });
-
-        return series_;
     }
 
     tooltipFormatter() {
