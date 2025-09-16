@@ -1,7 +1,7 @@
 import type { Constructor } from "@mat3ra/code/dist/js/utils/types.js";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { DensityOfStatesPropertySchema } from "@mat3ra/esse/dist/js/types";
-import type { Options } from "highcharts";
+import type { IndividualSeriesOptions, Options } from "highcharts";
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
 import { PropertyName } from "../../settings";
 import { type TwoDimensionalPlotMixin, type YDataSeries } from "../include/mixins/2d_plot";
@@ -39,12 +39,7 @@ export declare class DensityOfStatesConfig extends HighChartsConfig {
         xDataArray: Schema["xDataArray"];
     });
     cleanXDataArray(rawData: Schema["xDataArray"]): number[];
-    get series(): {
-        data: [number, number][];
-        name: string;
-        color: string | undefined;
-        animation: boolean;
-    }[];
+    get series(): IndividualSeriesOptions[];
     tooltipFormatter(): (this: FormatterScope) => string;
     xAxis(): {
         plotLines: import("highcharts").PlotLines[];

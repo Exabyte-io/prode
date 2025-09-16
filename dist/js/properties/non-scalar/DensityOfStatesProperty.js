@@ -55,11 +55,11 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
     cleanXDataArray(rawData) {
         return rawData.flat().map((x) => {
             const value = this.fermiEnergy ? x - this.fermiEnergy : x;
-            return +value.toPrecision(4);
+            return Number(value.toPrecision(4));
         });
     }
     get series() {
-        const series_ = this.yDataSeries.map((item, index) => {
+        return this.yDataSeries.map((item, index) => {
             const legend = this.legends[index];
             const { spin } = legend;
             const spinText = spin ? ` ${spin > 0 ? "↑" : "↓"}` : "";
@@ -67,13 +67,12 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
                 ? `${legend.element} ${legend.electronicState}${spinText}`
                 : "Total";
             return {
-                data: (0, zip_1.default)(this.xDataArray, item.map((x) => Number(x).toPrecision(4))),
+                data: (0, zip_1.default)(this.xDataArray, item.map((x) => Number(Number(x).toPrecision(4)))),
                 name,
                 color: name === "Total" ? "#000000" : undefined,
                 animation: false,
             };
         });
-        return series_;
     }
     tooltipFormatter() {
         // eslint-disable-next-line func-names
