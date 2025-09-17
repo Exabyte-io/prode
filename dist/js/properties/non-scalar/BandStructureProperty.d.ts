@@ -11,7 +11,7 @@ import NonScalarProperty from "./base/NonScalarProperty";
 export declare const _POINT_COORDINATES_PRECISION_ = 4;
 export declare class BandStructureConfig extends HighChartsConfig {
     readonly yDataSeries: YDataSeries;
-    readonly spin: number[];
+    readonly spin?: number[];
     readonly xDataArray: XDataArrayNested;
     readonly pointsDistanceArray: number[];
     readonly fermiEnergy: number | null;

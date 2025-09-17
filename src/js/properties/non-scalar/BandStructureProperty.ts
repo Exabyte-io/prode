@@ -26,7 +26,7 @@ export const _POINT_COORDINATES_PRECISION_ = 4; // number of decimals to keep fo
 export class BandStructureConfig extends HighChartsConfig {
     readonly yDataSeries: YDataSeries;
 
-    readonly spin: number[];
+    readonly spin?: number[];
 
     readonly xDataArray: XDataArrayNested;
 
@@ -136,12 +136,13 @@ export class BandStructureConfig extends HighChartsConfig {
                 return fermiEnergy ? Number(x) - fermiEnergy : Number(x);
             });
 
-            const spin = this.spin[index] > 0 ? "up" : "down";
+            const spin = this.spin?.[index];
+            const spinText = spin && spin > 0 ? "up" : "down";
 
             return {
                 data: lodash.zip(this.pointsDistanceArray, itemUpdated) as [number, number][],
-                name: spin,
-                color: spin === "up" ? "#3677d9" : "#ff7f0e",
+                name: spinText,
+                color: spinText === "up" ? "#3677d9" : "#ff7f0e",
                 animation: false,
             };
         });

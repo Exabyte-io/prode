@@ -93,15 +93,17 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
     get series() {
         const { fermiEnergy } = this;
         const series_ = this.yDataSeries.map((item, index) => {
+            var _a;
             // shift values by fermiEnergy
             const itemUpdated = item.map((x) => {
                 return fermiEnergy ? Number(x) - fermiEnergy : Number(x);
             });
-            const spin = this.spin[index] > 0 ? "up" : "down";
+            const spin = (_a = this.spin) === null || _a === void 0 ? void 0 : _a[index];
+            const spinText = spin && spin > 0 ? "up" : "down";
             return {
                 data: lodash_1.default.zip(this.pointsDistanceArray, itemUpdated),
-                name: spin,
-                color: spin === "up" ? "#3677d9" : "#ff7f0e",
+                name: spinText,
+                color: spinText === "up" ? "#3677d9" : "#ff7f0e",
                 animation: false,
             };
         });
