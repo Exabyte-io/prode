@@ -89,12 +89,10 @@ export class DensityOfStatesConfig extends HighChartsConfig {
     get series(): IndividualSeriesOptions[] {
         return this.yDataSeries.map((item, index) => {
             const legend = this.legends[index];
-            const { spin } = legend;
-            const spinText = spin ? ` ${spin > 0 ? "↑" : "↓"}` : "";
-            const name =
-                legend && legend.element
-                    ? `${legend.element} ${legend.electronicState}${spinText}`
-                    : "Total";
+            const spinText = legend?.spin ? ` ${legend.spin > 0 ? "↑" : "↓"}` : "";
+            const name = legend?.element
+                ? `${legend.element} ${legend.electronicState}${spinText}`
+                : "Total";
 
             return {
                 data: zip(

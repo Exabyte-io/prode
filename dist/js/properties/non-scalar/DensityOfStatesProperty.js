@@ -61,9 +61,8 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
     get series() {
         return this.yDataSeries.map((item, index) => {
             const legend = this.legends[index];
-            const { spin } = legend;
-            const spinText = spin ? ` ${spin > 0 ? "↑" : "↓"}` : "";
-            const name = legend && legend.element
+            const spinText = (legend === null || legend === void 0 ? void 0 : legend.spin) ? ` ${legend.spin > 0 ? "↑" : "↓"}` : "";
+            const name = (legend === null || legend === void 0 ? void 0 : legend.element)
                 ? `${legend.element} ${legend.electronicState}${spinText}`
                 : "Total";
             return {
