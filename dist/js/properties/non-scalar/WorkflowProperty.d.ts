@@ -36,7 +36,7 @@ export default class WorkflowProperty extends NonScalarProperty<Schema> implemen
                 };
                 overwrite?: boolean;
                 pathname?: string;
-                basename: string;
+                basename?: string;
                 filetype?: string;
                 [k: string]: unknown;
             })[];
@@ -462,7 +462,7 @@ export default class WorkflowProperty extends NonScalarProperty<Schema> implemen
             };
             overwrite?: boolean;
             pathname?: string;
-            basename: string;
+            basename?: string;
             filetype?: string;
             [k: string]: unknown;
         })[];

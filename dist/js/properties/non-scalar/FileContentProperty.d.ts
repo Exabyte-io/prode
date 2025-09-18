@@ -19,6 +19,6 @@ export default class FileContentProperty extends NonScalarProperty<Schema> imple
         TIMESTAMP?: string;
     };
     get pathname(): string | undefined;
-    get basename(): string;
+    get basename(): string | undefined;
 }
 export {};

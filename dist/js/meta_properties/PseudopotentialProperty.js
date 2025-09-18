@@ -14,6 +14,15 @@ class PseudopotentialProperty extends MetaProperty_1.default {
     get path() {
         return this.requiredProp("path");
     }
+    get hash() {
+        return this.requiredProp("hash");
+    }
+    get valenceConfiguration() {
+        return this.prop("valenceConfiguration");
+    }
+    get cutoffs() {
+        return this.prop("cutoffs");
+    }
     get filename() {
         return this.prop("filename");
     }

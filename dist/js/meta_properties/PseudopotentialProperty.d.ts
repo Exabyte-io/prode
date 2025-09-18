@@ -1,3 +1,4 @@
+import type { FileDataItem } from "@mat3ra/esse/dist/js/types";
 import { PropertyName, PropertyType } from "../settings";
 import MetaProperty from "./MetaProperty";
 type RawDataObject = {
@@ -10,13 +11,34 @@ type RawDataObject = {
 declare enum CompatibleExchangeCorrelationKey {
     hse06 = "hse06"
 }
-export default class PseudopotentialProperty extends MetaProperty {
+export default class PseudopotentialProperty extends MetaProperty implements FileDataItem {
+    readonly name: FileDataItem["name"];
     static readonly propertyName = PropertyName.pseudopotential;
     static readonly propertyType = PropertyType.non_scalar;
     static readonly compatibleExchangeCorrelation: {
         hse06: string[];
     };
     get path(): string;
+    get hash(): string;
+    get valenceConfiguration(): {
+        orbitalName?: string;
+        orbitalIndex?: number;
+        principalNumber?: number;
+        angularMomentum?: number;
+        occupation?: number;
+    }[] | undefined;
+    get cutoffs(): {
+        wavefunction?: {
+            unit: "Ry";
+            accuracy_level: "standard" | "low" | "high";
+            value: number;
+        }[];
+        density?: {
+            unit: "Ry";
+            accuracy_level: "standard" | "low" | "high";
+            value: number;
+        }[];
+    } | undefined;
     get filename(): string | undefined;
     get source(): string;
     get element(): string;

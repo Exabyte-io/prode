@@ -16,7 +16,9 @@ enum CompatibleExchangeCorrelationKey {
     hse06 = "hse06",
 }
 
-export default class PseudopotentialProperty extends MetaProperty {
+export default class PseudopotentialProperty extends MetaProperty implements FileDataItem {
+    declare readonly name: FileDataItem["name"];
+
     static readonly propertyName = PropertyName.pseudopotential;
 
     static readonly propertyType = PropertyType.non_scalar;
@@ -27,6 +29,18 @@ export default class PseudopotentialProperty extends MetaProperty {
 
     get path() {
         return this.requiredProp<FileDataItem["path"]>("path");
+    }
+
+    get hash() {
+        return this.requiredProp<FileDataItem["hash"]>("hash");
+    }
+
+    get valenceConfiguration() {
+        return this.prop<FileDataItem["valenceConfiguration"]>("valenceConfiguration");
+    }
+
+    get cutoffs() {
+        return this.prop<FileDataItem["cutoffs"]>("cutoffs");
     }
 
     get filename() {
