@@ -140,7 +140,6 @@ describe("Pseudopotentials", () => {
         expect(filtered[0].source).to.be.equal(filterObj.searchText);
     });
     it("can be filtered by appName and elements at once", () => {
-        // @ts-expect-error
         const filtered = Pseudopotential.applyPseudoFilters(pseudos, filterObj2);
         // may need to be adjusted when new pseudos array is modified!
         expect(filtered).to.have.lengthOf(1);
@@ -158,7 +157,6 @@ describe("Pseudopotentials", () => {
     });
     it("can be filtered by pseudopotential type", () => {
         const filtered = Pseudopotential.filterByType(pseudos, "paw");
-        // @ts-expect-error
         const filteredWithObject = Pseudopotential.applyPseudoFilters(pseudos, { type: "paw" });
         // may need to be adjusted when new pseudos array is modified!
         expect(filtered).to.have.lengthOf(1);

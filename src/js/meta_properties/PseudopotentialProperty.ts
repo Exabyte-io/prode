@@ -172,14 +172,14 @@ export default class PseudopotentialProperty extends MetaProperty implements Fil
     static applyPseudoFilters(
         pseudos: PseudopotentialProperty[],
         pseudoFilter: {
-            searchText: string;
-            appName: string;
-            type: string;
-            exchangeCorrelation: {
+            searchText?: string;
+            appName?: string;
+            type?: string;
+            exchangeCorrelation?: {
                 functional: keyof typeof PseudopotentialProperty.compatibleExchangeCorrelation;
                 approximation: string;
             };
-            elements: string[];
+            elements?: string[];
         },
     ) {
         let filteredPseudos = [...pseudos];
