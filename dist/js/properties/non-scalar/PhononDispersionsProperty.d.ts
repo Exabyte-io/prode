@@ -16,9 +16,9 @@ declare class PhononDispersionsProperty extends PhononDispersionsProperty_base i
     _json: Schema & AnyObject;
     readonly subtitle = "Phonon Dispersions";
     readonly yAxisTitle: string;
-    readonly fermiEnergy: number | null;
-    readonly pointsPath: KPointPath | undefined;
     readonly chartConfig: Options;
-    constructor(config: Omit<Schema, "name">);
+    constructor(config: Omit<Schema, "name"> & {
+        pointsPath?: KPointPath;
+    });
 }
 export default PhononDispersionsProperty;

@@ -13,7 +13,6 @@ export default class PhononDOSProperty extends PhononDOSProperty_base implements
     readonly subtitle: string;
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
-    readonly fermiEnergy: null;
     static readonly propertyName = PropertyName.phonon_dos;
     toJSON: (exclude?: string[]) => Schema & AnyObject;
     _json: Schema & AnyObject;

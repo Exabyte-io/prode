@@ -18,11 +18,9 @@ class PhononDispersionsProperty extends NonScalarProperty_1.default {
         super({ ...config, name: PhononDispersionsProperty.propertyName });
         this.subtitle = "Phonon Dispersions";
         this.yAxisTitle = `Frequency (${this.yAxis.units})`;
-        // unset property
-        this.fermiEnergy = null;
-        // TODO: Add as config parameter
-        this.pointsPath = undefined;
-        this.chartConfig = new PhononDispersionsConfig(this).config;
+        this.chartConfig = new PhononDispersionsConfig(this, {
+            pointsPath: config.pointsPath,
+        }).config;
     }
 }
 PhononDispersionsProperty.propertyName = settings_1.PropertyName.phonon_dispersions;

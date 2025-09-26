@@ -28,7 +28,6 @@ class PhononDOSProperty extends NonScalarProperty_1.default {
         this.subtitle = "Phonon Density Of States";
         this.yAxisTitle = `Density Of States (${this.yAxis.units})`;
         this.xAxisTitle = `Frequency (${this.xAxis.units})`;
-        this.fermiEnergy = null;
         this.chartConfig = new PhononDOSConfig(this).config;
     }
 }

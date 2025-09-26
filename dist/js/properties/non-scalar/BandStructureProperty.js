@@ -16,7 +16,8 @@ const spin_dependent_1 = require("../include/mixins/spin_dependent");
 const NonScalarProperty_1 = __importDefault(require("./base/NonScalarProperty"));
 exports._POINT_COORDINATES_PRECISION_ = 4; // number of decimals to keep for point coordinates
 class BandStructureConfig extends highcharts_1.HighChartsConfig {
-    constructor(property) {
+    constructor(property, chartConfig) {
+        var _a;
         super({
             subtitle: property.subtitle,
             yAxisTitle: property.yAxisTitle,
@@ -25,9 +26,9 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
         this.yDataSeries = property.yDataSeries;
         this.spin = property.spin;
         this.xDataArray = this.cleanXDataArray(property.xDataArray);
-        this.pointsPath = property.pointsPath;
+        this.pointsPath = chartConfig === null || chartConfig === void 0 ? void 0 : chartConfig.pointsPath;
         this.pointsDistanceArray = this.calculatePointsDistance(this.xDataArray);
-        this.fermiEnergy = property.fermiEnergy;
+        this.fermiEnergy = (_a = chartConfig === null || chartConfig === void 0 ? void 0 : chartConfig.fermiEnergy) !== null && _a !== void 0 ? _a : null;
         this.plotXLineAtPoint = this.plotXLineAtPoint.bind(this);
         this.plotXLines = this.plotXLines.bind(this);
     }
@@ -205,11 +206,10 @@ class BandStructureProperty extends NonScalarProperty_1.default {
         super({ ...config, name: BandStructureProperty.propertyName });
         this.subtitle = "Electronic Bandstructure";
         this.yAxisTitle = `Energy (${this.yAxis.units})`;
-        // TODO: Add as config parameter from Factory
-        this.fermiEnergy = null;
-        // TODO: Add as config parameter from Factory
-        this.pointsPath = undefined;
-        this.chartConfig = new BandStructureConfig(this).config;
+        this.chartConfig = new BandStructureConfig(this, {
+            fermiEnergy: config.fermiEnergy,
+            pointsPath: config.pointsPath,
+        }).config;
     }
 }
 BandStructureProperty.isRefined = true;

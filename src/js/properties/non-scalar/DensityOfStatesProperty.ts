@@ -56,15 +56,19 @@ export class DensityOfStatesConfig extends HighChartsConfig {
         };
     }
 
-    constructor(property: {
-        subtitle: string;
-        yAxisTitle: string;
-        xAxisTitle: string;
-        yDataSeries: YDataSeries;
-        legend?: Schema["legend"];
-        fermiEnergy: number | null;
-        xDataArray: Schema["xDataArray"];
-    }) {
+    constructor(
+        property: {
+            subtitle: string;
+            yAxisTitle: string;
+            xAxisTitle: string;
+            yDataSeries: YDataSeries;
+            legend?: Schema["legend"];
+            xDataArray: Schema["xDataArray"];
+        },
+        chartConfig?: {
+            fermiEnergy?: number | null;
+        },
+    ) {
         super({
             subtitle: property.subtitle,
             yAxisTitle: property.yAxisTitle,
@@ -74,7 +78,7 @@ export class DensityOfStatesConfig extends HighChartsConfig {
 
         this.yDataSeries = property.yDataSeries;
         this.legends = property.legend || [];
-        this.fermiEnergy = property.fermiEnergy;
+        this.fermiEnergy = chartConfig?.fermiEnergy ?? 0;
         this.xDataArray = this.cleanXDataArray(property.xDataArray);
     }
 
@@ -152,17 +156,17 @@ export default class DensityOfStatesProperty extends (NonScalarProperty as Base)
 
     readonly xAxisTitle: string = `Energy (${this.xAxis.units})`;
 
-    readonly fermiEnergy: number = 0;
-
     readonly chartConfig: Options;
 
     static readonly isRefined = true;
 
     static readonly propertyName = PropertyName.density_of_states;
 
-    constructor(config: Omit<Schema, "name">) {
+    constructor(config: Omit<Schema, "name"> & { fermiEnergy?: number | null }) {
         super({ ...config, name: DensityOfStatesProperty.propertyName });
-        this.chartConfig = new DensityOfStatesConfig(this).config;
+        this.chartConfig = new DensityOfStatesConfig(this, {
+            fermiEnergy: config.fermiEnergy,
+        }).config;
     }
 
     declare toJSON: () => Schema & AnyObject;

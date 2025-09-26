@@ -19,8 +19,9 @@ export declare class BandStructureConfig extends HighChartsConfig {
     constructor(property: SpinDependentMixin & TwoDimensionalPlotMixin & {
         subtitle: string;
         yAxisTitle: string;
-        fermiEnergy: number | null;
-        pointsPath: KPointPath | undefined;
+    }, chartConfig?: {
+        fermiEnergy?: number | null;
+        pointsPath?: KPointPath;
     });
     cleanXDataArray(rawData?: XDataArray): XDataArrayNested;
     calculatePointsDistance(listOfPoints?: XDataArrayNested): number[];
@@ -172,11 +173,12 @@ export default class BandStructureProperty extends BandStructureProperty_base im
     toJSON: () => BandStructurePropertySchema & AnyObject;
     readonly subtitle: string;
     readonly yAxisTitle: string;
-    readonly fermiEnergy: number | null;
-    readonly pointsPath: KPointPath | undefined;
     readonly chartConfig: Options;
     static readonly isRefined = true;
     static readonly propertyName = PropertyName.band_structure;
-    constructor(config: Omit<Schema, "name">);
+    constructor(config: Omit<Schema, "name"> & {
+        fermiEnergy?: number | null;
+        pointsPath?: KPointPath;
+    });
 }
 export {};

@@ -42,8 +42,6 @@ export default class PhononDOSProperty extends (NonScalarProperty as Base) imple
 
     readonly xAxisTitle: string = `Frequency (${this.xAxis.units})`;
 
-    readonly fermiEnergy = null;
-
     static readonly propertyName = PropertyName.phonon_dos;
 
     declare toJSON: (exclude?: string[]) => Schema & AnyObject;

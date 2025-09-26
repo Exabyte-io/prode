@@ -38,17 +38,13 @@ class PhononDispersionsProperty extends (NonScalarProperty as Base) implements S
 
     readonly yAxisTitle = `Frequency (${this.yAxis.units})`;
 
-    // unset property
-    readonly fermiEnergy: number | null = null;
-
-    // TODO: Add as config parameter
-    readonly pointsPath: KPointPath | undefined = undefined;
-
     readonly chartConfig: Options;
 
-    constructor(config: Omit<Schema, "name">) {
+    constructor(config: Omit<Schema, "name"> & { pointsPath?: KPointPath }) {
         super({ ...config, name: PhononDispersionsProperty.propertyName });
-        this.chartConfig = new PhononDispersionsConfig(this).config;
+        this.chartConfig = new PhononDispersionsConfig(this, {
+            pointsPath: config.pointsPath,
+        }).config;
     }
 }
 

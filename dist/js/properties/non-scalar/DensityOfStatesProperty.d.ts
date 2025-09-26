@@ -35,8 +35,9 @@ export declare class DensityOfStatesConfig extends HighChartsConfig {
         xAxisTitle: string;
         yDataSeries: YDataSeries;
         legend?: Schema["legend"];
-        fermiEnergy: number | null;
         xDataArray: Schema["xDataArray"];
+    }, chartConfig?: {
+        fermiEnergy?: number | null;
     });
     cleanXDataArray(rawData: Schema["xDataArray"]): number[];
     get series(): IndividualSeriesOptions[];
@@ -133,11 +134,12 @@ export default class DensityOfStatesProperty extends DensityOfStatesProperty_bas
     readonly subtitle: string;
     readonly yAxisTitle: string;
     readonly xAxisTitle: string;
-    readonly fermiEnergy: number;
     readonly chartConfig: Options;
     static readonly isRefined = true;
     static readonly propertyName = PropertyName.density_of_states;
-    constructor(config: Omit<Schema, "name">);
+    constructor(config: Omit<Schema, "name"> & {
+        fermiEnergy?: number | null;
+    });
     toJSON: () => Schema & AnyObject;
     _json: Schema & AnyObject;
     get legend(): {

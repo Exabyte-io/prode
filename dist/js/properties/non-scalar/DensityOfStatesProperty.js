@@ -39,7 +39,8 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
             },
         };
     }
-    constructor(property) {
+    constructor(property, chartConfig) {
+        var _a;
         super({
             subtitle: property.subtitle,
             yAxisTitle: property.yAxisTitle,
@@ -48,7 +49,7 @@ class DensityOfStatesConfig extends highcharts_1.HighChartsConfig {
         });
         this.yDataSeries = property.yDataSeries;
         this.legends = property.legend || [];
-        this.fermiEnergy = property.fermiEnergy;
+        this.fermiEnergy = (_a = chartConfig === null || chartConfig === void 0 ? void 0 : chartConfig.fermiEnergy) !== null && _a !== void 0 ? _a : 0;
         this.xDataArray = this.cleanXDataArray(property.xDataArray);
     }
     // shifting values wrt fermi energy here
@@ -113,8 +114,9 @@ class DensityOfStatesProperty extends NonScalarProperty_1.default {
         this.subtitle = "Density Of States";
         this.yAxisTitle = `Density Of States (${this.yAxis.units})`;
         this.xAxisTitle = `Energy (${this.xAxis.units})`;
-        this.fermiEnergy = 0;
-        this.chartConfig = new DensityOfStatesConfig(this).config;
+        this.chartConfig = new DensityOfStatesConfig(this, {
+            fermiEnergy: config.fermiEnergy,
+        }).config;
     }
     get legend() {
         return this.requiredProp("legend");

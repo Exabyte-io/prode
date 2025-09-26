@@ -41,9 +41,11 @@ export class BandStructureConfig extends HighChartsConfig {
             TwoDimensionalPlotMixin & {
                 subtitle: string;
                 yAxisTitle: string;
-                fermiEnergy: number | null;
-                pointsPath: KPointPath | undefined;
             },
+        chartConfig?: {
+            fermiEnergy?: number | null;
+            pointsPath?: KPointPath;
+        },
     ) {
         super({
             subtitle: property.subtitle,
@@ -55,10 +57,10 @@ export class BandStructureConfig extends HighChartsConfig {
         this.spin = property.spin;
         this.xDataArray = this.cleanXDataArray(property.xDataArray);
 
-        this.pointsPath = property.pointsPath;
+        this.pointsPath = chartConfig?.pointsPath;
         this.pointsDistanceArray = this.calculatePointsDistance(this.xDataArray);
 
-        this.fermiEnergy = property.fermiEnergy;
+        this.fermiEnergy = chartConfig?.fermiEnergy ?? null;
 
         this.plotXLineAtPoint = this.plotXLineAtPoint.bind(this);
         this.plotXLines = this.plotXLines.bind(this);
@@ -259,21 +261,23 @@ export default class BandStructureProperty extends (NonScalarProperty as Base) i
 
     readonly yAxisTitle: string = `Energy (${this.yAxis.units})`;
 
-    // TODO: Add as config parameter from Factory
-    readonly fermiEnergy: number | null = null;
-
-    // TODO: Add as config parameter from Factory
-    readonly pointsPath: KPointPath | undefined = undefined;
-
     readonly chartConfig: Options;
 
     static readonly isRefined = true;
 
     static readonly propertyName = PropertyName.band_structure;
 
-    constructor(config: Omit<Schema, "name">) {
+    constructor(
+        config: Omit<Schema, "name"> & {
+            fermiEnergy?: number | null;
+            pointsPath?: KPointPath;
+        },
+    ) {
         super({ ...config, name: BandStructureProperty.propertyName });
-        this.chartConfig = new BandStructureConfig(this).config;
+        this.chartConfig = new BandStructureConfig(this, {
+            fermiEnergy: config.fermiEnergy,
+            pointsPath: config.pointsPath,
+        }).config;
     }
 }
 
