@@ -63,21 +63,4 @@ export default class Property extends NamedInMemoryEntity {
     static prettifyName(name: string) {
         return (name.charAt(0).toUpperCase() + name.slice(1)).replace("_", " ");
     }
-
-    // static propertyBranch(propertyName: `${PropertyName}`): PropertyConfig {
-    //     // safely return empty object in case the tree does not contain the name key
-    //     return PROPERTIES_TREE[propertyName] || {};
-    // }
-
-    // static omitInResults(propertyName: `${PropertyName}`) {
-    //     return Boolean(this.propertyBranch(propertyName).omitInResults);
-    // }
-
-    // static isScalar(propertyConfig: PropertyConfig) {
-    //     return propertyConfig.type === PropertyType.scalar;
-    // }
-
-    // static isConvergence(propertyConfig: PropertyConfig) {
-    //     return Boolean(propertyConfig.isConvergence);
-    // }
 }
