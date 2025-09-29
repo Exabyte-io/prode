@@ -3,7 +3,7 @@ import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { AveragePotentialProfilePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { Options } from "highcharts";
-import lodash from "lodash";
+import zip from "lodash/zip";
 
 import { PropertyName } from "../../settings";
 import {
@@ -25,7 +25,7 @@ export class AveragePotentialProfileConfig extends TwoDimensionalHighChartConfig
             return {
                 animation: false,
                 name: NAMES[index],
-                data: lodash.zip(this.xDataArray, item) as [number, number][],
+                data: zip(this.xDataArray, item) as [number, number][],
             };
         });
     }

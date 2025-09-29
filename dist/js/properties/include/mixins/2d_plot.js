@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TwoDimensionalHighChartConfigMixin = void 0;
 exports.twoDimensionalPlotMixin = twoDimensionalPlotMixin;
-const lodash_1 = __importDefault(require("lodash"));
+const zip_1 = __importDefault(require("lodash/zip"));
 const highcharts_1 = require("../../../charts/highcharts");
 function twoDimensionalPlotMixin(item) {
     // @ts-expect-error - this is a workaround to allow the mixin to be used with any type of entity
@@ -45,7 +45,7 @@ class TwoDimensionalHighChartConfigMixin extends highcharts_1.HighChartsConfig {
         return this.yDataSeries.map((item) => {
             return {
                 animation: false,
-                data: lodash_1.default.zip(this.xDataArray, item),
+                data: (0, zip_1.default)(this.xDataArray, item),
             };
         });
     }

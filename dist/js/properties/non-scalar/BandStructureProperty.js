@@ -8,7 +8,7 @@ exports.BandStructureConfig = exports._POINT_COORDINATES_PRECISION_ = void 0;
 // eslint-disable-next-line max-classes-per-file
 const math_1 = require("@mat3ra/code/dist/js/math");
 const utils_1 = require("@mat3ra/code/dist/js/utils");
-const lodash_1 = __importDefault(require("lodash"));
+const zip_1 = __importDefault(require("lodash/zip"));
 const highcharts_1 = require("../../charts/highcharts");
 const settings_1 = require("../../settings");
 const _2d_plot_1 = require("../include/mixins/2d_plot");
@@ -102,7 +102,7 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
             const spin = (_a = this.spin) === null || _a === void 0 ? void 0 : _a[index];
             const spinText = spin && spin > 0 ? "up" : "down";
             return {
-                data: lodash_1.default.zip(this.pointsDistanceArray, itemUpdated),
+                data: (0, zip_1.default)(this.pointsDistanceArray, itemUpdated),
                 name: spinText,
                 color: spinText === "up" ? "#3677d9" : "#ff7f0e",
                 animation: false,

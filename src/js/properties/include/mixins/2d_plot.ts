@@ -1,5 +1,5 @@
 import type { DimensionPlotSchema } from "@mat3ra/esse/dist/js/types";
-import lodash from "lodash";
+import zip from "lodash/zip";
 
 import {
     type FormatterScope,
@@ -91,7 +91,7 @@ export class TwoDimensionalHighChartConfigMixin extends HighChartsConfig {
         return this.yDataSeries.map((item) => {
             return {
                 animation: false,
-                data: lodash.zip(this.xDataArray, item) as [number, number][],
+                data: zip(this.xDataArray, item) as [number, number][],
             };
         });
     }

@@ -234,7 +234,7 @@ export default class PseudopotentialProperty extends MetaProperty implements Fil
         });
     }
 
-    static filterByType(pseudos: PseudopotentialProperty[], pseudoType: string) {
+    static filterByType(pseudos: PseudopotentialProperty[], pseudoType?: string) {
         if (pseudoType === undefined || pseudoType === "any") return pseudos;
         return pseudos.filter((pseudo) => pseudo.type.includes(pseudoType));
     }

@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PotentialProfileConfig = void 0;
-const lodash_1 = __importDefault(require("lodash"));
+const zip_1 = __importDefault(require("lodash/zip"));
 const settings_1 = require("../../settings");
 const _2d_plot_1 = require("../include/mixins/2d_plot");
 const NonScalarProperty_1 = __importDefault(require("./base/NonScalarProperty"));
@@ -24,7 +24,7 @@ class PotentialProfileConfig extends _2d_plot_1.TwoDimensionalHighChartConfigMix
             return {
                 animation: false,
                 name: NAMES[index],
-                data: lodash_1.default.zip(this.xDataArray, item),
+                data: (0, zip_1.default)(this.xDataArray, item),
             };
         });
     }

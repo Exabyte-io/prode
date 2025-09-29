@@ -192,8 +192,6 @@ describe("PropertyFactory", () => {
                 expect(Object.values(PropertyName)).to.include(propertyName);
             });
 
-            console.log(nonScalarPropertyNames);
-
             // Verify that specific known non-scalar properties are included
             const expectedNonScalarProperties = [
                 PropertyName.convergence_electronic,

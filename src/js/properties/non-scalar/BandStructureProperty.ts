@@ -7,7 +7,7 @@ import type { AnyObject } from "@mat3ra/esse/dist/js/esse/types";
 import type { BandStructurePropertySchema } from "@mat3ra/esse/dist/js/types";
 import type { KPointPath } from "@mat3ra/made/dist/js/lattice/reciprocal/lattice_reciprocal";
 import type { Options, PlotLines } from "highcharts";
-import lodash from "lodash";
+import zip from "lodash/zip";
 
 import { type FormatterScope, HighChartsConfig } from "../../charts/highcharts";
 import { PropertyName } from "../../settings";
@@ -142,7 +142,7 @@ export class BandStructureConfig extends HighChartsConfig {
             const spinText = spin && spin > 0 ? "up" : "down";
 
             return {
-                data: lodash.zip(this.pointsDistanceArray, itemUpdated) as [number, number][],
+                data: zip(this.pointsDistanceArray, itemUpdated) as [number, number][],
                 name: spinText,
                 color: spinText === "up" ? "#3677d9" : "#ff7f0e",
                 animation: false,
