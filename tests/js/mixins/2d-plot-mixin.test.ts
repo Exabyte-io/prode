@@ -6,8 +6,8 @@ import {
     type XDataArray,
     type YDataSeries,
     TwoDimensionalHighChartConfigMixin,
-} from "../../src/js/properties/include/mixins/2d_plot";
-import DensityOfStatesProperty from "../../src/js/properties/non-scalar/DensityOfStatesProperty";
+} from "../../../src/js/properties/include/mixins/2d_plot";
+import DensityOfStatesProperty from "../../../src/js/properties/non-scalar/DensityOfStatesProperty";
 
 describe("2D Plot Mixin Integration", () => {
     const config: Omit<DensityOfStatesPropertySchema, "name"> = {
