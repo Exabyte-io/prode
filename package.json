@@ -11,6 +11,7 @@
         "lint": "eslint src tests && prettier --write src tests",
         "lint:fix": "eslint --fix --cache src tests && prettier --write src tests",
         "transpile": "tsc -p tsconfig-transpile.json",
+        "generate-mixins": "ts-node scripts/generate-mixins.ts",
         "prettier": "prettier --check src tests",
         "prepare": "husky install"
     },
@@ -38,9 +39,9 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.16.3",
         "@exabyte-io/eslint-config": "2025.5.13-0",
-        "@mat3ra/code": "git+https://github.com/Exabyte-io/code.git#fce33f010a409c5edcc088843d849afc2ce3fc4d",
+        "@mat3ra/code": "git+https://github.com/Exabyte-io/code.git#56dc03665fc304f283aa14c59152703c5a05b786",
         "@mat3ra/esse": "git+https://github.com/Exabyte-io/esse.git#07e8bec495a6658031ed4af3a90f004c818b705a",
-        "@mat3ra/made": "git+https://github.com/Exabyte-io/made.git#4f873b90455bbcc91bb33766bc64d9219b463a38",
+        "@mat3ra/made": "2025.10.7-0",
         "@mat3ra/tsconfig": "2024.6.3-0",
         "@typescript-eslint/eslint-plugin": "^5.9.1",
         "@typescript-eslint/parser": "^5.9.1",
