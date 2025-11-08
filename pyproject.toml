@@ -40,34 +40,12 @@ all = [
     "mat3ra-prode[tests]",
 ]
 
-[project.urls]
-Homepage = "https://github.com/Exabyte-io/prode.js"
-Documentation = "https://github.com/Exabyte-io/prode.js"
-Repository = "https://github.com/Exabyte-io/prode.js"
-Issues = "https://github.com/Exabyte-io/prode.js/issues"
-
 [tool.setuptools_scm]
+git_describe_command = "git describe --tags --long"
 write_to = "src/py/mat3ra/prode/_version.py"
 
 [tool.setuptools.packages.find]
 where = ["src/py"]
-
-[tool.setuptools.package-data]
-"*" = ["py.typed"]
-
-[tool.coverage.run]
-source = ["src/py"]
-omit = ["*/tests/*", "*/__pycache__/*", "*/.venv/*"]
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "raise AssertionError",
-    "raise NotImplementedError",
-    "if __name__ == .__main__.:",
-    "if TYPE_CHECKING:",
-]
 
 [tool.black]
 line-length = 120
