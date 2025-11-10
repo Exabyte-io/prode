@@ -3,17 +3,18 @@
     "version": "0.0.0",
     "description": "PROperty DEfinitions",
     "scripts": {
-        "test": "nyc --reporter=text mocha --require ts-node/register --recursive tests/js/*.ts tests/js/**/*.ts",
-        "test:coverage": "nyc --reporter=text --reporter=html --reporter=lcov mocha --require ts-node/register --recursive --bail tests/js/**/*.ts",
-        "test:coverage:html": "nyc --reporter=html mocha --require ts-node/register --recursive --bail tests/js/**/*.ts",
-        "test:coverage:check": "nyc --reporter=text --check-coverage mocha --require ts-node/register --recursive --bail tests/js/**/*.ts",
+        "test": "nyc --reporter=text mocha --recursive --bail",
+        "test:coverage": "nyc --reporter=text --reporter=html --reporter=lcov mocha --recursive --bail",
+        "test:coverage:html": "nyc --reporter=html mocha --recursive --bail",
+        "test:coverage:check": "nyc --reporter=text --check-coverage mocha --recursive --bail",
         "test:coverage:view": "node scripts/view-coverage.js",
-        "lint": "eslint src tests && prettier --write src tests",
-        "lint:fix": "eslint --fix --cache src tests && prettier --write src tests",
+        "lint": "eslint --cache src/js tests/js && prettier --write src/js tests/js",
+        "lint:fix": "eslint --fix --cache src/js tests/js && prettier --write src/js tests/js",
+        "lint:staged": "lint-staged",
+        "prepare": "husky install",
+        "prettier": "prettier --check src/js tests/js",
         "transpile": "tsc -p tsconfig-transpile.json",
-        "generate-mixins": "ts-node scripts/generate-mixins.ts",
-        "prettier": "prettier --check src tests",
-        "prepare": "husky install"
+        "generate-mixins": "ts-node scripts/generate-mixins.ts"
     },
     "repository": {
         "type": "git",
@@ -77,9 +78,13 @@
         "node": ">=14.0.0"
     },
     "lint-staged": {
-        "src/**/*.js": "eslint --cache --fix",
-        "tests/**/*.js": "eslint --cache --fix",
-        "src/**/*.{js,css}": "prettier --write",
-        "tests/**/*.{js,css}": "prettier --write"
+        "src/js/**/*.{js,ts}": [
+            "eslint --fix --cache",
+            "prettier --write"
+        ],
+        "tests/js/**/*.{js,ts}": [
+            "eslint --fix --cache",
+            "prettier --write"
+        ]
     }
 }
