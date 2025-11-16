@@ -1,9 +1,9 @@
-[![npm version](https://badge.fury.io/js/%40exabyte-io%2Fprode.js.svg)](https://badge.fury.io/js/%40exabyte-io%2Fprode.js)
+[![npm version](https://badge.fury.io/js/%40exabyte-io%2Fprode.svg)](https://badge.fury.io/js/%40exabyte-io%2Fprode)
 [![License: Apache](https://img.shields.io/badge/License-Apache-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-# prode.js
+# prode
 
-PROperty DEfinitions in JavaScript - prode.js - houses Property entity definitions for use in the Mat3ra platform.
+PROperty DEfinitions - prode - houses Property entity definitions for use in the Mat3ra platform.
 
 
 ### Installation
@@ -11,13 +11,13 @@ PROperty DEfinitions in JavaScript - prode.js - houses Property entity definitio
 For usage within a javascript project:
 
 ```bash
-npm install @exabyte-io/prode.js
+npm install @exabyte-io/prode
 ```
 
 For development:
 
 ```bash
-git clone https://github.com/Exabyte-io/prode.js.git
+git clone https://github.com/Exabyte-io/prode.git
 ```
 
 
