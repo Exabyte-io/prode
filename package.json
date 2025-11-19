@@ -1,5 +1,5 @@
 {
-    "name": "@exabyte-io/prode.js",
+    "name": "@mat3ra/prode",
     "version": "0.0.0",
     "description": "PROperty DEfinitions",
     "scripts": {
@@ -18,21 +18,32 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Exabyte-io/prode.js.git"
+        "url": "https://github.com/Exabyte-io/prode.git"
     },
     "main": "dist/js/index.js",
+    "types": "dist/js/index.d.ts",
     "files": [
         "/dist",
         "/src/js",
         ".babelrc",
         "tsconfig.json"
     ],
+    "exports": {
+        ".": {
+            "types": "./dist/js/index.d.ts",
+            "default": "./dist/js/index.js"
+        },
+        "./types": {
+            "types": "./dist/js/types.d.ts",
+            "default": "./dist/js/types.js"
+        }
+    },
     "author": "Exabyte Inc.",
     "bugs": {
-        "url": "https://github.com/Exabyte-io/prode.js/issues"
+        "url": "https://github.com/Exabyte-io/prode/issues"
     },
     "license": "Apache-2.0",
-    "homepage": "https://github.com/Exabyte-io/prode.js",
+    "homepage": "https://github.com/Exabyte-io/prode",
     "dependencies": {
         "@types/highcharts": "^5.0.44",
         "lodash": "^4.17.21"
