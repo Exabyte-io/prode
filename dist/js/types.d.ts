@@ -8,11 +8,7 @@ export type { default as AtomicForcesProperty } from "./properties/tensor/Atomic
 export type { default as MagneticMomentsProperty } from "./properties/tensor/MagneticMomentsProperty";
 export type { default as StressTensorProperty } from "./properties/tensor/StressTensorProperty";
 export type { default as AveragePotentialProfileProperty } from "./properties/non-scalar/AveragePotentialProfileProperty";
-export type { default as BandStructureProperty } from "./properties/non-scalar/BandStructureProperty";
-export type { default as ChargeDensityProfileProperty } from "./properties/non-scalar/ChargeDensityProfileProperty";
 export type { default as DensityOfStatesProperty } from "./properties/non-scalar/DensityOfStatesProperty";
 export type { default as DielectricTensorProperty } from "./properties/non-scalar/DielectricTensorProperty";
 export type { default as PhononDispersionsProperty } from "./properties/non-scalar/PhononDispersionsProperty";
 export type { default as PhononDOSProperty } from "./properties/non-scalar/PhononDOSProperty";
-export type { default as PotentialProfileProperty } from "./properties/non-scalar/PotentialProfileProperty";
-export type { default as ReactionEnergyProfileProperty } from "./properties/non-scalar/ReactionEnergyProfileProperty";
