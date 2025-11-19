@@ -21,7 +21,7 @@
         "url": "https://github.com/Exabyte-io/prode.git"
     },
     "main": "dist/js/index.js",
-    "types": "dist/js/index.d.ts",
+    "types": "dist/js/types.d.ts",
     "files": [
         "/dist",
         "/src/js",
