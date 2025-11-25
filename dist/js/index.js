@@ -1,12 +1,60 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PropertyType = exports.PropertyName = exports.PropertyFactory = void 0;
-// Add exports here
+exports.metaPropertyHolderMixin = exports.propertyHolderMixin = exports.protoPropertyHolderMixin = exports.ReactionEnergyProfileProperty = exports.PotentialProfileProperty = exports.ChargeDensityProfileProperty = exports.BandStructureProperty = exports.TotalEnergyProperty = exports.SurfaceEnergyProperty = exports.ReactionEnergyBarrierProperty = exports.PressureProperty = exports.IsRelaxedProperty = exports.BandGapsProperty = exports.FinalStructureProperty = exports.PseudopotentialMetaProperty = exports.MetaProperty = exports.Property = exports.PropertyType = exports.PropertyName = exports.PropertyFactory = void 0;
 var PropertyFactory_1 = require("./PropertyFactory");
 Object.defineProperty(exports, "PropertyFactory", { enumerable: true, get: function () { return __importDefault(PropertyFactory_1).default; } });
 var settings_1 = require("./settings");
 Object.defineProperty(exports, "PropertyName", { enumerable: true, get: function () { return settings_1.PropertyName; } });
 Object.defineProperty(exports, "PropertyType", { enumerable: true, get: function () { return settings_1.PropertyType; } });
+var Property_1 = require("./Property");
+Object.defineProperty(exports, "Property", { enumerable: true, get: function () { return __importDefault(Property_1).default; } });
+var MetaProperty_1 = require("./MetaProperty");
+Object.defineProperty(exports, "MetaProperty", { enumerable: true, get: function () { return __importDefault(MetaProperty_1).default; } });
+var PseudopotentialMetaProperty_1 = require("./meta_properties/PseudopotentialMetaProperty");
+Object.defineProperty(exports, "PseudopotentialMetaProperty", { enumerable: true, get: function () { return __importDefault(PseudopotentialMetaProperty_1).default; } });
+var FinalStructureProperty_1 = require("./properties/non-scalar/FinalStructureProperty");
+Object.defineProperty(exports, "FinalStructureProperty", { enumerable: true, get: function () { return __importDefault(FinalStructureProperty_1).default; } });
+var BandGapsProperty_1 = require("./properties/non-scalar/BandGapsProperty");
+Object.defineProperty(exports, "BandGapsProperty", { enumerable: true, get: function () { return __importDefault(BandGapsProperty_1).default; } });
+var IsRelaxedProperty_1 = require("./properties/non-scalar/IsRelaxedProperty");
+Object.defineProperty(exports, "IsRelaxedProperty", { enumerable: true, get: function () { return __importDefault(IsRelaxedProperty_1).default; } });
+var PressureProperty_1 = require("./properties/scalar/PressureProperty");
+Object.defineProperty(exports, "PressureProperty", { enumerable: true, get: function () { return __importDefault(PressureProperty_1).default; } });
+var ReactionEnergyBarrierProperty_1 = require("./properties/scalar/ReactionEnergyBarrierProperty");
+Object.defineProperty(exports, "ReactionEnergyBarrierProperty", { enumerable: true, get: function () { return __importDefault(ReactionEnergyBarrierProperty_1).default; } });
+var SurfaceEnergyProperty_1 = require("./properties/scalar/SurfaceEnergyProperty");
+Object.defineProperty(exports, "SurfaceEnergyProperty", { enumerable: true, get: function () { return __importDefault(SurfaceEnergyProperty_1).default; } });
+var TotalEnergyProperty_1 = require("./properties/scalar/TotalEnergyProperty");
+Object.defineProperty(exports, "TotalEnergyProperty", { enumerable: true, get: function () { return __importDefault(TotalEnergyProperty_1).default; } });
+var BandStructureProperty_1 = require("./properties/non-scalar/BandStructureProperty");
+Object.defineProperty(exports, "BandStructureProperty", { enumerable: true, get: function () { return __importDefault(BandStructureProperty_1).default; } });
+var ChargeDensityProfileProperty_1 = require("./properties/non-scalar/ChargeDensityProfileProperty");
+Object.defineProperty(exports, "ChargeDensityProfileProperty", { enumerable: true, get: function () { return __importDefault(ChargeDensityProfileProperty_1).default; } });
+var PotentialProfileProperty_1 = require("./properties/non-scalar/PotentialProfileProperty");
+Object.defineProperty(exports, "PotentialProfileProperty", { enumerable: true, get: function () { return __importDefault(PotentialProfileProperty_1).default; } });
+var ReactionEnergyProfileProperty_1 = require("./properties/non-scalar/ReactionEnergyProfileProperty");
+Object.defineProperty(exports, "ReactionEnergyProfileProperty", { enumerable: true, get: function () { return __importDefault(ReactionEnergyProfileProperty_1).default; } });
+var ProtoPropertyHolderMixin_1 = require("./holders/mixins/ProtoPropertyHolderMixin");
+Object.defineProperty(exports, "protoPropertyHolderMixin", { enumerable: true, get: function () { return ProtoPropertyHolderMixin_1.protoPropertyHolderMixin; } });
+var PropertyHolderMixin_1 = require("./holders/mixins/PropertyHolderMixin");
+Object.defineProperty(exports, "propertyHolderMixin", { enumerable: true, get: function () { return PropertyHolderMixin_1.propertyHolderMixin; } });
+var MetaPropertyHolderMixin_1 = require("./holders/mixins/MetaPropertyHolderMixin");
+Object.defineProperty(exports, "metaPropertyHolderMixin", { enumerable: true, get: function () { return MetaPropertyHolderMixin_1.metaPropertyHolderMixin; } });
+__exportStar(require("./types"), exports);

@@ -8,6 +8,8 @@
     "exclude": [
         "tests/**/*",
         "src/js/generated/**/*",
+        "dist/**/*",
+        "build/**/*",
         "**/*.test.ts",
         "**/*.spec.ts",
         "**/*.d.ts"
