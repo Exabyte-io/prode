@@ -42,6 +42,7 @@ var PropertyName;
     PropertyName["reaction_energy_barrier"] = "reaction_energy_barrier";
     PropertyName["reaction_energy_profile"] = "reaction_energy_profile";
     PropertyName["potential_profile"] = "potential_profile";
+    PropertyName["wavefunction_amplitude"] = "wavefunction_amplitude";
     PropertyName["charge_density_profile"] = "charge_density_profile";
     PropertyName["jupyter_notebook_endpoint"] = "jupyter_notebook_endpoint";
     PropertyName["average_potential_profile"] = "average_potential_profile";

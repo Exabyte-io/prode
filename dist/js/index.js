@@ -17,7 +17,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.metaPropertyHolderMixin = exports.propertyHolderMixin = exports.protoPropertyHolderMixin = exports.ReactionEnergyProfileProperty = exports.PotentialProfileProperty = exports.ChargeDensityProfileProperty = exports.BandStructureProperty = exports.TotalEnergyProperty = exports.SurfaceEnergyProperty = exports.ReactionEnergyBarrierProperty = exports.PressureProperty = exports.IsRelaxedProperty = exports.BandGapsProperty = exports.FinalStructureProperty = exports.PseudopotentialMetaProperty = exports.MetaProperty = exports.Property = exports.PropertyType = exports.PropertyName = exports.PropertyFactory = void 0;
+exports.metaPropertyHolderMixin = exports.propertyHolderMixin = exports.protoPropertyHolderMixin = exports.ReactionEnergyProfileProperty = exports.WavefunctionAmplitudeProperty = exports.PotentialProfileProperty = exports.ChargeDensityProfileProperty = exports.BandStructureProperty = exports.TotalEnergyProperty = exports.SurfaceEnergyProperty = exports.ReactionEnergyBarrierProperty = exports.PressureProperty = exports.IsRelaxedProperty = exports.BandGapsProperty = exports.FinalStructureProperty = exports.PseudopotentialMetaProperty = exports.MetaProperty = exports.Property = exports.PropertyType = exports.PropertyName = exports.PropertyFactory = void 0;
 var PropertyFactory_1 = require("./PropertyFactory");
 Object.defineProperty(exports, "PropertyFactory", { enumerable: true, get: function () { return __importDefault(PropertyFactory_1).default; } });
 var settings_1 = require("./settings");
@@ -49,6 +49,8 @@ var ChargeDensityProfileProperty_1 = require("./properties/non-scalar/ChargeDens
 Object.defineProperty(exports, "ChargeDensityProfileProperty", { enumerable: true, get: function () { return __importDefault(ChargeDensityProfileProperty_1).default; } });
 var PotentialProfileProperty_1 = require("./properties/non-scalar/PotentialProfileProperty");
 Object.defineProperty(exports, "PotentialProfileProperty", { enumerable: true, get: function () { return __importDefault(PotentialProfileProperty_1).default; } });
+var WavefunctionAmplitudeProperty_1 = require("./properties/non-scalar/WavefunctionAmplitudeProperty");
+Object.defineProperty(exports, "WavefunctionAmplitudeProperty", { enumerable: true, get: function () { return __importDefault(WavefunctionAmplitudeProperty_1).default; } });
 var ReactionEnergyProfileProperty_1 = require("./properties/non-scalar/ReactionEnergyProfileProperty");
 Object.defineProperty(exports, "ReactionEnergyProfileProperty", { enumerable: true, get: function () { return __importDefault(ReactionEnergyProfileProperty_1).default; } });
 var ProtoPropertyHolderMixin_1 = require("./holders/mixins/ProtoPropertyHolderMixin");
