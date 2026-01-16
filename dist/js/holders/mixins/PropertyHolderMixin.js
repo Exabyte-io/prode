@@ -8,6 +8,7 @@ const utils_1 = require("@mat3ra/code/dist/js/utils");
 const PropertyHolderSchemaMixin_1 = require("../../generated/PropertyHolderSchemaMixin");
 const PropertyFactory_1 = __importDefault(require("../../PropertyFactory"));
 function propertyHolderMixin(item) {
+    // @ts-expect-error - this is a workaround to allow the propertyMixin to be used with any type of entity
     const properties = {
         get sourceInfo() {
             return this.requiredProp("source.info");
