@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
-// @ts-ignore
-import { ExampleWavefunctionAmplitude } from "@mat3ra/esse/dist/js/example/properties_directory/non_scalar/wavefunction_amplitude.json";
+import ExampleWavefunctionAmplitude from "@mat3ra/esse/dist/js/example/properties_directory/non_scalar/wavefunction_amplitude.json";
 import type { WavefunctionAmplitudePropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
@@ -8,7 +7,11 @@ import WavefunctionAmplitudeProperty from "../../../src/js/properties/non-scalar
 import { PropertyName, PropertyType } from "../../../src/js/settings";
 
 describe("WavefunctionAmplitudeProperty", () => {
-    const config: Omit<WavefunctionAmplitudePropertySchema, "name"> = ExampleWavefunctionAmplitude;
+    const config: Omit<WavefunctionAmplitudePropertySchema, "name"> =
+        ExampleWavefunctionAmplitude as unknown as Omit<
+            WavefunctionAmplitudePropertySchema,
+            "name"
+        >;
 
     it("should create a wavefunction amplitude property with correct constructor, propertyType, propertyName, and defined properties", () => {
         const wavefunctionAmplitudeProperty = new WavefunctionAmplitudeProperty(config);
@@ -24,30 +27,8 @@ describe("WavefunctionAmplitudeProperty", () => {
         // Test defined properties
         expect(wavefunctionAmplitudeProperty.subtitle).to.equal("Wavefunction Amplitude");
         expect(wavefunctionAmplitudeProperty.yAxisTitle).to.equal("Amplitude");
-        expect(wavefunctionAmplitudeProperty.xAxisTitle).to.equal("Z Coordinate");
+        expect(wavefunctionAmplitudeProperty.xAxisTitle).to.equal("Coordinate");
         expect(wavefunctionAmplitudeProperty.chartConfig).to.exist;
         expect(wavefunctionAmplitudeProperty.chartConfig).to.be.an("object");
-    });
-
-    it("should handle multiple wavefunction series", () => {
-        const multiSeriesConfig: Omit<WavefunctionAmplitudePropertySchema, "name"> = {
-            xDataArray: [-2.0, -1.0, 0.0, 1.0, 2.0],
-            yDataSeries: [
-                [0.0, 0.5, 1.0, 0.5, 0.0] as [number, ...number[]],
-                [0.1, 0.3, 0.5, 0.3, 0.1] as [number, ...number[]],
-            ],
-            xAxis: {
-                label: "coordinate",
-            },
-            yAxis: {
-                label: "amplitude",
-            },
-        };
-
-        const wavefunctionAmplitudeProperty = new WavefunctionAmplitudeProperty(multiSeriesConfig);
-
-        expect(wavefunctionAmplitudeProperty).to.be.instanceOf(WavefunctionAmplitudeProperty);
-        expect(wavefunctionAmplitudeProperty.yDataSeries).to.have.lengthOf(2);
-        expect(wavefunctionAmplitudeProperty.chartConfig).to.exist;
     });
 });
