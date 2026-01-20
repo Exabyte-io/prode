@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-expressions */
+// @ts-ignore
+import { ExampleWavefunctionAmplitude } from "@mat3ra/esse/dist/js/example/properties_directory/non_scalar/wavefunction_amplitude.json";
 import type { WavefunctionAmplitudePropertySchema } from "@mat3ra/esse/dist/js/types";
 import { expect } from "chai";
 
@@ -6,21 +8,7 @@ import WavefunctionAmplitudeProperty from "../../../src/js/properties/non-scalar
 import { PropertyName, PropertyType } from "../../../src/js/settings";
 
 describe("WavefunctionAmplitudeProperty", () => {
-    const config: Omit<WavefunctionAmplitudePropertySchema, "name"> = {
-        xDataArray: [-6.0, -5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0],
-        yDataSeries: [
-            [0.0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 0.9, 0.7, 0.5, 0.3, 0.1, 0.0] as [
-                number,
-                ...number[],
-            ],
-        ],
-        xAxis: {
-            label: "z coordinate",
-        },
-        yAxis: {
-            label: "amplitude",
-        },
-    };
+    const config: Omit<WavefunctionAmplitudePropertySchema, "name"> = ExampleWavefunctionAmplitude;
 
     it("should create a wavefunction amplitude property with correct constructor, propertyType, propertyName, and defined properties", () => {
         const wavefunctionAmplitudeProperty = new WavefunctionAmplitudeProperty(config);
@@ -49,7 +37,7 @@ describe("WavefunctionAmplitudeProperty", () => {
                 [0.1, 0.3, 0.5, 0.3, 0.1] as [number, ...number[]],
             ],
             xAxis: {
-                label: "z coordinate",
+                label: "coordinate",
             },
             yAxis: {
                 label: "amplitude",

@@ -16,7 +16,8 @@ import { TwoDimensionalHighChartConfigMixin } from "../include/mixins/2d_plot";
 type Schema = WavefunctionAmplitudePropertySchema;
 
 export class WavefunctionAmplitudeConfig extends TwoDimensionalHighChartConfigMixin {
-    readonly tooltipXAxisName: string = "z coordinate";
+    // TODO: figure out how and where from to pass axis so it's `z coordinate` or so.
+    readonly tooltipXAxisName: string = "coordinate";
 
     readonly tooltipYAxisName: string = "amplitude";
 
@@ -50,7 +51,7 @@ class WavefunctionAmplitudeProperty extends (Property as Base) implements Schema
 
     readonly yAxisTitle: string = "Amplitude";
 
-    readonly xAxisTitle: string = "Z Coordinate";
+    readonly xAxisTitle: string = "Coordinate";
 
     readonly chartConfig: Options = new WavefunctionAmplitudeConfig(this).config;
 

@@ -12,7 +12,8 @@ const _2d_plot_1 = require("../include/mixins/2d_plot");
 class WavefunctionAmplitudeConfig extends _2d_plot_1.TwoDimensionalHighChartConfigMixin {
     constructor() {
         super(...arguments);
-        this.tooltipXAxisName = "z coordinate";
+        // TODO: figure out how and where from to pass axis so it's `z coordinate` or so.
+        this.tooltipXAxisName = "coordinate";
         this.tooltipYAxisName = "amplitude";
     }
     get series() {
@@ -42,7 +43,7 @@ class WavefunctionAmplitudeProperty extends Property_1.default {
         super({ ...config, name: WavefunctionAmplitudeProperty.propertyName });
         this.subtitle = "Wavefunction Amplitude";
         this.yAxisTitle = "Amplitude";
-        this.xAxisTitle = "Z Coordinate";
+        this.xAxisTitle = "Coordinate";
         this.chartConfig = new WavefunctionAmplitudeConfig(this).config;
     }
 }
