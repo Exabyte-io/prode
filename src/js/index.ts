@@ -13,6 +13,7 @@ export { default as TotalEnergyProperty } from "./properties/scalar/TotalEnergyP
 export { default as BandStructureProperty } from "./properties/non-scalar/BandStructureProperty";
 export { default as ChargeDensityProfileProperty } from "./properties/non-scalar/ChargeDensityProfileProperty";
 export { default as PotentialProfileProperty } from "./properties/non-scalar/PotentialProfileProperty";
+export { default as WavefunctionAmplitudeProperty } from "./properties/non-scalar/WavefunctionAmplitudeProperty";
 export { default as ReactionEnergyProfileProperty } from "./properties/non-scalar/ReactionEnergyProfileProperty";
 export { protoPropertyHolderMixin } from "./holders/mixins/ProtoPropertyHolderMixin";
 export { propertyHolderMixin } from "./holders/mixins/PropertyHolderMixin";

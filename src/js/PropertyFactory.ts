@@ -26,6 +26,7 @@ import PhononDispersionsProperty from "./properties/non-scalar/PhononDispersions
 import PhononDOSProperty from "./properties/non-scalar/PhononDOSProperty";
 import PotentialProfileProperty from "./properties/non-scalar/PotentialProfileProperty";
 import ReactionEnergyProfileProperty from "./properties/non-scalar/ReactionEnergyProfileProperty";
+import WavefunctionAmplitudeProperty from "./properties/non-scalar/WavefunctionAmplitudeProperty";
 import WorkflowProperty from "./properties/non-scalar/WorkflowProperty";
 import TotalEnergyContributionsProperty from "./properties/object/TotalEnergyContributionsProperty";
 import FermiEnergyProperty from "./properties/scalar/FermiEnergyProperty";
@@ -74,6 +75,7 @@ type PropertyClassMap = {
         | Constructor<ReactionEnergyBarrierProperty>
         | Constructor<ReactionEnergyProfileProperty>
         | Constructor<PotentialProfileProperty>
+        | Constructor<WavefunctionAmplitudeProperty>
         | Constructor<ChargeDensityProfileProperty>
         | Constructor<AveragePotentialProfileProperty>
         | Constructor<ValenceBandOffsetProperty>
@@ -120,6 +122,7 @@ const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [ReactionEnergyBarrierProperty.propertyName]: ReactionEnergyBarrierProperty,
     [ReactionEnergyProfileProperty.propertyName]: ReactionEnergyProfileProperty,
     [PotentialProfileProperty.propertyName]: PotentialProfileProperty,
+    [WavefunctionAmplitudeProperty.propertyName]: WavefunctionAmplitudeProperty,
     [ChargeDensityProfileProperty.propertyName]: ChargeDensityProfileProperty,
     [AveragePotentialProfileProperty.propertyName]: AveragePotentialProfileProperty,
     [ValenceBandOffsetProperty.propertyName]: ValenceBandOffsetProperty,

@@ -23,6 +23,7 @@ const PhononDispersionsProperty_1 = __importDefault(require("./properties/non-sc
 const PhononDOSProperty_1 = __importDefault(require("./properties/non-scalar/PhononDOSProperty"));
 const PotentialProfileProperty_1 = __importDefault(require("./properties/non-scalar/PotentialProfileProperty"));
 const ReactionEnergyProfileProperty_1 = __importDefault(require("./properties/non-scalar/ReactionEnergyProfileProperty"));
+const WavefunctionAmplitudeProperty_1 = __importDefault(require("./properties/non-scalar/WavefunctionAmplitudeProperty"));
 const WorkflowProperty_1 = __importDefault(require("./properties/non-scalar/WorkflowProperty"));
 const TotalEnergyContributionsProperty_1 = __importDefault(require("./properties/object/TotalEnergyContributionsProperty"));
 const FermiEnergyProperty_1 = __importDefault(require("./properties/scalar/FermiEnergyProperty"));
@@ -64,6 +65,7 @@ const PROPERTY_CLASS_MAP = {
     [ReactionEnergyBarrierProperty_1.default.propertyName]: ReactionEnergyBarrierProperty_1.default,
     [ReactionEnergyProfileProperty_1.default.propertyName]: ReactionEnergyProfileProperty_1.default,
     [PotentialProfileProperty_1.default.propertyName]: PotentialProfileProperty_1.default,
+    [WavefunctionAmplitudeProperty_1.default.propertyName]: WavefunctionAmplitudeProperty_1.default,
     [ChargeDensityProfileProperty_1.default.propertyName]: ChargeDensityProfileProperty_1.default,
     [AveragePotentialProfileProperty_1.default.propertyName]: AveragePotentialProfileProperty_1.default,
     [ValenceBandOffsetProperty_1.default.propertyName]: ValenceBandOffsetProperty_1.default,

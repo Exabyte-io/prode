@@ -38,6 +38,7 @@ export enum PropertyName {
     reaction_energy_barrier = "reaction_energy_barrier",
     reaction_energy_profile = "reaction_energy_profile",
     potential_profile = "potential_profile",
+    wavefunction_amplitude = "wavefunction_amplitude",
     charge_density_profile = "charge_density_profile",
     jupyter_notebook_endpoint = "jupyter_notebook_endpoint",
     average_potential_profile = "average_potential_profile",
