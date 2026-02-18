@@ -1,54 +1,80 @@
 from enum import Enum
+from types import SimpleNamespace
 
 
 class ExternalSource(str, Enum):
-    materials_project = "MaterialsProject"
     icsd = "ICSD"
+    materials_project = "MaterialsProject"
+    materials_project_legacy = "MaterialsProjectLegacy"
 
 
 class PropertyType(str, Enum):
-    scalar = "scalar"
     non_scalar = "non-scalar"
-    tensor = "tensor"
     object = "object"
+    scalar = "scalar"
+    tensor = "tensor"
 
 
-class PropertyName(str, Enum):
+class ScalarPropertyName(str, Enum):
+    fermi_energy = "fermi_energy"
+    ionization_potential = "ionization_potential"
     pressure = "pressure"
-    total_force = "total_force"
-    total_energy = "total_energy"
+    reaction_energy_barrier = "reaction_energy_barrier"
     surface_energy = "surface_energy"
+    total_energy = "total_energy"
+    total_force = "total_force"
+    valence_band_offset = "valence_band_offset"
+    zero_point_energy = "zero_point_energy"
+
+
+class NonScalarPropertyName(str, Enum):
+    average_potential_profile = "average_potential_profile"
+    band_gaps = "band_gaps"
+    band_structure = "band_structure"
+    charge_density_profile = "charge_density_profile"
     convergence_electronic = "convergence_electronic"
     convergence_ionic = "convergence_ionic"
-    fermi_energy = "fermi_energy"
-    zero_point_energy = "zero_point_energy"
-    total_energy_contributions = "total_energy_contributions"
-    atomic_forces = "atomic_forces"
-    atomic_constraints = "atomic_constraints"
-    stress_tensor = "stress_tensor"
     density_of_states = "density_of_states"
-    band_structure = "band_structure"
-    band_gaps = "band_gaps"
+    dielectric_tensor = "dielectric_tensor"
+    file_content = "file_content"
+    final_structure = "final_structure"
+    hubbard_u = "hubbard_u"
+    hubbard_v = "hubbard_v"
+    hubbard_v_nn = "hubbard_v_nn"
+    is_relaxed = "is_relaxed"
+    jupyter_notebook_endpoint = "jupyter_notebook_endpoint"
     phonon_dispersions = "phonon_dispersions"
     phonon_dos = "phonon_dos"
-    final_structure = "final_structure"
-    is_relaxed = "is_relaxed"
-    workflow_pyml_predict = "workflow:pyml_predict"
-    file_content = "file_content"
-    magnetic_moments = "magnetic_moments"
-    reaction_energy_barrier = "reaction_energy_barrier"
-    reaction_energy_profile = "reaction_energy_profile"
     potential_profile = "potential_profile"
+    reaction_energy_profile = "reaction_energy_profile"
     wavefunction_amplitude = "wavefunction_amplitude"
-    charge_density_profile = "charge_density_profile"
-    jupyter_notebook_endpoint = "jupyter_notebook_endpoint"
-    average_potential_profile = "average_potential_profile"
-    valence_band_offset = "valence_band_offset"
-    ionization_potential = "ionization_potential"
-    pseudopotential = "pseudopotential"
-    boundary_conditions = "boundary_conditions"
-    dielectric_tensor = "dielectric_tensor"
-    hubbard_u = "hubbard_u"
-    hubbard_v_nn = "hubbard_v_nn"
-    hubbard_v = "hubbard_v"
+    workflow_pyml_predict = "workflow:pyml_predict"
 
+
+class TensorPropertyName(str, Enum):
+    atomic_forces = "atomic_forces"
+    magnetic_moments = "magnetic_moments"
+    stress_tensor = "stress_tensor"
+
+
+class ObjectPropertyName(str, Enum):
+    total_energy_contributions = "total_energy_contributions"
+
+
+class ProtoPropertyName(str, Enum):
+    atomic_constraints = "atomic_constraints"
+    boundary_conditions = "boundary_conditions"
+
+
+class MetaPropertyName(str, Enum):
+    pseudopotential = "pseudopotential"
+
+
+PropertyEnum = SimpleNamespace(
+    scalar=ScalarPropertyName,
+    non_scalar=NonScalarPropertyName,
+    tensor=TensorPropertyName,
+    object=ObjectPropertyName,
+    proto=ProtoPropertyName,
+    meta=MetaPropertyName,
+)
