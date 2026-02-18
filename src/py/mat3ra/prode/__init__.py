@@ -70,7 +70,7 @@ class MetaPropertyName(str, Enum):
     pseudopotential = "pseudopotential"
 
 
-PropertyEnum = SimpleNamespace(
+PropertyName = SimpleNamespace(
     scalar=ScalarPropertyName,
     non_scalar=NonScalarPropertyName,
     tensor=TensorPropertyName,
