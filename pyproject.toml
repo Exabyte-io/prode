@@ -21,6 +21,8 @@ classifiers = [
 ]
 dependencies = [
     "numpy",
+    "mat3ra-esse @ git+https://github.com/Exabyte-io/esse.git@b0ea876b2e7be4bfaa12fa8e48f50f58d27746e5"
+
 ]
 
 [project.optional-dependencies]
