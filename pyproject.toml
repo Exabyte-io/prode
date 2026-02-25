@@ -20,7 +20,9 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "numpy",
+    "pydantic>=2.7.1",
+    "mat3ra-esse"
+
 ]
 
 [project.optional-dependencies]

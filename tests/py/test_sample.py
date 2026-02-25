@@ -1,12 +1,8 @@
-import numpy as np
-
-from mat3ra.prode import get_length
+import mat3ra.prode as prode
 
 
-def test_get_length():
-    """Test that get_length returns correct type and value."""
-    vec = np.array([1, 2])
-    result = get_length(vec)
-    assert isinstance(result, float)
-    assert np.isclose(result, np.sqrt(5))
+def test_property_name_enum():
+    result = prode.PropertyName.non_scalar.band_gaps
+    assert result.value == "band_gaps"
+    assert isinstance(result.value, str)
 
