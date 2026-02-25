@@ -21,7 +21,7 @@ classifiers = [
 ]
 dependencies = [
     "pydantic>=2.7.1",
-    "mat3ra-esse @ git+https://github.com/Exabyte-io/esse.git@475db10730b8fd8c756eea3a81612f9623a6a94c"
+    "mat3ra-esse"
 
 ]
 
