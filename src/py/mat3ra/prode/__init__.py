@@ -2,8 +2,6 @@ from enum import Enum
 from types import SimpleNamespace
 
 from mat3ra.esse.models.properties_directory.enum_options import (
-    ExternalSource,
-    PropertyType,
     ScalarPropertyEnum,
     NonScalarPropertyEnum,
     TensorPropertyEnum,
