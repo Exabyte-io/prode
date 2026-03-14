@@ -27,7 +27,7 @@ export declare class BandStructureConfig extends HighChartsConfig {
     });
     cleanXDataArray(rawData?: XDataArray): XDataArrayNested;
     calculatePointsDistance(listOfPoints?: XDataArrayNested): number[];
-    findSymmetryPointIndex(xDataArray: XDataArrayNested, point: number[]): number;
+    findSymmetryPointIndex(xDataArray: XDataArrayNested, point: number[], tolerance?: number): number;
     plotXLines(): PlotLines[];
     plotXLineAtPoint({ point, distance }: {
         point: string;

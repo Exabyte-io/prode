@@ -53,8 +53,8 @@ class BandStructureConfig extends highcharts_1.HighChartsConfig {
         });
     }
     // find index of a point inside an array of points
-    findSymmetryPointIndex(xDataArray, point) {
-        return xDataArray.findIndex((p) => math_1.math.vDist(p, point) === 0);
+    findSymmetryPointIndex(xDataArray, point, tolerance = 10 ** -exports._POINT_COORDINATES_PRECISION_) {
+        return xDataArray.findIndex((p) => math_1.math.vEqualWithTolerance(p, point, tolerance));
     }
     // create config for vertical lines at high symmetry points
     plotXLines() {

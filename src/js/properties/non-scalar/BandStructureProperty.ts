@@ -92,8 +92,12 @@ export class BandStructureConfig extends HighChartsConfig {
     }
 
     // find index of a point inside an array of points
-    findSymmetryPointIndex(xDataArray: XDataArrayNested, point: number[]) {
-        return xDataArray.findIndex((p) => codeJSMath.vDist(p, point) === 0);
+    findSymmetryPointIndex(
+        xDataArray: XDataArrayNested,
+        point: number[],
+        tolerance = 10 ** -_POINT_COORDINATES_PRECISION_,
+    ): number {
+        return xDataArray.findIndex((p) => codeJSMath.vEqualWithTolerance(p, point, tolerance));
     }
 
     // create config for vertical lines at high symmetry points
