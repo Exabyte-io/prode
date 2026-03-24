@@ -12,6 +12,8 @@ export declare enum PropertyName {
     pressure = "pressure",
     total_force = "total_force",
     total_energy = "total_energy",
+    homo_energy = "homo_energy",
+    lumo_energy = "lumo_energy",
     surface_energy = "surface_energy",
     convergence_electronic = "convergence_electronic",
     convergence_ionic = "convergence_ionic",

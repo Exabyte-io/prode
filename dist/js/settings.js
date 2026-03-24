@@ -20,6 +20,8 @@ var PropertyName;
     PropertyName["pressure"] = "pressure";
     PropertyName["total_force"] = "total_force";
     PropertyName["total_energy"] = "total_energy";
+    PropertyName["homo_energy"] = "homo_energy";
+    PropertyName["lumo_energy"] = "lumo_energy";
     PropertyName["surface_energy"] = "surface_energy";
     PropertyName["convergence_electronic"] = "convergence_electronic";
     PropertyName["convergence_ionic"] = "convergence_ionic";
