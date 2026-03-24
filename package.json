@@ -52,7 +52,7 @@
         "@babel/eslint-parser": "^7.16.3",
         "@exabyte-io/eslint-config": "2025.5.13-0",
         "@mat3ra/code": "2025.10.8-0",
-        "@mat3ra/esse": "2026.1.23-0",
+        "@mat3ra/esse": "git+https://github.com/Exabyte-io/esse.git#f11c7519a4b76dde88318c5d4ee24d6fe9f3c152",
         "@mat3ra/made": "2025.10.7-0",
         "@mat3ra/tsconfig": "2024.6.3-0",
         "@typescript-eslint/eslint-plugin": "^5.9.1",

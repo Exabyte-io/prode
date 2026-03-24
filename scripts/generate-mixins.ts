@@ -68,8 +68,12 @@ const OUTPUT_PATHS = {
         "src/js/generated/TotalEnergyContributionsPropertySchemaMixin.ts",
     "properties-directory/scalar/fermi-energy":
         "src/js/generated/FermiEnergyPropertySchemaMixin.ts",
+    "properties-directory/scalar/homo-energy":
+        "src/js/generated/HOMOEnergyPropertySchemaMixin.ts",
     "properties-directory/elemental/ionization-potential":
         "src/js/generated/IonizationPotentialElementalPropertySchemaMixin.ts",
+    "properties-directory/scalar/lumo-energy":
+        "src/js/generated/LUMOEnergyPropertySchemaMixin.ts",
     "properties-directory/scalar/pressure": "src/js/generated/PressurePropertySchemaMixin.ts",
     "properties-directory/scalar/reaction-energy-barrier":
         "src/js/generated/ReactionEnergyBarrierPropertySchemaMixin.ts",
