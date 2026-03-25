@@ -17,7 +17,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.metaPropertyHolderMixin = exports.propertyHolderMixin = exports.protoPropertyHolderMixin = exports.ReactionEnergyProfileProperty = exports.WavefunctionAmplitudeProperty = exports.PotentialProfileProperty = exports.ChargeDensityProfileProperty = exports.BandStructureProperty = exports.TotalEnergyProperty = exports.SurfaceEnergyProperty = exports.ReactionEnergyBarrierProperty = exports.PressureProperty = exports.IsRelaxedProperty = exports.BandGapsProperty = exports.FinalStructureProperty = exports.PseudopotentialMetaProperty = exports.MetaProperty = exports.Property = exports.PropertyType = exports.PropertyName = exports.PropertyFactory = void 0;
+exports.metaPropertyHolderMixin = exports.propertyHolderMixin = exports.protoPropertyHolderMixin = exports.ReactionEnergyProfileProperty = exports.WavefunctionAmplitudeProperty = exports.PotentialProfileProperty = exports.ChargeDensityProfileProperty = exports.BandStructureProperty = exports.LUMOEnergyProperty = exports.HOMOEnergyProperty = exports.TotalEnergyProperty = exports.SurfaceEnergyProperty = exports.ReactionEnergyBarrierProperty = exports.PressureProperty = exports.IsRelaxedProperty = exports.BandGapsProperty = exports.FinalStructureProperty = exports.PseudopotentialMetaProperty = exports.MetaProperty = exports.Property = exports.PropertyType = exports.PropertyName = exports.PropertyFactory = void 0;
 var PropertyFactory_1 = require("./PropertyFactory");
 Object.defineProperty(exports, "PropertyFactory", { enumerable: true, get: function () { return __importDefault(PropertyFactory_1).default; } });
 var settings_1 = require("./settings");
@@ -43,6 +43,10 @@ var SurfaceEnergyProperty_1 = require("./properties/scalar/SurfaceEnergyProperty
 Object.defineProperty(exports, "SurfaceEnergyProperty", { enumerable: true, get: function () { return __importDefault(SurfaceEnergyProperty_1).default; } });
 var TotalEnergyProperty_1 = require("./properties/scalar/TotalEnergyProperty");
 Object.defineProperty(exports, "TotalEnergyProperty", { enumerable: true, get: function () { return __importDefault(TotalEnergyProperty_1).default; } });
+var HOMOEnergyProperty_1 = require("./properties/scalar/HOMOEnergyProperty");
+Object.defineProperty(exports, "HOMOEnergyProperty", { enumerable: true, get: function () { return __importDefault(HOMOEnergyProperty_1).default; } });
+var LUMOEnergyProperty_1 = require("./properties/scalar/LUMOEnergyProperty");
+Object.defineProperty(exports, "LUMOEnergyProperty", { enumerable: true, get: function () { return __importDefault(LUMOEnergyProperty_1).default; } });
 var BandStructureProperty_1 = require("./properties/non-scalar/BandStructureProperty");
 Object.defineProperty(exports, "BandStructureProperty", { enumerable: true, get: function () { return __importDefault(BandStructureProperty_1).default; } });
 var ChargeDensityProfileProperty_1 = require("./properties/non-scalar/ChargeDensityProfileProperty");
