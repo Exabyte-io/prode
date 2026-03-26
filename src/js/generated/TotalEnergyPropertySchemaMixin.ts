@@ -8,17 +8,28 @@ export type TotalEnergyPropertySchemaMixin = Omit<
 
 export type TotalEnergyPropertyInMemoryEntity = InMemoryEntity & TotalEnergyPropertySchemaMixin;
 
-export function totalEnergyPropertySchemaMixin(item: InMemoryEntity) {
+export function totalEnergyPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & TotalEnergyPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & TotalEnergyPropertySchemaMixin = {
         get name() {
             return this.requiredProp<TotalEnergyPropertySchema["name"]>("name");
         },
+        set name(value: TotalEnergyPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get units() {
             return this.requiredProp<TotalEnergyPropertySchema["units"]>("units");
         },
+        set units(value: TotalEnergyPropertySchema["units"]) {
+            this.setProp("units", value);
+        },
         get value() {
             return this.requiredProp<TotalEnergyPropertySchema["value"]>("value");
+        },
+        set value(value: TotalEnergyPropertySchema["value"]) {
+            this.setProp("value", value);
         },
     };
 

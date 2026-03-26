@@ -7,11 +7,20 @@ function boundaryConditionsPropertySchemaMixin(item) {
         get name() {
             return this.requiredProp("name");
         },
+        set name(value) {
+            this.setProp("name", value);
+        },
         get type() {
             return this.requiredProp("type");
         },
+        set type(value) {
+            this.setProp("type", value);
+        },
         get offset() {
             return this.requiredProp("offset");
+        },
+        set offset(value) {
+            this.setProp("offset", value);
         },
     };
     Object.defineProperties(item, Object.getOwnPropertyDescriptors(properties));

@@ -8,17 +8,28 @@ export type HubbardUPropertySchemaMixin = Omit<
 
 export type HubbardUPropertyInMemoryEntity = InMemoryEntity & HubbardUPropertySchemaMixin;
 
-export function hubbardUPropertySchemaMixin(item: InMemoryEntity) {
+export function hubbardUPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & HubbardUPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & HubbardUPropertySchemaMixin = {
         get name() {
             return this.requiredProp<HubbardUParametersPropertySchema["name"]>("name");
         },
+        set name(value: HubbardUParametersPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get units() {
             return this.requiredProp<HubbardUParametersPropertySchema["units"]>("units");
         },
+        set units(value: HubbardUParametersPropertySchema["units"]) {
+            this.setProp("units", value);
+        },
         get values() {
             return this.requiredProp<HubbardUParametersPropertySchema["values"]>("values");
+        },
+        set values(value: HubbardUParametersPropertySchema["values"]) {
+            this.setProp("values", value);
         },
     };
 

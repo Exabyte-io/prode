@@ -8,17 +8,28 @@ export type LUMOEnergyPropertySchemaMixin = Omit<
 
 export type LUMOEnergyPropertyInMemoryEntity = InMemoryEntity & LUMOEnergyPropertySchemaMixin;
 
-export function lUMOEnergyPropertySchemaMixin(item: InMemoryEntity) {
+export function lUMOEnergyPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & LUMOEnergyPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & LUMOEnergyPropertySchemaMixin = {
         get name() {
             return this.requiredProp<LUMOEnergyPropertySchema["name"]>("name");
         },
+        set name(value: LUMOEnergyPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get units() {
             return this.requiredProp<LUMOEnergyPropertySchema["units"]>("units");
         },
+        set units(value: LUMOEnergyPropertySchema["units"]) {
+            this.setProp("units", value);
+        },
         get value() {
             return this.requiredProp<LUMOEnergyPropertySchema["value"]>("value");
+        },
+        set value(value: LUMOEnergyPropertySchema["value"]) {
+            this.setProp("value", value);
         },
     };
 

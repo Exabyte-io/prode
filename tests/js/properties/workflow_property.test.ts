@@ -7,8 +7,10 @@ import { PropertyName, PropertyType } from "../../../src/js/settings";
 describe("WorkflowProperty", () => {
     it("should create a workflow property with correct constructor, propertyType, and propertyName", () => {
         const config: Omit<WorkflowPropertySchema, "name"> = {
+            workflows: [],
             subworkflows: [
                 {
+                    properties: [],
                     units: [
                         {
                             type: "io",
@@ -16,43 +18,55 @@ describe("WorkflowProperty", () => {
                             source: "api",
                             input: [
                                 {
+                                    type: "api",
                                     endpoint: "https://api.example.com/data",
                                     endpoint_options: {},
+                                    name: "test_input",
                                 },
                             ],
                             flowchartId: "unit-1",
+                            name: "test_input",
+                            preProcessors: [],
+                            postProcessors: [],
+                            monitors: [],
+                            results: [],
                         },
                     ],
                     model: {
-                        type: "test_type",
-                        subtype: "test_subtype",
+                        type: "dft",
+                        subtype: "lda",
+                        functional: "pz",
                         method: {
-                            type: "test_method_type",
-                            subtype: "test_method_subtype",
+                            type: "pyml",
+                            subtype: "predict",
                         },
                     },
                     application: {
-                        shortName: "test_app",
-                        summary: "Test application",
+                        shortName: "pyml",
+                        summary: "Pyml application",
                         version: "1.0.0",
+                        name: "pyml",
+                        build: "1.0.0",
                     },
                     name: "test_subworkflow",
                 },
             ],
             units: [
                 {
-                    type: "io",
-                    subtype: "input",
-                    source: "api",
-                    input: [
-                        {
-                            endpoint: "https://api.example.com/data",
-                            endpoint_options: {},
-                        },
-                    ],
+                    type: "map",
+                    name: "test_map",
                     flowchartId: "workflow-unit-1",
+                    workflowId: "workflow-1",
+                    input: {
+                        target: "test_input",
+                    },
+                    results: [],
+                    preProcessors: [],
+                    postProcessors: [],
+                    monitors: [],
                 },
             ],
+            properties: [],
         };
 
         const workflowProperty = new WorkflowProperty(config);

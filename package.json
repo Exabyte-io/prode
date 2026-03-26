@@ -51,9 +51,9 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.16.3",
         "@exabyte-io/eslint-config": "2025.5.13-0",
-        "@mat3ra/code": "2025.10.8-0",
-        "@mat3ra/esse": "2026.3.25-0",
-        "@mat3ra/made": "2025.10.7-0",
+        "@mat3ra/code": "git+https://github.com/Exabyte-io/code.git#c3c9e5eb177fe70b8bc221832b6f9d93104d7e2d",
+        "@mat3ra/esse": "git+https://github.com/Exabyte-io/esse#afe2a2a915843f1ed36b7dc2f1486cfc0cbc40d1",
+        "@mat3ra/made": "git+https://github.com/Exabyte-io/made.git#75f9a788a20decc18570d6db68e6d83068fab37f",
         "@mat3ra/tsconfig": "2024.6.3-0",
         "@typescript-eslint/eslint-plugin": "^5.9.1",
         "@typescript-eslint/parser": "^5.9.1",

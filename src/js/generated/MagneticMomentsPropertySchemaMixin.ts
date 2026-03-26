@@ -9,17 +9,28 @@ export type MagneticMomentsPropertySchemaMixin = Omit<
 export type MagneticMomentsPropertyInMemoryEntity = InMemoryEntity &
     MagneticMomentsPropertySchemaMixin;
 
-export function magneticMomentsPropertySchemaMixin(item: InMemoryEntity) {
+export function magneticMomentsPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & MagneticMomentsPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & MagneticMomentsPropertySchemaMixin = {
         get name() {
             return this.requiredProp<MagneticMomentsPropertySchema["name"]>("name");
         },
+        set name(value: MagneticMomentsPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get values() {
             return this.requiredProp<MagneticMomentsPropertySchema["values"]>("values");
         },
+        set values(value: MagneticMomentsPropertySchema["values"]) {
+            this.setProp("values", value);
+        },
         get units() {
             return this.requiredProp<MagneticMomentsPropertySchema["units"]>("units");
+        },
+        set units(value: MagneticMomentsPropertySchema["units"]) {
+            this.setProp("units", value);
         },
     };
 

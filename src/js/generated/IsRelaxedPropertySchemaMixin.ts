@@ -8,17 +8,28 @@ export type IsRelaxedPropertySchemaMixin = Omit<
 
 export type IsRelaxedPropertyInMemoryEntity = InMemoryEntity & IsRelaxedPropertySchemaMixin;
 
-export function isRelaxedPropertySchemaMixin(item: InMemoryEntity) {
+export function isRelaxedPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & IsRelaxedPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & IsRelaxedPropertySchemaMixin = {
         get name() {
             return this.requiredProp<IsRelaxedPropertySchema["name"]>("name");
         },
+        set name(value: IsRelaxedPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get value() {
             return this.requiredProp<IsRelaxedPropertySchema["value"]>("value");
         },
+        set value(value: IsRelaxedPropertySchema["value"]) {
+            this.setProp("value", value);
+        },
         get materialId() {
             return this.requiredProp<IsRelaxedPropertySchema["materialId"]>("materialId");
+        },
+        set materialId(value: IsRelaxedPropertySchema["materialId"]) {
+            this.setProp("materialId", value);
         },
     };
 

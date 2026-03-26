@@ -9,14 +9,22 @@ export type AtomicConstraintsPropertySchemaMixin = Omit<
 export type AtomicConstraintsPropertyInMemoryEntity = InMemoryEntity &
     AtomicConstraintsPropertySchemaMixin;
 
-export function atomicConstraintsPropertySchemaMixin(item: InMemoryEntity) {
+export function atomicConstraintsPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & AtomicConstraintsPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & AtomicConstraintsPropertySchemaMixin = {
         get name() {
             return this.requiredProp<AtomicConstraintsPropertySchema["name"]>("name");
         },
+        set name(value: AtomicConstraintsPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get values() {
             return this.requiredProp<AtomicConstraintsPropertySchema["values"]>("values");
+        },
+        set values(value: AtomicConstraintsPropertySchema["values"]) {
+            this.setProp("values", value);
         },
     };
 
