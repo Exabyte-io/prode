@@ -20,4 +20,7 @@ export { default as ReactionEnergyProfileProperty } from "./properties/non-scala
 export { protoPropertyHolderMixin } from "./holders/mixins/ProtoPropertyHolderMixin";
 export { propertyHolderMixin } from "./holders/mixins/PropertyHolderMixin";
 export { metaPropertyHolderMixin } from "./holders/mixins/MetaPropertyHolderMixin";
+export { default as PropertyHolder } from "./holders/PropertyHolder";
+export { default as MetaPropertyHolder } from "./holders/MetaPropertyHolder";
+export { default as ProtoPropertyHolder } from "./holders/ProtoPropertyHolder";
 export * from "./types";
