@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.totalEntropyPropertySchemaMixin = totalEntropyPropertySchemaMixin;
-function totalEntropyPropertySchemaMixin(item) {
+exports.thermalCorrectionToEnergyPropertySchemaMixin = thermalCorrectionToEnergyPropertySchemaMixin;
+function thermalCorrectionToEnergyPropertySchemaMixin(item) {
     // @ts-expect-error
     const properties = {
         get name() {

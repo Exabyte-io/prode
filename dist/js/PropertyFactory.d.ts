@@ -21,19 +21,16 @@ import PotentialProfileProperty from "./properties/non-scalar/PotentialProfilePr
 import ReactionEnergyProfileProperty from "./properties/non-scalar/ReactionEnergyProfileProperty";
 import WavefunctionAmplitudeProperty from "./properties/non-scalar/WavefunctionAmplitudeProperty";
 import WorkflowProperty from "./properties/non-scalar/WorkflowProperty";
-import HeatCapacityCVContributionsProperty from "./properties/object/HeatCapacityCVContributionsProperty";
-import ThermalCorrectionsProperty from "./properties/object/ThermalCorrectionsProperty";
-import TotalEntropyContributionsProperty from "./properties/object/TotalEntropyContributionsProperty";
 import TotalEnergyContributionsProperty from "./properties/object/TotalEnergyContributionsProperty";
 import FermiEnergyProperty from "./properties/scalar/FermiEnergyProperty";
-import HeatCapacityCVProperty from "./properties/scalar/HeatCapacityCVProperty";
 import HOMOEnergyProperty from "./properties/scalar/HOMOEnergyProperty";
 import IonizationPotentialElementalProperty from "./properties/scalar/IonizationPotentialElementalProperty";
 import LUMOEnergyProperty from "./properties/scalar/LUMOEnergyProperty";
 import PressureProperty from "./properties/scalar/PressureProperty";
 import ReactionEnergyBarrierProperty from "./properties/scalar/ReactionEnergyBarrierProperty";
 import SurfaceEnergyProperty from "./properties/scalar/SurfaceEnergyProperty";
-import TotalEntropyProperty from "./properties/scalar/TotalEntropyProperty";
+import ThermalCorrectionToEnergyProperty from "./properties/scalar/ThermalCorrectionToEnergyProperty";
+import ThermalCorrectionToEnthalpyProperty from "./properties/scalar/ThermalCorrectionToEnthalpyProperty";
 import TotalEnergyProperty from "./properties/scalar/TotalEnergyProperty";
 import TotalForcesProperty from "./properties/scalar/TotalForceProperty";
 import ValenceBandOffsetProperty from "./properties/scalar/ValenceBandOffsetProperty";
@@ -55,7 +52,7 @@ export default class PropertyFactory {
     static getScalarPropertyNames(): PropertyName[];
     static getNonScalarPropertyNames(): PropertyName[];
     private static filterPropertyNames;
-    static createProperty(config: AnyProperty): AveragePotentialProfileProperty | BandGapsProperty | BandStructureProperty | ChargeDensityProfileProperty | ConvergenceElectronicProperty | ConvergenceIonicProperty | DensityOfStatesProperty | DielectricTensorProperty | FileContentProperty | FinalStructureProperty | HubbardUProperty | HubbardVNNProperty | HubbardVProperty | IsRelaxedProperty | JupyterNotebookEndpointProperty | PhononDispersionsProperty | PhononDOSProperty | PotentialProfileProperty | ReactionEnergyProfileProperty | WavefunctionAmplitudeProperty | WorkflowProperty | HeatCapacityCVContributionsProperty | ThermalCorrectionsProperty | TotalEntropyContributionsProperty | TotalEnergyContributionsProperty | FermiEnergyProperty | HeatCapacityCVProperty | HOMOEnergyProperty | IonizationPotentialElementalProperty | LUMOEnergyProperty | PressureProperty | ReactionEnergyBarrierProperty | SurfaceEnergyProperty | TotalEntropyProperty | TotalEnergyProperty | TotalForcesProperty | ValenceBandOffsetProperty | ZeroPointEnergyProperty | AtomicForcesProperty | MagneticMomentsProperty | StressTensorProperty;
+    static createProperty(config: AnyProperty): AveragePotentialProfileProperty | BandGapsProperty | BandStructureProperty | ChargeDensityProfileProperty | ConvergenceElectronicProperty | ConvergenceIonicProperty | DensityOfStatesProperty | DielectricTensorProperty | FileContentProperty | FinalStructureProperty | HubbardUProperty | HubbardVNNProperty | HubbardVProperty | IsRelaxedProperty | JupyterNotebookEndpointProperty | PhononDispersionsProperty | PhononDOSProperty | PotentialProfileProperty | ReactionEnergyProfileProperty | WavefunctionAmplitudeProperty | WorkflowProperty | TotalEnergyContributionsProperty | FermiEnergyProperty | HOMOEnergyProperty | IonizationPotentialElementalProperty | LUMOEnergyProperty | PressureProperty | ReactionEnergyBarrierProperty | SurfaceEnergyProperty | ThermalCorrectionToEnergyProperty | ThermalCorrectionToEnthalpyProperty | TotalEnergyProperty | TotalForcesProperty | ValenceBandOffsetProperty | ZeroPointEnergyProperty | AtomicForcesProperty | MagneticMomentsProperty | StressTensorProperty;
     static createMetaProperty(config: AnyMetaProperty): MetaProperty;
     static createProtoProperty(config: AnyProtoProperty): AtomicConstraintsProperty | BoundaryConditionsProperty;
 }

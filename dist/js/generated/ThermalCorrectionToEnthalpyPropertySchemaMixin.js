@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.heatCapacityCVPropertySchemaMixin = heatCapacityCVPropertySchemaMixin;
-function heatCapacityCVPropertySchemaMixin(item) {
+exports.thermalCorrectionToEnthalpyPropertySchemaMixin = thermalCorrectionToEnthalpyPropertySchemaMixin;
+function thermalCorrectionToEnthalpyPropertySchemaMixin(item) {
     // @ts-expect-error
     const properties = {
         get name() {
