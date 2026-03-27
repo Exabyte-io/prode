@@ -26,8 +26,17 @@ export function workflowPropertySchemaMixin(item: InMemoryEntity) {
         get isUsingDataset() {
             return this.prop<WorkflowPropertySchema["isUsingDataset"]>("isUsingDataset");
         },
+        get isMultiMaterial() {
+            return this.prop<WorkflowPropertySchema["isMultiMaterial"]>("isMultiMaterial");
+        },
         get workflows() {
             return this.prop<WorkflowPropertySchema["workflows"]>("workflows");
+        },
+        get application() {
+            return this.prop<WorkflowPropertySchema["application"]>("application");
+        },
+        get tags() {
+            return this.prop<WorkflowPropertySchema["tags"]>("tags");
         },
         get isDefault() {
             return this.prop<WorkflowPropertySchema["isDefault"]>("isDefault");

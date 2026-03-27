@@ -28,14 +28,19 @@ import PotentialProfileProperty from "./properties/non-scalar/PotentialProfilePr
 import ReactionEnergyProfileProperty from "./properties/non-scalar/ReactionEnergyProfileProperty";
 import WavefunctionAmplitudeProperty from "./properties/non-scalar/WavefunctionAmplitudeProperty";
 import WorkflowProperty from "./properties/non-scalar/WorkflowProperty";
+import HeatCapacityCVContributionsProperty from "./properties/object/HeatCapacityCVContributionsProperty";
+import ThermalCorrectionsProperty from "./properties/object/ThermalCorrectionsProperty";
+import TotalEntropyContributionsProperty from "./properties/object/TotalEntropyContributionsProperty";
 import TotalEnergyContributionsProperty from "./properties/object/TotalEnergyContributionsProperty";
 import FermiEnergyProperty from "./properties/scalar/FermiEnergyProperty";
+import HeatCapacityCVProperty from "./properties/scalar/HeatCapacityCVProperty";
 import HOMOEnergyProperty from "./properties/scalar/HOMOEnergyProperty";
 import IonizationPotentialElementalProperty from "./properties/scalar/IonizationPotentialElementalProperty";
 import LUMOEnergyProperty from "./properties/scalar/LUMOEnergyProperty";
 import PressureProperty from "./properties/scalar/PressureProperty";
 import ReactionEnergyBarrierProperty from "./properties/scalar/ReactionEnergyBarrierProperty";
 import SurfaceEnergyProperty from "./properties/scalar/SurfaceEnergyProperty";
+import TotalEntropyProperty from "./properties/scalar/TotalEntropyProperty";
 import TotalEnergyProperty from "./properties/scalar/TotalEnergyProperty";
 import TotalForcesProperty from "./properties/scalar/TotalForceProperty";
 import ValenceBandOffsetProperty from "./properties/scalar/ValenceBandOffsetProperty";
@@ -63,8 +68,13 @@ type PropertyClassMap = {
         | Constructor<ConvergenceElectronicProperty>
         | Constructor<ConvergenceIonicProperty>
         | Constructor<FermiEnergyProperty>
+        | Constructor<TotalEntropyProperty>
+        | Constructor<HeatCapacityCVProperty>
         | Constructor<ZeroPointEnergyProperty>
         | Constructor<TotalEnergyContributionsProperty>
+        | Constructor<ThermalCorrectionsProperty>
+        | Constructor<TotalEntropyContributionsProperty>
+        | Constructor<HeatCapacityCVContributionsProperty>
         | Constructor<AtomicForcesProperty>
         | Constructor<StressTensorProperty>
         | Constructor<DensityOfStatesProperty>
@@ -112,8 +122,13 @@ const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [ConvergenceElectronicProperty.propertyName]: ConvergenceElectronicProperty,
     [ConvergenceIonicProperty.propertyName]: ConvergenceIonicProperty,
     [FermiEnergyProperty.propertyName]: FermiEnergyProperty,
+    [TotalEntropyProperty.propertyName]: TotalEntropyProperty,
+    [HeatCapacityCVProperty.propertyName]: HeatCapacityCVProperty,
     [ZeroPointEnergyProperty.propertyName]: ZeroPointEnergyProperty,
     [TotalEnergyContributionsProperty.propertyName]: TotalEnergyContributionsProperty,
+    [ThermalCorrectionsProperty.propertyName]: ThermalCorrectionsProperty,
+    [TotalEntropyContributionsProperty.propertyName]: TotalEntropyContributionsProperty,
+    [HeatCapacityCVContributionsProperty.propertyName]: HeatCapacityCVContributionsProperty,
     [AtomicForcesProperty.propertyName]: AtomicForcesProperty,
     [StressTensorProperty.propertyName]: StressTensorProperty,
     [DensityOfStatesProperty.propertyName]: DensityOfStatesProperty,

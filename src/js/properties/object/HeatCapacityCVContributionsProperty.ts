@@ -1,0 +1,29 @@
+import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
+import type { HeatCapacityCvContributionsPropertySchema } from "@mat3ra/esse/dist/js/types";
+
+import {
+    HeatCapacityCVContributionsPropertySchemaMixin,
+    heatCapacityCVContributionsPropertySchemaMixin,
+} from "../../generated/HeatCapacityCVContributionsPropertySchemaMixin";
+import Property from "../../Property";
+import { PropertyName, PropertyType } from "../../settings";
+
+type Schema = HeatCapacityCvContributionsPropertySchema;
+
+type Base = typeof Property<Schema> & Constructor<HeatCapacityCVContributionsPropertySchemaMixin>;
+
+export default class HeatCapacityCVContributionsProperty
+    extends (Property as Base)
+    implements Schema {
+    static readonly propertyType = PropertyType.object;
+
+    static readonly propertyName = PropertyName.heat_capacity_cv_contributions;
+
+    static readonly isRefined = true;
+
+    constructor(config: Omit<Schema, "name">) {
+        super({ ...config, name: HeatCapacityCVContributionsProperty.propertyName });
+    }
+}
+
+heatCapacityCVContributionsPropertySchemaMixin(HeatCapacityCVContributionsProperty.prototype);
