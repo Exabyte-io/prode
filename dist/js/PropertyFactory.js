@@ -25,14 +25,19 @@ const PotentialProfileProperty_1 = __importDefault(require("./properties/non-sca
 const ReactionEnergyProfileProperty_1 = __importDefault(require("./properties/non-scalar/ReactionEnergyProfileProperty"));
 const WavefunctionAmplitudeProperty_1 = __importDefault(require("./properties/non-scalar/WavefunctionAmplitudeProperty"));
 const WorkflowProperty_1 = __importDefault(require("./properties/non-scalar/WorkflowProperty"));
+const HeatCapacityCVContributionsProperty_1 = __importDefault(require("./properties/object/HeatCapacityCVContributionsProperty"));
+const ThermalCorrectionsProperty_1 = __importDefault(require("./properties/object/ThermalCorrectionsProperty"));
+const TotalEntropyContributionsProperty_1 = __importDefault(require("./properties/object/TotalEntropyContributionsProperty"));
 const TotalEnergyContributionsProperty_1 = __importDefault(require("./properties/object/TotalEnergyContributionsProperty"));
 const FermiEnergyProperty_1 = __importDefault(require("./properties/scalar/FermiEnergyProperty"));
+const HeatCapacityCVProperty_1 = __importDefault(require("./properties/scalar/HeatCapacityCVProperty"));
 const HOMOEnergyProperty_1 = __importDefault(require("./properties/scalar/HOMOEnergyProperty"));
 const IonizationPotentialElementalProperty_1 = __importDefault(require("./properties/scalar/IonizationPotentialElementalProperty"));
 const LUMOEnergyProperty_1 = __importDefault(require("./properties/scalar/LUMOEnergyProperty"));
 const PressureProperty_1 = __importDefault(require("./properties/scalar/PressureProperty"));
 const ReactionEnergyBarrierProperty_1 = __importDefault(require("./properties/scalar/ReactionEnergyBarrierProperty"));
 const SurfaceEnergyProperty_1 = __importDefault(require("./properties/scalar/SurfaceEnergyProperty"));
+const TotalEntropyProperty_1 = __importDefault(require("./properties/scalar/TotalEntropyProperty"));
 const TotalEnergyProperty_1 = __importDefault(require("./properties/scalar/TotalEnergyProperty"));
 const TotalForceProperty_1 = __importDefault(require("./properties/scalar/TotalForceProperty"));
 const ValenceBandOffsetProperty_1 = __importDefault(require("./properties/scalar/ValenceBandOffsetProperty"));
@@ -53,8 +58,13 @@ const PROPERTY_CLASS_MAP = {
     [ConvergenceElectronicProperty_1.default.propertyName]: ConvergenceElectronicProperty_1.default,
     [ConvergenceIonicProperty_1.default.propertyName]: ConvergenceIonicProperty_1.default,
     [FermiEnergyProperty_1.default.propertyName]: FermiEnergyProperty_1.default,
+    [TotalEntropyProperty_1.default.propertyName]: TotalEntropyProperty_1.default,
+    [HeatCapacityCVProperty_1.default.propertyName]: HeatCapacityCVProperty_1.default,
     [ZeroPointEnergyProperty_1.default.propertyName]: ZeroPointEnergyProperty_1.default,
     [TotalEnergyContributionsProperty_1.default.propertyName]: TotalEnergyContributionsProperty_1.default,
+    [ThermalCorrectionsProperty_1.default.propertyName]: ThermalCorrectionsProperty_1.default,
+    [TotalEntropyContributionsProperty_1.default.propertyName]: TotalEntropyContributionsProperty_1.default,
+    [HeatCapacityCVContributionsProperty_1.default.propertyName]: HeatCapacityCVContributionsProperty_1.default,
     [AtomicForcesProperty_1.default.propertyName]: AtomicForcesProperty_1.default,
     [StressTensorProperty_1.default.propertyName]: StressTensorProperty_1.default,
     [DensityOfStatesProperty_1.default.propertyName]: DensityOfStatesProperty_1.default,

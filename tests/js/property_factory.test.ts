@@ -50,6 +50,8 @@ describe("PropertyFactory", () => {
         expect(refinedPropertyNames).to.include(PropertyName.total_energy);
         expect(refinedPropertyNames).to.include(PropertyName.homo_energy);
         expect(refinedPropertyNames).to.include(PropertyName.lumo_energy);
+        expect(refinedPropertyNames).to.include(PropertyName.thermal_correction_to_energy);
+        expect(refinedPropertyNames).to.include(PropertyName.thermal_correction_to_enthalpy);
         expect(refinedPropertyNames).to.include(PropertyName.band_structure);
         expect(refinedPropertyNames).to.include(PropertyName.density_of_states);
 
@@ -61,6 +63,8 @@ describe("PropertyFactory", () => {
         expect(scalarPropertyNames).to.include(PropertyName.total_energy);
         expect(scalarPropertyNames).to.include(PropertyName.homo_energy);
         expect(scalarPropertyNames).to.include(PropertyName.lumo_energy);
+        expect(scalarPropertyNames).to.include(PropertyName.thermal_correction_to_energy);
+        expect(scalarPropertyNames).to.include(PropertyName.thermal_correction_to_enthalpy);
         expect(scalarPropertyNames).to.include(PropertyName.fermi_energy);
         expect(scalarPropertyNames).to.include(PropertyName.pressure);
 
