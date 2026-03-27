@@ -15,6 +15,8 @@ describe("ThermalCorrectionToEnergyProperty", () => {
 
         expect(property).to.be.instanceOf(ThermalCorrectionToEnergyProperty);
         expect(ThermalCorrectionToEnergyProperty.propertyType).equal(PropertyType.scalar);
-        expect(ThermalCorrectionToEnergyProperty.propertyName).equal(PropertyName.thermal_correction_to_energy);
+        expect(ThermalCorrectionToEnergyProperty.propertyName).equal(
+            PropertyName.thermal_correction_to_energy,
+        );
     });
 });
