@@ -68,17 +68,19 @@ const OUTPUT_PATHS = {
         "src/js/generated/TotalEnergyContributionsPropertySchemaMixin.ts",
     "properties-directory/scalar/fermi-energy":
         "src/js/generated/FermiEnergyPropertySchemaMixin.ts",
-    "properties-directory/scalar/homo-energy":
-        "src/js/generated/HOMOEnergyPropertySchemaMixin.ts",
+    "properties-directory/scalar/homo-energy": "src/js/generated/HOMOEnergyPropertySchemaMixin.ts",
     "properties-directory/elemental/ionization-potential":
         "src/js/generated/IonizationPotentialElementalPropertySchemaMixin.ts",
-    "properties-directory/scalar/lumo-energy":
-        "src/js/generated/LUMOEnergyPropertySchemaMixin.ts",
+    "properties-directory/scalar/lumo-energy": "src/js/generated/LUMOEnergyPropertySchemaMixin.ts",
     "properties-directory/scalar/pressure": "src/js/generated/PressurePropertySchemaMixin.ts",
     "properties-directory/scalar/reaction-energy-barrier":
         "src/js/generated/ReactionEnergyBarrierPropertySchemaMixin.ts",
     "properties-directory/scalar/surface-energy":
         "src/js/generated/SurfaceEnergyPropertySchemaMixin.ts",
+    "properties-directory/scalar/thermal-correction-to-energy":
+        "src/js/generated/ThermalCorrectionToEnergyPropertySchemaMixin.ts",
+    "properties-directory/scalar/thermal-correction-to-enthalpy":
+        "src/js/generated/ThermalCorrectionToEnthalpyPropertySchemaMixin.ts",
     "properties-directory/scalar/total-energy":
         "src/js/generated/TotalEnergyPropertySchemaMixin.ts",
     "properties-directory/scalar/total-force": "src/js/generated/TotalForcePropertySchemaMixin.ts",

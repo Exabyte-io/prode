@@ -19,8 +19,17 @@ function workflowPropertySchemaMixin(item) {
         get isUsingDataset() {
             return this.prop("isUsingDataset");
         },
+        get isMultiMaterial() {
+            return this.prop("isMultiMaterial");
+        },
         get workflows() {
             return this.prop("workflows");
+        },
+        get application() {
+            return this.prop("application");
+        },
+        get tags() {
+            return this.prop("tags");
         },
         get isDefault() {
             return this.prop("isDefault");

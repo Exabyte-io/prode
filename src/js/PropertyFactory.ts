@@ -36,6 +36,8 @@ import LUMOEnergyProperty from "./properties/scalar/LUMOEnergyProperty";
 import PressureProperty from "./properties/scalar/PressureProperty";
 import ReactionEnergyBarrierProperty from "./properties/scalar/ReactionEnergyBarrierProperty";
 import SurfaceEnergyProperty from "./properties/scalar/SurfaceEnergyProperty";
+import ThermalCorrectionToEnergyProperty from "./properties/scalar/ThermalCorrectionToEnergyProperty";
+import ThermalCorrectionToEnthalpyProperty from "./properties/scalar/ThermalCorrectionToEnthalpyProperty";
 import TotalEnergyProperty from "./properties/scalar/TotalEnergyProperty";
 import TotalForcesProperty from "./properties/scalar/TotalForceProperty";
 import ValenceBandOffsetProperty from "./properties/scalar/ValenceBandOffsetProperty";
@@ -63,6 +65,8 @@ type PropertyClassMap = {
         | Constructor<ConvergenceElectronicProperty>
         | Constructor<ConvergenceIonicProperty>
         | Constructor<FermiEnergyProperty>
+        | Constructor<ThermalCorrectionToEnergyProperty>
+        | Constructor<ThermalCorrectionToEnthalpyProperty>
         | Constructor<ZeroPointEnergyProperty>
         | Constructor<TotalEnergyContributionsProperty>
         | Constructor<AtomicForcesProperty>
@@ -112,6 +116,8 @@ const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [ConvergenceElectronicProperty.propertyName]: ConvergenceElectronicProperty,
     [ConvergenceIonicProperty.propertyName]: ConvergenceIonicProperty,
     [FermiEnergyProperty.propertyName]: FermiEnergyProperty,
+    [ThermalCorrectionToEnergyProperty.propertyName]: ThermalCorrectionToEnergyProperty,
+    [ThermalCorrectionToEnthalpyProperty.propertyName]: ThermalCorrectionToEnthalpyProperty,
     [ZeroPointEnergyProperty.propertyName]: ZeroPointEnergyProperty,
     [TotalEnergyContributionsProperty.propertyName]: TotalEnergyContributionsProperty,
     [AtomicForcesProperty.propertyName]: AtomicForcesProperty,
