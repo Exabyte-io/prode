@@ -1,6 +1,13 @@
 import { expect } from "chai";
 
-import { PropertyFactory, PropertyName } from "../../src/js";
+import {
+    HOMOEnergyProperty,
+    LUMOEnergyProperty,
+    PropertyFactory,
+    PropertyName,
+    ThermalCorrectionToEnergyProperty,
+    ThermalCorrectionToEnthalpyProperty,
+} from "../../src/js";
 
 describe("PropertyFactory", () => {
     it("should return arrays of property names for different categories", () => {
@@ -33,6 +40,13 @@ describe("PropertyFactory", () => {
             ...scalarPropertyNames,
             ...nonScalarPropertyNames,
         ];
+
+        expect([
+            HOMOEnergyProperty,
+            LUMOEnergyProperty,
+            ThermalCorrectionToEnergyProperty,
+            ThermalCorrectionToEnthalpyProperty,
+        ]).to.not.include(undefined);
 
         allPropertyNames.forEach((propertyName) => {
             expect(Object.values(PropertyName)).to.include(propertyName);
