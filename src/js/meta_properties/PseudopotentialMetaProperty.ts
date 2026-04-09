@@ -19,6 +19,19 @@ enum CompatibleExchangeCorrelationKey {
 
 type Base = typeof MetaProperty & Constructor<PseudopotentialMetaPropertySchemaMixin>;
 
+export type ExchangeCorrelation = {
+    functional: keyof typeof PseudopotentialMetaProperty.compatibleExchangeCorrelation;
+    approximation: string;
+};
+
+export type PseudopotentialFilter = {
+    searchText?: string;
+    appName?: string;
+    type?: string;
+    exchangeCorrelation?: ExchangeCorrelation;
+    elements?: string[];
+};
+
 export default class PseudopotentialMetaProperty extends (MetaProperty as Base) implements Schema {
     static readonly propertyName = PropertyName.pseudopotential;
 
@@ -80,10 +93,7 @@ export default class PseudopotentialMetaProperty extends (MetaProperty as Base) 
      */
     static filterRawDataByExchangeCorrelation(
         rawData: PseudopotentialMetaProperty[],
-        exchangeCorrelation: {
-            functional: string;
-            approximation: string;
-        },
+        exchangeCorrelation: ExchangeCorrelation,
     ) {
         const { functional } = exchangeCorrelation;
 
@@ -134,16 +144,7 @@ export default class PseudopotentialMetaProperty extends (MetaProperty as Base) 
      */
     static applyPseudoFilters(
         pseudos: PseudopotentialMetaProperty[],
-        pseudoFilter: {
-            searchText?: string;
-            appName?: string;
-            type?: string;
-            exchangeCorrelation?: {
-                functional: keyof typeof PseudopotentialMetaProperty.compatibleExchangeCorrelation;
-                approximation: string;
-            };
-            elements?: string[];
-        },
+        pseudoFilter: PseudopotentialFilter,
     ) {
         let filteredPseudos = [...pseudos];
 

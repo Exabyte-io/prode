@@ -10,6 +10,17 @@ declare enum CompatibleExchangeCorrelationKey {
     hse06 = "hse06"
 }
 type Base = typeof MetaProperty & Constructor<PseudopotentialMetaPropertySchemaMixin>;
+export type ExchangeCorrelation = {
+    functional: keyof typeof PseudopotentialMetaProperty.compatibleExchangeCorrelation;
+    approximation: string;
+};
+export type PseudopotentialFilter = {
+    searchText?: string;
+    appName?: string;
+    type?: string;
+    exchangeCorrelation?: ExchangeCorrelation;
+    elements?: string[];
+};
 declare const PseudopotentialMetaProperty_base: Base;
 export default class PseudopotentialMetaProperty extends PseudopotentialMetaProperty_base implements Schema {
     static readonly propertyName = PropertyName.pseudopotential;
@@ -32,10 +43,7 @@ export default class PseudopotentialMetaProperty extends PseudopotentialMetaProp
     /**
      * @summary Exclusive filter of raw data by all fields of the passed object
      */
-    static filterRawDataByExchangeCorrelation(rawData: PseudopotentialMetaProperty[], exchangeCorrelation: {
-        functional: string;
-        approximation: string;
-    }): PseudopotentialMetaProperty[];
+    static filterRawDataByExchangeCorrelation(rawData: PseudopotentialMetaProperty[], exchangeCorrelation: ExchangeCorrelation): PseudopotentialMetaProperty[];
     static filterUnique(array: PseudopotentialMetaProperty[]): PseudopotentialMetaProperty[];
     static filterUniqueByAppName(array: PseudopotentialMetaProperty[], appName: string): PseudopotentialMetaProperty[];
     static filterRawDataByPath(rawData: RawDataObject[], pseudoPath?: string): RawDataObject[];
@@ -54,16 +62,7 @@ export default class PseudopotentialMetaProperty extends PseudopotentialMetaProp
      *     elements: ["Si", "Ne", "Fe"],
      * }
      */
-    static applyPseudoFilters(pseudos: PseudopotentialMetaProperty[], pseudoFilter: {
-        searchText?: string;
-        appName?: string;
-        type?: string;
-        exchangeCorrelation?: {
-            functional: keyof typeof PseudopotentialMetaProperty.compatibleExchangeCorrelation;
-            approximation: string;
-        };
-        elements?: string[];
-    }): PseudopotentialMetaProperty[];
+    static applyPseudoFilters(pseudos: PseudopotentialMetaProperty[], pseudoFilter: PseudopotentialFilter): PseudopotentialMetaProperty[];
     /**
      * Sorts pseudos by the given pattern.
      * NOTE: This is currently used to prioritize gbrv pseudopotentials over norm-conserving ones for QE.
