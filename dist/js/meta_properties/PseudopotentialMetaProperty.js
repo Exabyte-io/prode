@@ -55,7 +55,7 @@ class PseudopotentialMetaProperty extends MetaProperty_1.default {
         const { functional } = exchangeCorrelation;
         return rawData.filter((item) => {
             var _a, _b;
-            return this.isCompatibleWithOther(functional)
+            return functional && this.isCompatibleWithOther(functional)
                 ? this.compatibleExchangeCorrelation[functional].includes(((_a = item.exchangeCorrelation) === null || _a === void 0 ? void 0 : _a.functional) || "")
                 : functional === ((_b = item.exchangeCorrelation) === null || _b === void 0 ? void 0 : _b.functional);
         });

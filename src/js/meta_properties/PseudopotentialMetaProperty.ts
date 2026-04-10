@@ -20,7 +20,7 @@ enum CompatibleExchangeCorrelationKey {
 type Base = typeof MetaProperty & Constructor<PseudopotentialMetaPropertySchemaMixin>;
 
 export type ExchangeCorrelation = {
-    functional: string;
+    functional?: string;
     approximation: string;
 };
 
@@ -98,7 +98,7 @@ export default class PseudopotentialMetaProperty extends (MetaProperty as Base) 
         const { functional } = exchangeCorrelation;
 
         return rawData.filter((item) => {
-            return this.isCompatibleWithOther(functional)
+            return functional && this.isCompatibleWithOther(functional)
                 ? this.compatibleExchangeCorrelation[functional].includes(
                       item.exchangeCorrelation?.functional || "",
                   )
