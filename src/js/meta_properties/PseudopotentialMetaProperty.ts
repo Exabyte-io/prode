@@ -20,7 +20,7 @@ enum CompatibleExchangeCorrelationKey {
 type Base = typeof MetaProperty & Constructor<PseudopotentialMetaPropertySchemaMixin>;
 
 export type ExchangeCorrelation = {
-    functional: keyof typeof PseudopotentialMetaProperty.compatibleExchangeCorrelation;
+    functional: string;
     approximation: string;
 };
 
