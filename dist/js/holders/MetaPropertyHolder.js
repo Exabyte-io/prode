@@ -8,5 +8,5 @@ class MetaPropertyHolder extends entity_1.InMemoryEntity {
         super(data);
     }
 }
-exports.default = MetaPropertyHolder;
 (0, MetaPropertyHolderMixin_1.metaPropertyHolderMixin)(MetaPropertyHolder.prototype);
+exports.default = MetaPropertyHolder;

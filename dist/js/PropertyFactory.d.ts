@@ -1,5 +1,5 @@
 import type { MetaPropertyHolderSchema, PropertyHolderSchema, ProtoPropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
-import type MetaProperty from "./MetaProperty";
+import PseudopotentialProperty from "./meta_properties/PseudopotentialMetaProperty";
 import AveragePotentialProfileProperty from "./properties/non-scalar/AveragePotentialProfileProperty";
 import BandGapsProperty from "./properties/non-scalar/BandGapsProperty";
 import BandStructureProperty from "./properties/non-scalar/BandStructureProperty";
@@ -51,7 +51,7 @@ export default class PropertyFactory {
     static getNonScalarPropertyNames(): PropertyName[];
     private static filterPropertyNames;
     static createProperty(config: AnyProperty): AveragePotentialProfileProperty | BandGapsProperty | BandStructureProperty | ChargeDensityProfileProperty | ConvergenceElectronicProperty | ConvergenceIonicProperty | DensityOfStatesProperty | DielectricTensorProperty | FileContentProperty | FinalStructureProperty | HubbardUProperty | HubbardVNNProperty | HubbardVProperty | IsRelaxedProperty | JupyterNotebookEndpointProperty | PhononDispersionsProperty | PhononDOSProperty | PotentialProfileProperty | ReactionEnergyProfileProperty | WavefunctionAmplitudeProperty | WorkflowProperty | TotalEnergyContributionsProperty | FermiEnergyProperty | HOMOEnergyProperty | IonizationPotentialElementalProperty | LUMOEnergyProperty | PressureProperty | ReactionEnergyBarrierProperty | SurfaceEnergyProperty | TotalEnergyProperty | TotalForcesProperty | ValenceBandOffsetProperty | ZeroPointEnergyProperty | AtomicForcesProperty | MagneticMomentsProperty | StressTensorProperty;
-    static createMetaProperty(config: AnyMetaProperty): MetaProperty;
+    static createMetaProperty(config: AnyMetaProperty): PseudopotentialProperty;
     static createProtoProperty(config: AnyProtoProperty): AtomicConstraintsProperty | BoundaryConditionsProperty;
 }
 export {};

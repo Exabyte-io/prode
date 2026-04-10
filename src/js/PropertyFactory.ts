@@ -6,7 +6,6 @@ import type {
 } from "@mat3ra/esse/dist/js/types";
 
 import PseudopotentialProperty from "./meta_properties/PseudopotentialMetaProperty";
-import type MetaProperty from "./MetaProperty";
 import AveragePotentialProfileProperty from "./properties/non-scalar/AveragePotentialProfileProperty";
 import BandGapsProperty from "./properties/non-scalar/BandGapsProperty";
 import BandStructureProperty from "./properties/non-scalar/BandStructureProperty";
@@ -203,7 +202,7 @@ export default class PropertyFactory {
         return new PropertyClass(config);
     }
 
-    static createMetaProperty(config: AnyMetaProperty): MetaProperty {
+    static createMetaProperty(config: AnyMetaProperty) {
         const { name } = config;
         const PropertyClass = META_PROPERTY_CLASS_MAP[name];
         return new PropertyClass(config);

@@ -1,5 +1,4 @@
 import { InMemoryEntity } from "@mat3ra/code/dist/js/entity";
-import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 import type { MetaPropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
 
 import {
@@ -7,9 +6,10 @@ import {
     metaPropertyHolderMixin,
 } from "./mixins/MetaPropertyHolderMixin";
 
-type MetaPropertyBase = typeof InMemoryEntity & Constructor<MetaPropertyHolderMixin>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface MetaPropertyHolder extends MetaPropertyHolderMixin {}
 
-export default class MetaPropertyHolder extends (InMemoryEntity as MetaPropertyBase) {
+class MetaPropertyHolder extends InMemoryEntity {
     // eslint-disable-next-line no-useless-constructor
     constructor(data: MetaPropertyHolderSchema) {
         super(data);
@@ -17,3 +17,5 @@ export default class MetaPropertyHolder extends (InMemoryEntity as MetaPropertyB
 }
 
 metaPropertyHolderMixin(MetaPropertyHolder.prototype);
+
+export default MetaPropertyHolder;
