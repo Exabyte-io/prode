@@ -12,6 +12,8 @@ export { default as SurfaceEnergyProperty } from "./properties/scalar/SurfaceEne
 export { default as TotalEnergyProperty } from "./properties/scalar/TotalEnergyProperty";
 export { default as HOMOEnergyProperty } from "./properties/scalar/HOMOEnergyProperty";
 export { default as LUMOEnergyProperty } from "./properties/scalar/LUMOEnergyProperty";
+export { default as ThermalCorrectionToEnergyProperty } from "./properties/scalar/ThermalCorrectionToEnergyProperty";
+export { default as ThermalCorrectionToEnthalpyProperty } from "./properties/scalar/ThermalCorrectionToEnthalpyProperty";
 export { default as BandStructureProperty } from "./properties/non-scalar/BandStructureProperty";
 export { default as ChargeDensityProfileProperty } from "./properties/non-scalar/ChargeDensityProfileProperty";
 export { default as PotentialProfileProperty } from "./properties/non-scalar/PotentialProfileProperty";

@@ -33,6 +33,8 @@ const LUMOEnergyProperty_1 = __importDefault(require("./properties/scalar/LUMOEn
 const PressureProperty_1 = __importDefault(require("./properties/scalar/PressureProperty"));
 const ReactionEnergyBarrierProperty_1 = __importDefault(require("./properties/scalar/ReactionEnergyBarrierProperty"));
 const SurfaceEnergyProperty_1 = __importDefault(require("./properties/scalar/SurfaceEnergyProperty"));
+const ThermalCorrectionToEnergyProperty_1 = __importDefault(require("./properties/scalar/ThermalCorrectionToEnergyProperty"));
+const ThermalCorrectionToEnthalpyProperty_1 = __importDefault(require("./properties/scalar/ThermalCorrectionToEnthalpyProperty"));
 const TotalEnergyProperty_1 = __importDefault(require("./properties/scalar/TotalEnergyProperty"));
 const TotalForceProperty_1 = __importDefault(require("./properties/scalar/TotalForceProperty"));
 const ValenceBandOffsetProperty_1 = __importDefault(require("./properties/scalar/ValenceBandOffsetProperty"));
@@ -53,6 +55,8 @@ const PROPERTY_CLASS_MAP = {
     [ConvergenceElectronicProperty_1.default.propertyName]: ConvergenceElectronicProperty_1.default,
     [ConvergenceIonicProperty_1.default.propertyName]: ConvergenceIonicProperty_1.default,
     [FermiEnergyProperty_1.default.propertyName]: FermiEnergyProperty_1.default,
+    [ThermalCorrectionToEnergyProperty_1.default.propertyName]: ThermalCorrectionToEnergyProperty_1.default,
+    [ThermalCorrectionToEnthalpyProperty_1.default.propertyName]: ThermalCorrectionToEnthalpyProperty_1.default,
     [ZeroPointEnergyProperty_1.default.propertyName]: ZeroPointEnergyProperty_1.default,
     [TotalEnergyContributionsProperty_1.default.propertyName]: TotalEnergyContributionsProperty_1.default,
     [AtomicForcesProperty_1.default.propertyName]: AtomicForcesProperty_1.default,

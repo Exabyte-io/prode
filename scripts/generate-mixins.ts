@@ -77,6 +77,10 @@ const OUTPUT_PATHS = {
         "src/js/generated/ReactionEnergyBarrierPropertySchemaMixin.ts",
     "properties-directory/scalar/surface-energy":
         "src/js/generated/SurfaceEnergyPropertySchemaMixin.ts",
+    "properties-directory/scalar/thermal-correction-to-energy":
+        "src/js/generated/ThermalCorrectionToEnergyPropertySchemaMixin.ts",
+    "properties-directory/scalar/thermal-correction-to-enthalpy":
+        "src/js/generated/ThermalCorrectionToEnthalpyPropertySchemaMixin.ts",
     "properties-directory/scalar/total-energy":
         "src/js/generated/TotalEnergyPropertySchemaMixin.ts",
     "properties-directory/scalar/total-force": "src/js/generated/TotalForcePropertySchemaMixin.ts",

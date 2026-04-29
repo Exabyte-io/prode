@@ -19,6 +19,8 @@ export declare enum PropertyName {
     convergence_ionic = "convergence_ionic",
     fermi_energy = "fermi_energy",
     zero_point_energy = "zero_point_energy",
+    thermal_correction_to_energy = "thermal_correction_to_energy",
+    thermal_correction_to_enthalpy = "thermal_correction_to_enthalpy",
     total_energy_contributions = "total_energy_contributions",
     atomic_forces = "atomic_forces",
     atomic_constraints = "atomic_constraints",

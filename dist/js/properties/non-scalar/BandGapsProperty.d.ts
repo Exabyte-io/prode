@@ -20,7 +20,7 @@ export default class BandGapsProperty extends BandGapsProperty_base implements S
             eigenvalueValence?: number;
             spin?: number;
             type?: "direct" | "indirect" | undefined;
-            units?: "kJ/mol" | "eV" | "J/mol" | "hartree" | "cm-1" | "Ry" | "eV/atom";
+            units?: "kcal/mol" | "kJ/mol" | "eV" | "J/mol" | "hartree" | "cm-1" | "Ry" | "eV/atom";
             value?: number | undefined;
         };
         slug: string;
@@ -33,7 +33,7 @@ export default class BandGapsProperty extends BandGapsProperty_base implements S
             eigenvalueValence?: number;
             spin?: number;
             type: "direct" | "indirect";
-            units?: "kJ/mol" | "eV" | "J/mol" | "hartree" | "cm-1" | "Ry" | "eV/atom";
+            units?: "kcal/mol" | "kJ/mol" | "eV" | "J/mol" | "hartree" | "cm-1" | "Ry" | "eV/atom";
             value: number;
         }[];
         eigenvalues?: {

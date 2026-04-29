@@ -16,12 +16,6 @@ function workflowPropertySchemaMixin(item) {
         set workflows(value) {
             this.setProp("workflows", value);
         },
-        get isDefault() {
-            return this.prop("isDefault");
-        },
-        set isDefault(value) {
-            this.setProp("isDefault", value);
-        },
         get metadata() {
             return this.prop("metadata");
         },

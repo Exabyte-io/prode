@@ -25,12 +25,6 @@ export function workflowPropertySchemaMixin<T extends InMemoryEntity>(
         set workflows(value: WorkflowPropertySchema["workflows"]) {
             this.setProp("workflows", value);
         },
-        get isDefault() {
-            return this.prop<WorkflowPropertySchema["isDefault"]>("isDefault");
-        },
-        set isDefault(value: WorkflowPropertySchema["isDefault"]) {
-            this.setProp("isDefault", value);
-        },
         get metadata() {
             return this.prop<WorkflowPropertySchema["metadata"]>("metadata");
         },
