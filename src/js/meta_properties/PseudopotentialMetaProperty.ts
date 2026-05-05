@@ -24,6 +24,7 @@ export type ExchangeCorrelation = {
     approximation: string;
 };
 
+// TODO: move to esse schema
 export type PseudopotentialFilter = {
     searchText?: string;
     appName?: string;
