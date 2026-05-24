@@ -75,6 +75,8 @@ const OUTPUT_PATHS = {
     "properties-directory/scalar/pressure": "src/js/generated/PressurePropertySchemaMixin.ts",
     "properties-directory/scalar/reaction-energy-barrier":
         "src/js/generated/ReactionEnergyBarrierPropertySchemaMixin.ts",
+    "properties-directory/scalar/formation-energy":
+        "src/js/generated/FormationEnergyPropertySchemaMixin.ts",
     "properties-directory/scalar/surface-energy":
         "src/js/generated/SurfaceEnergyPropertySchemaMixin.ts",
     "properties-directory/scalar/thermal-correction-to-energy":

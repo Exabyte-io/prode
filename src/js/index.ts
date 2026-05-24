@@ -8,6 +8,7 @@ export { default as BandGapsProperty } from "./properties/non-scalar/BandGapsPro
 export { default as IsRelaxedProperty } from "./properties/non-scalar/IsRelaxedProperty";
 export { default as PressureProperty } from "./properties/scalar/PressureProperty";
 export { default as ReactionEnergyBarrierProperty } from "./properties/scalar/ReactionEnergyBarrierProperty";
+export { default as FormationEnergyProperty } from "./properties/scalar/FormationEnergyProperty";
 export { default as SurfaceEnergyProperty } from "./properties/scalar/SurfaceEnergyProperty";
 export { default as TotalEnergyProperty } from "./properties/scalar/TotalEnergyProperty";
 export { default as HOMOEnergyProperty } from "./properties/scalar/HOMOEnergyProperty";
