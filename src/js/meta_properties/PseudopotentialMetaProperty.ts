@@ -199,6 +199,13 @@ export default class PseudopotentialMetaProperty extends (MetaProperty as Base) 
         });
     }
 
+    static sortByPathApplicationSpecific(pseudos: PseudopotentialMetaProperty[], appName?: string) {
+        if (appName === "vasp") {
+            return this.sortByPathVASP(pseudos);
+        }
+        return pseudos;
+    }
+
     static filterByType(pseudos: PseudopotentialMetaProperty[], pseudoType?: string) {
         if (pseudoType === undefined || pseudoType === "any") return pseudos;
         return pseudos.filter((pseudo) => pseudo.type.includes(pseudoType));

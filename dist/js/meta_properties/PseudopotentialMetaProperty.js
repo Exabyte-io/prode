@@ -142,6 +142,12 @@ class PseudopotentialMetaProperty extends MetaProperty_1.default {
             return 0;
         });
     }
+    static sortByPathApplicationSpecific(pseudos, appName) {
+        if (appName === "vasp") {
+            return this.sortByPathVASP(pseudos);
+        }
+        return pseudos;
+    }
     static filterByType(pseudos, pseudoType) {
         if (pseudoType === undefined || pseudoType === "any")
             return pseudos;

@@ -72,6 +72,7 @@ export default class PseudopotentialMetaProperty extends PseudopotentialMetaProp
      * Prioritizes pseudos with 'default' and '5.2' (version) in path (VASP)
      */
     static sortByPathVASP(pseudos: PseudopotentialMetaProperty[], version?: string): PseudopotentialMetaProperty[];
+    static sortByPathApplicationSpecific(pseudos: PseudopotentialMetaProperty[], appName?: string): PseudopotentialMetaProperty[];
     static filterByType(pseudos: PseudopotentialMetaProperty[], pseudoType?: string): PseudopotentialMetaProperty[];
 }
 export {};

@@ -116,6 +116,15 @@ describe("PseudopotentialMetaProperty", () => {
         expect(vaspResult[0].path).to.include("default");
         expect(vaspResult[0].path).to.include("5.2");
 
+        const vaspAppResult = Pseudopotential.sortByPathApplicationSpecific(vaspPseudos, "vasp");
+        expect(vaspAppResult[0].path).to.equal(vaspResult[0].path);
+
+        const espressoAppResult = Pseudopotential.sortByPathApplicationSpecific(
+            vaspPseudos,
+            "espresso",
+        );
+        expect(espressoAppResult).to.deep.equal(vaspPseudos);
+
         const rawData = pseudos.map((pseudo) => pseudo._json);
         const gbrvResults = Pseudopotential.filterRawDataByPath(rawData, "gbrv");
         expect(gbrvResults).to.have.length(1);
