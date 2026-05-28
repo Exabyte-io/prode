@@ -8,6 +8,7 @@ import ConvergenceElectronicProperty from "./properties/non-scalar/convergence/C
 import ConvergenceIonicProperty from "./properties/non-scalar/convergence/ConvergenceIonicProperty";
 import DensityOfStatesProperty from "./properties/non-scalar/DensityOfStatesProperty";
 import DielectricTensorProperty from "./properties/non-scalar/DielectricTensorProperty";
+import FormationEnergyReferencesProperty from "./properties/non-scalar/FormationEnergyReferencesProperty";
 import FileContentProperty from "./properties/non-scalar/FileContentProperty";
 import FinalStructureProperty from "./properties/non-scalar/FinalStructureProperty";
 import HubbardUProperty from "./properties/non-scalar/HubbardUProperty";
@@ -53,7 +54,7 @@ export default class PropertyFactory {
     static getScalarPropertyNames(): PropertyName[];
     static getNonScalarPropertyNames(): PropertyName[];
     private static filterPropertyNames;
-    static createProperty(config: AnyProperty): AveragePotentialProfileProperty | BandGapsProperty | BandStructureProperty | ChargeDensityProfileProperty | ConvergenceElectronicProperty | ConvergenceIonicProperty | DensityOfStatesProperty | DielectricTensorProperty | FileContentProperty | FinalStructureProperty | HubbardUProperty | HubbardVNNProperty | HubbardVProperty | IsRelaxedProperty | JupyterNotebookEndpointProperty | PhononDispersionsProperty | PhononDOSProperty | PotentialProfileProperty | ReactionEnergyProfileProperty | WavefunctionAmplitudeProperty | WorkflowProperty | TotalEnergyContributionsProperty | FermiEnergyProperty | FormationEnergyProperty | HOMOEnergyProperty | IonizationPotentialElementalProperty | LUMOEnergyProperty | PressureProperty | ReactionEnergyBarrierProperty | SurfaceEnergyProperty | ThermalCorrectionToEnergyProperty | ThermalCorrectionToEnthalpyProperty | TotalEnergyProperty | TotalForcesProperty | ValenceBandOffsetProperty | ZeroPointEnergyProperty | AtomicForcesProperty | MagneticMomentsProperty | StressTensorProperty;
+    static createProperty(config: AnyProperty): AveragePotentialProfileProperty | BandGapsProperty | BandStructureProperty | ChargeDensityProfileProperty | ConvergenceElectronicProperty | ConvergenceIonicProperty | DensityOfStatesProperty | DielectricTensorProperty | FormationEnergyReferencesProperty | FileContentProperty | FinalStructureProperty | HubbardUProperty | HubbardVNNProperty | HubbardVProperty | IsRelaxedProperty | JupyterNotebookEndpointProperty | PhononDispersionsProperty | PhononDOSProperty | PotentialProfileProperty | ReactionEnergyProfileProperty | WavefunctionAmplitudeProperty | WorkflowProperty | TotalEnergyContributionsProperty | FermiEnergyProperty | FormationEnergyProperty | HOMOEnergyProperty | IonizationPotentialElementalProperty | LUMOEnergyProperty | PressureProperty | ReactionEnergyBarrierProperty | SurfaceEnergyProperty | ThermalCorrectionToEnergyProperty | ThermalCorrectionToEnthalpyProperty | TotalEnergyProperty | TotalForcesProperty | ValenceBandOffsetProperty | ZeroPointEnergyProperty | AtomicForcesProperty | MagneticMomentsProperty | StressTensorProperty;
     static createMetaProperty(config: AnyMetaProperty): MetaProperty;
     static createProtoProperty(config: AnyProtoProperty): AtomicConstraintsProperty | BoundaryConditionsProperty;
 }

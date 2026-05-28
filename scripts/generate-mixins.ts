@@ -39,6 +39,8 @@ const OUTPUT_PATHS = {
         "src/js/generated/DensityOfStatesPropertySchemaMixin.ts",
     "properties-directory/non-scalar/dielectric-tensor":
         "src/js/generated/DielectricTensorPropertySchemaMixin.ts",
+    "properties-directory/non-scalar/formation-energy-references":
+        "src/js/generated/FormationEnergyReferencesPropertySchemaMixin.ts",
     "properties-directory/non-scalar/file-content":
         "src/js/generated/FileContentPropertySchemaMixin.ts",
     "properties-directory/non-scalar/final-structure":

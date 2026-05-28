@@ -5,6 +5,7 @@ export { default as MetaProperty } from "./MetaProperty";
 export { default as PseudopotentialMetaProperty } from "./meta_properties/PseudopotentialMetaProperty";
 export { default as FinalStructureProperty } from "./properties/non-scalar/FinalStructureProperty";
 export { default as BandGapsProperty } from "./properties/non-scalar/BandGapsProperty";
+export { default as FormationEnergyReferencesProperty } from "./properties/non-scalar/FormationEnergyReferencesProperty";
 export { default as IsRelaxedProperty } from "./properties/non-scalar/IsRelaxedProperty";
 export { default as PressureProperty } from "./properties/scalar/PressureProperty";
 export { default as ReactionEnergyBarrierProperty } from "./properties/scalar/ReactionEnergyBarrierProperty";

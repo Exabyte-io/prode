@@ -17,7 +17,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.metaPropertyHolderMixin = exports.propertyHolderMixin = exports.protoPropertyHolderMixin = exports.ReactionEnergyProfileProperty = exports.WavefunctionAmplitudeProperty = exports.PotentialProfileProperty = exports.ChargeDensityProfileProperty = exports.BandStructureProperty = exports.ThermalCorrectionToEnthalpyProperty = exports.ThermalCorrectionToEnergyProperty = exports.LUMOEnergyProperty = exports.HOMOEnergyProperty = exports.TotalEnergyProperty = exports.SurfaceEnergyProperty = exports.FormationEnergyProperty = exports.ReactionEnergyBarrierProperty = exports.PressureProperty = exports.IsRelaxedProperty = exports.BandGapsProperty = exports.FinalStructureProperty = exports.PseudopotentialMetaProperty = exports.MetaProperty = exports.Property = exports.PropertyType = exports.PropertyName = exports.PropertyFactory = void 0;
+exports.metaPropertyHolderMixin = exports.propertyHolderMixin = exports.protoPropertyHolderMixin = exports.ReactionEnergyProfileProperty = exports.WavefunctionAmplitudeProperty = exports.PotentialProfileProperty = exports.ChargeDensityProfileProperty = exports.BandStructureProperty = exports.ThermalCorrectionToEnthalpyProperty = exports.ThermalCorrectionToEnergyProperty = exports.LUMOEnergyProperty = exports.HOMOEnergyProperty = exports.TotalEnergyProperty = exports.SurfaceEnergyProperty = exports.FormationEnergyProperty = exports.ReactionEnergyBarrierProperty = exports.PressureProperty = exports.IsRelaxedProperty = exports.FormationEnergyReferencesProperty = exports.BandGapsProperty = exports.FinalStructureProperty = exports.PseudopotentialMetaProperty = exports.MetaProperty = exports.Property = exports.PropertyType = exports.PropertyName = exports.PropertyFactory = void 0;
 var PropertyFactory_1 = require("./PropertyFactory");
 Object.defineProperty(exports, "PropertyFactory", { enumerable: true, get: function () { return __importDefault(PropertyFactory_1).default; } });
 var settings_1 = require("./settings");
@@ -33,6 +33,8 @@ var FinalStructureProperty_1 = require("./properties/non-scalar/FinalStructurePr
 Object.defineProperty(exports, "FinalStructureProperty", { enumerable: true, get: function () { return __importDefault(FinalStructureProperty_1).default; } });
 var BandGapsProperty_1 = require("./properties/non-scalar/BandGapsProperty");
 Object.defineProperty(exports, "BandGapsProperty", { enumerable: true, get: function () { return __importDefault(BandGapsProperty_1).default; } });
+var FormationEnergyReferencesProperty_1 = require("./properties/non-scalar/FormationEnergyReferencesProperty");
+Object.defineProperty(exports, "FormationEnergyReferencesProperty", { enumerable: true, get: function () { return __importDefault(FormationEnergyReferencesProperty_1).default; } });
 var IsRelaxedProperty_1 = require("./properties/non-scalar/IsRelaxedProperty");
 Object.defineProperty(exports, "IsRelaxedProperty", { enumerable: true, get: function () { return __importDefault(IsRelaxedProperty_1).default; } });
 var PressureProperty_1 = require("./properties/scalar/PressureProperty");

@@ -10,5 +10,6 @@ export type { default as StressTensorProperty } from "./properties/tensor/Stress
 export type { default as AveragePotentialProfileProperty } from "./properties/non-scalar/AveragePotentialProfileProperty";
 export type { default as DensityOfStatesProperty } from "./properties/non-scalar/DensityOfStatesProperty";
 export type { default as DielectricTensorProperty } from "./properties/non-scalar/DielectricTensorProperty";
+export type { default as FormationEnergyReferencesProperty } from "./properties/non-scalar/FormationEnergyReferencesProperty";
 export type { default as PhononDispersionsProperty } from "./properties/non-scalar/PhononDispersionsProperty";
 export type { default as PhononDOSProperty } from "./properties/non-scalar/PhononDOSProperty";

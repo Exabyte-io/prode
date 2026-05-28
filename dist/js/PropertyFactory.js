@@ -12,6 +12,7 @@ const ConvergenceElectronicProperty_1 = __importDefault(require("./properties/no
 const ConvergenceIonicProperty_1 = __importDefault(require("./properties/non-scalar/convergence/ConvergenceIonicProperty"));
 const DensityOfStatesProperty_1 = __importDefault(require("./properties/non-scalar/DensityOfStatesProperty"));
 const DielectricTensorProperty_1 = __importDefault(require("./properties/non-scalar/DielectricTensorProperty"));
+const FormationEnergyReferencesProperty_1 = __importDefault(require("./properties/non-scalar/FormationEnergyReferencesProperty"));
 const FileContentProperty_1 = __importDefault(require("./properties/non-scalar/FileContentProperty"));
 const FinalStructureProperty_1 = __importDefault(require("./properties/non-scalar/FinalStructureProperty"));
 const HubbardUProperty_1 = __importDefault(require("./properties/non-scalar/HubbardUProperty"));
@@ -82,6 +83,7 @@ const PROPERTY_CLASS_MAP = {
     [IonizationPotentialElementalProperty_1.default.propertyName]: IonizationPotentialElementalProperty_1.default,
     [FileContentProperty_1.default.propertyName]: FileContentProperty_1.default,
     [DielectricTensorProperty_1.default.propertyName]: DielectricTensorProperty_1.default,
+    [FormationEnergyReferencesProperty_1.default.propertyName]: FormationEnergyReferencesProperty_1.default,
     [HubbardUProperty_1.default.propertyName]: HubbardUProperty_1.default,
     [HubbardVNNProperty_1.default.propertyName]: HubbardVNNProperty_1.default,
     [HubbardVProperty_1.default.propertyName]: HubbardVProperty_1.default,

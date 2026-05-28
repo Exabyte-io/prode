@@ -56,6 +56,7 @@ var PropertyName;
     PropertyName["pseudopotential"] = "pseudopotential";
     PropertyName["boundary_conditions"] = "boundary_conditions";
     PropertyName["dielectric_tensor"] = "dielectric_tensor";
+    PropertyName["formation_energy_references"] = "formation_energy_references";
     PropertyName["hubbard_u"] = "hubbard_u";
     PropertyName["hubbard_v_nn"] = "hubbard_v_nn";
     PropertyName["hubbard_v"] = "hubbard_v";

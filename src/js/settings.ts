@@ -52,6 +52,7 @@ export enum PropertyName {
     pseudopotential = "pseudopotential",
     boundary_conditions = "boundary_conditions",
     dielectric_tensor = "dielectric_tensor",
+    formation_energy_references = "formation_energy_references",
     hubbard_u = "hubbard_u",
     hubbard_v_nn = "hubbard_v_nn",
     hubbard_v = "hubbard_v",

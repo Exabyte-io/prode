@@ -9,7 +9,7 @@ describe("FormationEnergyProperty", () => {
     it("should create a formation energy property with correct constructor, propertyType, propertyName, and isRefined", () => {
         const config: Omit<FormationEnergyPropertySchema, "name"> = {
             value: -0.123,
-            units: "eV",
+            units: "eV/atom",
         };
 
         const formationEnergyProperty = new FormationEnergyProperty(config);

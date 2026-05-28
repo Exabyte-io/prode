@@ -15,6 +15,7 @@ import ConvergenceElectronicProperty from "./properties/non-scalar/convergence/C
 import ConvergenceIonicProperty from "./properties/non-scalar/convergence/ConvergenceIonicProperty";
 import DensityOfStatesProperty from "./properties/non-scalar/DensityOfStatesProperty";
 import DielectricTensorProperty from "./properties/non-scalar/DielectricTensorProperty";
+import FormationEnergyReferencesProperty from "./properties/non-scalar/FormationEnergyReferencesProperty";
 import FileContentProperty from "./properties/non-scalar/FileContentProperty";
 import FinalStructureProperty from "./properties/non-scalar/FinalStructureProperty";
 import HubbardUProperty from "./properties/non-scalar/HubbardUProperty";
@@ -92,6 +93,7 @@ type PropertyClassMap = {
         | Constructor<IonizationPotentialElementalProperty>
         | Constructor<FileContentProperty>
         | Constructor<DielectricTensorProperty>
+        | Constructor<FormationEnergyReferencesProperty>
         | Constructor<HubbardUProperty>
         | Constructor<HubbardVNNProperty>
         | Constructor<HubbardVProperty>
@@ -144,6 +146,7 @@ const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [IonizationPotentialElementalProperty.propertyName]: IonizationPotentialElementalProperty,
     [FileContentProperty.propertyName]: FileContentProperty,
     [DielectricTensorProperty.propertyName]: DielectricTensorProperty,
+    [FormationEnergyReferencesProperty.propertyName]: FormationEnergyReferencesProperty,
     [HubbardUProperty.propertyName]: HubbardUProperty,
     [HubbardVNNProperty.propertyName]: HubbardVNNProperty,
     [HubbardVProperty.propertyName]: HubbardVProperty,
