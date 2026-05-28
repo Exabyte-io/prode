@@ -5,11 +5,13 @@ import type { PropertyHolderSchema } from "@mat3ra/esse/dist/js/types";
 import type { PropertyHolderMixin } from "./mixins/PropertyHolderMixin";
 import { propertyHolderMixin } from "./mixins/PropertyHolderMixin";
 
-type PropertyHolderBase = typeof InMemoryEntity & Constructor<PropertyHolderMixin>;
+type Schema = PropertyHolderSchema;
 
-export default class PropertyHolder extends (InMemoryEntity as PropertyHolderBase) {
+type Base = typeof InMemoryEntity & Constructor<PropertyHolderMixin>;
+
+export default class PropertyHolder extends (InMemoryEntity as Base) implements Schema {
     // eslint-disable-next-line no-useless-constructor
-    constructor(data: PropertyHolderSchema) {
+    constructor(data: Schema) {
         super(data);
     }
 }

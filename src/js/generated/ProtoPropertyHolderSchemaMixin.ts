@@ -8,14 +8,22 @@ export type ProtoPropertyHolderSchemaMixin = Omit<
 
 export type ProtoPropertyHolderInMemoryEntity = InMemoryEntity & ProtoPropertyHolderSchemaMixin;
 
-export function protoPropertyHolderSchemaMixin(item: InMemoryEntity) {
+export function protoPropertyHolderSchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & ProtoPropertyHolderSchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & ProtoPropertyHolderSchemaMixin = {
         get data() {
             return this.requiredProp<ProtoPropertyHolderSchema["data"]>("data");
         },
+        set data(value: ProtoPropertyHolderSchema["data"]) {
+            this.setProp("data", value);
+        },
         get source() {
             return this.requiredProp<ProtoPropertyHolderSchema["source"]>("source");
+        },
+        set source(value: ProtoPropertyHolderSchema["source"]) {
+            this.setProp("source", value);
         },
     };
 

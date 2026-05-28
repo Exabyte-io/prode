@@ -19,6 +19,20 @@ enum CompatibleExchangeCorrelationKey {
 
 type Base = typeof MetaProperty & Constructor<PseudopotentialMetaPropertySchemaMixin>;
 
+export type ExchangeCorrelation = {
+    functional?: string;
+    approximation: string;
+};
+
+// TODO: move to esse schema
+export type PseudopotentialFilter = {
+    searchText?: string;
+    appName?: string;
+    type?: string;
+    exchangeCorrelation?: ExchangeCorrelation;
+    elements?: string[];
+};
+
 export default class PseudopotentialMetaProperty extends (MetaProperty as Base) implements Schema {
     static readonly propertyName = PropertyName.pseudopotential;
 
@@ -80,15 +94,12 @@ export default class PseudopotentialMetaProperty extends (MetaProperty as Base) 
      */
     static filterRawDataByExchangeCorrelation(
         rawData: PseudopotentialMetaProperty[],
-        exchangeCorrelation: {
-            functional: string;
-            approximation: string;
-        },
+        exchangeCorrelation: ExchangeCorrelation,
     ) {
         const { functional } = exchangeCorrelation;
 
         return rawData.filter((item) => {
-            return this.isCompatibleWithOther(functional)
+            return functional && this.isCompatibleWithOther(functional)
                 ? this.compatibleExchangeCorrelation[functional].includes(
                       item.exchangeCorrelation?.functional || "",
                   )
@@ -134,16 +145,7 @@ export default class PseudopotentialMetaProperty extends (MetaProperty as Base) 
      */
     static applyPseudoFilters(
         pseudos: PseudopotentialMetaProperty[],
-        pseudoFilter: {
-            searchText?: string;
-            appName?: string;
-            type?: string;
-            exchangeCorrelation?: {
-                functional: keyof typeof PseudopotentialMetaProperty.compatibleExchangeCorrelation;
-                approximation: string;
-            };
-            elements?: string[];
-        },
+        pseudoFilter: PseudopotentialFilter,
     ) {
         let filteredPseudos = [...pseudos];
 
@@ -195,6 +197,13 @@ export default class PseudopotentialMetaProperty extends (MetaProperty as Base) 
             }
             return 0;
         });
+    }
+
+    static sortByPathApplicationSpecific(pseudos: PseudopotentialMetaProperty[], appName?: string) {
+        if (appName === "vasp") {
+            return this.sortByPathVASP(pseudos);
+        }
+        return pseudos;
     }
 
     static filterByType(pseudos: PseudopotentialMetaProperty[], pseudoType?: string) {

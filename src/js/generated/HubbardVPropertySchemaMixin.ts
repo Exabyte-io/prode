@@ -8,17 +8,28 @@ export type HubbardVPropertySchemaMixin = Omit<
 
 export type HubbardVPropertyInMemoryEntity = InMemoryEntity & HubbardVPropertySchemaMixin;
 
-export function hubbardVPropertySchemaMixin(item: InMemoryEntity) {
+export function hubbardVPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & HubbardVPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & HubbardVPropertySchemaMixin = {
         get name() {
             return this.requiredProp<HubbardVParametersPropertySchema["name"]>("name");
         },
+        set name(value: HubbardVParametersPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get units() {
             return this.requiredProp<HubbardVParametersPropertySchema["units"]>("units");
         },
+        set units(value: HubbardVParametersPropertySchema["units"]) {
+            this.setProp("units", value);
+        },
         get values() {
             return this.requiredProp<HubbardVParametersPropertySchema["values"]>("values");
+        },
+        set values(value: HubbardVParametersPropertySchema["values"]) {
+            this.setProp("values", value);
         },
     };
 

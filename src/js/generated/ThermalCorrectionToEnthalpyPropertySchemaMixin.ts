@@ -9,17 +9,28 @@ export type ThermalCorrectionToEnthalpyPropertySchemaMixin = Omit<
 export type ThermalCorrectionToEnthalpyPropertyInMemoryEntity = InMemoryEntity &
     ThermalCorrectionToEnthalpyPropertySchemaMixin;
 
-export function thermalCorrectionToEnthalpyPropertySchemaMixin(item: InMemoryEntity) {
+export function thermalCorrectionToEnthalpyPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & ThermalCorrectionToEnthalpyPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & ThermalCorrectionToEnthalpyPropertySchemaMixin = {
         get name() {
             return this.requiredProp<ThermalCorrectionToEnthalpyPropertySchema["name"]>("name");
         },
+        set name(value: ThermalCorrectionToEnthalpyPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get units() {
             return this.requiredProp<ThermalCorrectionToEnthalpyPropertySchema["units"]>("units");
         },
+        set units(value: ThermalCorrectionToEnthalpyPropertySchema["units"]) {
+            this.setProp("units", value);
+        },
         get value() {
             return this.requiredProp<ThermalCorrectionToEnthalpyPropertySchema["value"]>("value");
+        },
+        set value(value: ThermalCorrectionToEnthalpyPropertySchema["value"]) {
+            this.setProp("value", value);
         },
     };
 

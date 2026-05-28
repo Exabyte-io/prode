@@ -8,14 +8,22 @@ export type MetaPropertyHolderSchemaMixin = Omit<
 
 export type MetaPropertyHolderInMemoryEntity = InMemoryEntity & MetaPropertyHolderSchemaMixin;
 
-export function metaPropertyHolderSchemaMixin(item: InMemoryEntity) {
+export function metaPropertyHolderSchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & MetaPropertyHolderSchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & MetaPropertyHolderSchemaMixin = {
         get data() {
             return this.requiredProp<MetaPropertyHolderSchema["data"]>("data");
         },
+        set data(value: MetaPropertyHolderSchema["data"]) {
+            this.setProp("data", value);
+        },
         get source() {
             return this.requiredProp<MetaPropertyHolderSchema["source"]>("source");
+        },
+        set source(value: MetaPropertyHolderSchema["source"]) {
+            this.setProp("source", value);
         },
     };
 

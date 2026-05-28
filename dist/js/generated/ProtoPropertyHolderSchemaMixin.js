@@ -7,8 +7,14 @@ function protoPropertyHolderSchemaMixin(item) {
         get data() {
             return this.requiredProp("data");
         },
+        set data(value) {
+            this.setProp("data", value);
+        },
         get source() {
             return this.requiredProp("source");
+        },
+        set source(value) {
+            this.setProp("source", value);
         },
     };
     Object.defineProperties(item, Object.getOwnPropertyDescriptors(properties));

@@ -1,4 +1,3 @@
-import type { Constructor } from "@mat3ra/code/dist/js/utils/types";
 import type { ThermalCorrectionToEnergyPropertySchema } from "@mat3ra/esse/dist/js/types";
 
 import {
@@ -10,14 +9,17 @@ import { PropertyName, PropertyType } from "../../settings";
 
 type Schema = ThermalCorrectionToEnergyPropertySchema;
 
-type Base = typeof Property<Schema> & Constructor<ThermalCorrectionToEnergyPropertySchemaMixin>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface ThermalCorrectionToEnergyProperty extends ThermalCorrectionToEnergyPropertySchemaMixin {}
 
-export default class ThermalCorrectionToEnergyProperty extends (Property as Base) implements Schema {
+class ThermalCorrectionToEnergyProperty extends Property<Schema> implements Schema {
     static readonly propertyType = PropertyType.scalar;
 
     static readonly propertyName = PropertyName.thermal_correction_to_energy;
 
     static readonly isRefined = true;
+
+    declare name: Schema["name"];
 
     constructor(config: Omit<Schema, "name">) {
         super({ ...config, name: ThermalCorrectionToEnergyProperty.propertyName });
@@ -25,3 +27,5 @@ export default class ThermalCorrectionToEnergyProperty extends (Property as Base
 }
 
 thermalCorrectionToEnergyPropertySchemaMixin(ThermalCorrectionToEnergyProperty.prototype);
+
+export default ThermalCorrectionToEnergyProperty;

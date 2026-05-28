@@ -14,5 +14,5 @@ class ThermalCorrectionToEnergyProperty extends Property_1.default {
 ThermalCorrectionToEnergyProperty.propertyType = settings_1.PropertyType.scalar;
 ThermalCorrectionToEnergyProperty.propertyName = settings_1.PropertyName.thermal_correction_to_energy;
 ThermalCorrectionToEnergyProperty.isRefined = true;
-exports.default = ThermalCorrectionToEnergyProperty;
 (0, ThermalCorrectionToEnergyPropertySchemaMixin_1.thermalCorrectionToEnergyPropertySchemaMixin)(ThermalCorrectionToEnergyProperty.prototype);
+exports.default = ThermalCorrectionToEnergyProperty;

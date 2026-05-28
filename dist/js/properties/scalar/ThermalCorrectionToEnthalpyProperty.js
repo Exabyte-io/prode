@@ -14,5 +14,5 @@ class ThermalCorrectionToEnthalpyProperty extends Property_1.default {
 ThermalCorrectionToEnthalpyProperty.propertyType = settings_1.PropertyType.scalar;
 ThermalCorrectionToEnthalpyProperty.propertyName = settings_1.PropertyName.thermal_correction_to_enthalpy;
 ThermalCorrectionToEnthalpyProperty.isRefined = true;
-exports.default = ThermalCorrectionToEnthalpyProperty;
 (0, ThermalCorrectionToEnthalpyPropertySchemaMixin_1.thermalCorrectionToEnthalpyPropertySchemaMixin)(ThermalCorrectionToEnthalpyProperty.prototype);
+exports.default = ThermalCorrectionToEnthalpyProperty;

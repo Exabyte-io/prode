@@ -8,17 +8,28 @@ export type BandGapsPropertySchemaMixin = Omit<
 
 export type BandGapsPropertyInMemoryEntity = InMemoryEntity & BandGapsPropertySchemaMixin;
 
-export function bandGapsPropertySchemaMixin(item: InMemoryEntity) {
+export function bandGapsPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & BandGapsPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & BandGapsPropertySchemaMixin = {
         get name() {
             return this.requiredProp<BandGapsPropertySchema["name"]>("name");
         },
+        set name(value: BandGapsPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get values() {
             return this.requiredProp<BandGapsPropertySchema["values"]>("values");
         },
+        set values(value: BandGapsPropertySchema["values"]) {
+            this.setProp("values", value);
+        },
         get eigenvalues() {
             return this.prop<BandGapsPropertySchema["eigenvalues"]>("eigenvalues");
+        },
+        set eigenvalues(value: BandGapsPropertySchema["eigenvalues"]) {
+            this.setProp("eigenvalues", value);
         },
     };
 

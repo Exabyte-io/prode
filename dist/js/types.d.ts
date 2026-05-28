@@ -12,3 +12,4 @@ export type { default as DensityOfStatesProperty } from "./properties/non-scalar
 export type { default as DielectricTensorProperty } from "./properties/non-scalar/DielectricTensorProperty";
 export type { default as PhononDispersionsProperty } from "./properties/non-scalar/PhononDispersionsProperty";
 export type { default as PhononDOSProperty } from "./properties/non-scalar/PhononDOSProperty";
+export type { PseudopotentialFilter, ExchangeCorrelation, } from "./meta_properties/PseudopotentialMetaProperty";

@@ -9,17 +9,28 @@ export type IonizationPotentialElementalPropertySchemaMixin = Omit<
 export type IonizationPotentialElementalPropertyInMemoryEntity = InMemoryEntity &
     IonizationPotentialElementalPropertySchemaMixin;
 
-export function ionizationPotentialElementalPropertySchemaMixin(item: InMemoryEntity) {
+export function ionizationPotentialElementalPropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & IonizationPotentialElementalPropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & IonizationPotentialElementalPropertySchemaMixin = {
         get name() {
             return this.requiredProp<IonizationPotentialElementalPropertySchema["name"]>("name");
         },
+        set name(value: IonizationPotentialElementalPropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get units() {
             return this.requiredProp<IonizationPotentialElementalPropertySchema["units"]>("units");
         },
+        set units(value: IonizationPotentialElementalPropertySchema["units"]) {
+            this.setProp("units", value);
+        },
         get value() {
             return this.requiredProp<IonizationPotentialElementalPropertySchema["value"]>("value");
+        },
+        set value(value: IonizationPotentialElementalPropertySchema["value"]) {
+            this.setProp("value", value);
         },
     };
 

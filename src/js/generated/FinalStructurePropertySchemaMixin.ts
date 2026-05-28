@@ -9,17 +9,28 @@ export type FinalStructurePropertySchemaMixin = Omit<
 export type FinalStructurePropertyInMemoryEntity = InMemoryEntity &
     FinalStructurePropertySchemaMixin;
 
-export function finalStructurePropertySchemaMixin(item: InMemoryEntity) {
+export function finalStructurePropertySchemaMixin<T extends InMemoryEntity>(
+    item: InMemoryEntity,
+): asserts item is T & FinalStructurePropertySchemaMixin {
     // @ts-expect-error
     const properties: InMemoryEntity & FinalStructurePropertySchemaMixin = {
         get name() {
             return this.requiredProp<FinalStructurePropertySchema["name"]>("name");
         },
+        set name(value: FinalStructurePropertySchema["name"]) {
+            this.setProp("name", value);
+        },
         get isRelaxed() {
             return this.requiredProp<FinalStructurePropertySchema["isRelaxed"]>("isRelaxed");
         },
+        set isRelaxed(value: FinalStructurePropertySchema["isRelaxed"]) {
+            this.setProp("isRelaxed", value);
+        },
         get materialId() {
             return this.requiredProp<FinalStructurePropertySchema["materialId"]>("materialId");
+        },
+        set materialId(value: FinalStructurePropertySchema["materialId"]) {
+            this.setProp("materialId", value);
         },
     };
 

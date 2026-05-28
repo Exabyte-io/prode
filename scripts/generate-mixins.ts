@@ -98,6 +98,8 @@ const OUTPUT_PATHS = {
         "src/js/generated/AtomicConstraintsPropertySchemaMixin.ts",
     "properties-directory/structural/basis/boundary-conditions":
         "src/js/generated/BoundaryConditionsPropertySchemaMixin.ts",
+    "properties-directory/non-scalar/wavefunction-amplitude":
+        "src/js/generated/WavefunctionAmplitudePropertySchemaMixin.ts",
 };
 
 function main() {
