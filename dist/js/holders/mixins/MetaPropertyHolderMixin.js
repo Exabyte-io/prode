@@ -7,7 +7,6 @@ exports.metaPropertyHolderMixin = metaPropertyHolderMixin;
 const MetaPropertyHolderSchemaMixin_1 = require("../../generated/MetaPropertyHolderSchemaMixin");
 const PropertyFactory_1 = __importDefault(require("../../PropertyFactory"));
 function metaPropertyHolderMixin(item) {
-    // @ts-expect-error - this is a workaround to allow the metaPropertyMixin to be used with any type of entity
     const properties = {
         get property() {
             return PropertyFactory_1.default.createMetaProperty(this.data);

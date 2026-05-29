@@ -8,6 +8,7 @@ export { default as BandGapsProperty } from "./properties/non-scalar/BandGapsPro
 export { default as IsRelaxedProperty } from "./properties/non-scalar/IsRelaxedProperty";
 export { default as PressureProperty } from "./properties/scalar/PressureProperty";
 export { default as ReactionEnergyBarrierProperty } from "./properties/scalar/ReactionEnergyBarrierProperty";
+export { default as FormationEnergyProperty } from "./properties/scalar/FormationEnergyProperty";
 export { default as SurfaceEnergyProperty } from "./properties/scalar/SurfaceEnergyProperty";
 export { default as TotalEnergyProperty } from "./properties/scalar/TotalEnergyProperty";
 export { default as HOMOEnergyProperty } from "./properties/scalar/HOMOEnergyProperty";
@@ -22,8 +23,5 @@ export { default as ReactionEnergyProfileProperty } from "./properties/non-scala
 export { protoPropertyHolderMixin } from "./holders/mixins/ProtoPropertyHolderMixin";
 export { propertyHolderMixin } from "./holders/mixins/PropertyHolderMixin";
 export { metaPropertyHolderMixin } from "./holders/mixins/MetaPropertyHolderMixin";
-export { default as PropertyHolder } from "./holders/PropertyHolder";
-export { default as MetaPropertyHolder } from "./holders/MetaPropertyHolder";
-export { default as ProtoPropertyHolder } from "./holders/ProtoPropertyHolder";
 
 export * from "./types";
