@@ -18,12 +18,11 @@ export type MetaPropertyHolderMixin = {
 export type MetaPropertyInMemoryEntity = InMemoryEntity & MetaPropertyHolderMixin;
 
 export function metaPropertyHolderMixin(item: InMemoryEntity) {
-    // @ts-expect-error - this is a workaround to allow the metaPropertyMixin to be used with any type of entity
-    const properties: InMemoryEntity & MetaPropertyHolderMixin = {
-        get property() {
-            return PropertyFactory.createMetaProperty(this.data);
+    const properties = {
+        get property(): PseudopotentialMetaProperty {
+            return PropertyFactory.createMetaProperty(this.data) as PseudopotentialMetaProperty;
         },
-    };
+    } as InMemoryEntity & MetaPropertyHolderMixin;
 
     Object.defineProperties(item, Object.getOwnPropertyDescriptors(properties));
 

@@ -6,6 +6,7 @@ import type {
 } from "@mat3ra/esse/dist/js/types";
 
 import PseudopotentialProperty from "./meta_properties/PseudopotentialMetaProperty";
+import type MetaProperty from "./MetaProperty";
 import AveragePotentialProfileProperty from "./properties/non-scalar/AveragePotentialProfileProperty";
 import BandGapsProperty from "./properties/non-scalar/BandGapsProperty";
 import BandStructureProperty from "./properties/non-scalar/BandStructureProperty";
@@ -29,6 +30,7 @@ import WavefunctionAmplitudeProperty from "./properties/non-scalar/WavefunctionA
 import WorkflowProperty from "./properties/non-scalar/WorkflowProperty";
 import TotalEnergyContributionsProperty from "./properties/object/TotalEnergyContributionsProperty";
 import FermiEnergyProperty from "./properties/scalar/FermiEnergyProperty";
+import FormationEnergyProperty from "./properties/scalar/FormationEnergyProperty";
 import HOMOEnergyProperty from "./properties/scalar/HOMOEnergyProperty";
 import IonizationPotentialElementalProperty from "./properties/scalar/IonizationPotentialElementalProperty";
 import LUMOEnergyProperty from "./properties/scalar/LUMOEnergyProperty";
@@ -60,6 +62,7 @@ type PropertyClassMap = {
         | Constructor<TotalEnergyProperty>
         | Constructor<HOMOEnergyProperty>
         | Constructor<LUMOEnergyProperty>
+        | Constructor<FormationEnergyProperty>
         | Constructor<SurfaceEnergyProperty>
         | Constructor<ConvergenceElectronicProperty>
         | Constructor<ConvergenceIonicProperty>
@@ -111,6 +114,7 @@ const PROPERTY_CLASS_MAP: PropertyClassMap = {
     [TotalEnergyProperty.propertyName]: TotalEnergyProperty,
     [HOMOEnergyProperty.propertyName]: HOMOEnergyProperty,
     [LUMOEnergyProperty.propertyName]: LUMOEnergyProperty,
+    [FormationEnergyProperty.propertyName]: FormationEnergyProperty,
     [SurfaceEnergyProperty.propertyName]: SurfaceEnergyProperty,
     [ConvergenceElectronicProperty.propertyName]: ConvergenceElectronicProperty,
     [ConvergenceIonicProperty.propertyName]: ConvergenceIonicProperty,
@@ -208,7 +212,7 @@ export default class PropertyFactory {
         return new PropertyClass(config);
     }
 
-    static createMetaProperty(config: AnyMetaProperty) {
+    static createMetaProperty(config: AnyMetaProperty): MetaProperty {
         const { name } = config;
         const PropertyClass = META_PROPERTY_CLASS_MAP[name];
         return new PropertyClass(config);

@@ -27,6 +27,7 @@ const WavefunctionAmplitudeProperty_1 = __importDefault(require("./properties/no
 const WorkflowProperty_1 = __importDefault(require("./properties/non-scalar/WorkflowProperty"));
 const TotalEnergyContributionsProperty_1 = __importDefault(require("./properties/object/TotalEnergyContributionsProperty"));
 const FermiEnergyProperty_1 = __importDefault(require("./properties/scalar/FermiEnergyProperty"));
+const FormationEnergyProperty_1 = __importDefault(require("./properties/scalar/FormationEnergyProperty"));
 const HOMOEnergyProperty_1 = __importDefault(require("./properties/scalar/HOMOEnergyProperty"));
 const IonizationPotentialElementalProperty_1 = __importDefault(require("./properties/scalar/IonizationPotentialElementalProperty"));
 const LUMOEnergyProperty_1 = __importDefault(require("./properties/scalar/LUMOEnergyProperty"));
@@ -51,6 +52,7 @@ const PROPERTY_CLASS_MAP = {
     [TotalEnergyProperty_1.default.propertyName]: TotalEnergyProperty_1.default,
     [HOMOEnergyProperty_1.default.propertyName]: HOMOEnergyProperty_1.default,
     [LUMOEnergyProperty_1.default.propertyName]: LUMOEnergyProperty_1.default,
+    [FormationEnergyProperty_1.default.propertyName]: FormationEnergyProperty_1.default,
     [SurfaceEnergyProperty_1.default.propertyName]: SurfaceEnergyProperty_1.default,
     [ConvergenceElectronicProperty_1.default.propertyName]: ConvergenceElectronicProperty_1.default,
     [ConvergenceIonicProperty_1.default.propertyName]: ConvergenceIonicProperty_1.default,
