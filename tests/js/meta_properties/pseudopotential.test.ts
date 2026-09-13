@@ -139,4 +139,116 @@ describe("PseudopotentialMetaProperty", () => {
             Pseudopotential.applyPseudoFilters(pseudos, { invalidFilter: 123 });
         }).to.throw("Invalid filter value: 123");
     });
+
+    describe("applications reusing other applications' pseudopotentials", () => {
+        const espressoUltrasoft = new Pseudopotential({
+            exchangeCorrelation,
+            element: "Si",
+            hash: "hash3",
+            path: "/export/share/pseudo/si/gga/pbe/gbrv/1.0/us/si_pbe_gbrv_1.0.upf",
+            apps: ["espresso"],
+            source: "exabyte",
+            type: "us" as const,
+        });
+        const espressoNormConserving = new Pseudopotential({
+            exchangeCorrelation,
+            element: "Si",
+            hash: "hash4",
+            path: "/export/share/pseudo/si/gga/pbe/dojo-oncv/0.4/nc/si_pbe_dojo-oncv_0.4.upf",
+            apps: ["espresso"],
+            source: "exabyte",
+            type: "nc" as const,
+        });
+        const espressoProjectorAugmentedWave = new Pseudopotential({
+            exchangeCorrelation,
+            element: "Si",
+            hash: "hash5",
+            path: "/export/share/pseudo/si/gga/pbe/dojo-jth/1.1/paw/si_pbe_dojo-jth_1.1.upf",
+            apps: ["espresso"],
+            source: "exabyte",
+            type: "paw" as const,
+        });
+        const vaspProjectorAugmentedWave = new Pseudopotential({
+            exchangeCorrelation,
+            element: "Si",
+            hash: "hash6",
+            path: "/export/share/pseudo/si/gga/pbe/vasp/5.2/paw/default/POTCAR",
+            apps: ["vasp"],
+            source: "exabyte",
+            type: "paw" as const,
+        });
+        const q3NativeUltrasoft = new Pseudopotential({
+            exchangeCorrelation,
+            element: "Si",
+            hash: "hash7",
+            path: "/export/share/pseudo/si/gga/pbe/q3/1.0/us/si_pbe_q3_1.0.upf",
+            apps: ["q3"],
+            source: "exabyte",
+            type: "us" as const,
+        });
+        const q3Pseudos = [
+            vaspProjectorAugmentedWave,
+            espressoNormConserving,
+            espressoProjectorAugmentedWave,
+            espressoUltrasoft,
+            q3NativeUltrasoft,
+        ];
+
+        it("keeps native q3 and espresso pseudopotentials for q3, not vasp", () => {
+            const filtered = Pseudopotential.filterByAppName(q3Pseudos, "q3");
+            expect(filtered).to.have.length(4);
+            expect(filtered.every((pseudo) => !pseudo.apps.includes("vasp"))).to.equal(true);
+        });
+
+        it("keeps only its own pseudopotentials for an application without compatible ones", () => {
+            const filtered = Pseudopotential.filterByAppName(q3Pseudos, "espresso");
+            expect(filtered).to.have.length(3);
+            expect(filtered.every((pseudo) => pseudo.apps.includes("espresso"))).to.equal(true);
+        });
+
+        it("lists only ultrasoft espresso and native q3 pseudopotentials under the us subtype", () => {
+            const filtered = Pseudopotential.applyPseudoFilters(q3Pseudos, {
+                appName: "q3",
+                type: "us",
+                elements: ["Si"],
+            });
+            expect(filtered).to.have.length(2);
+            expect(filtered.map((pseudo) => pseudo.apps[0]).sort()).to.deep.equal([
+                "espresso",
+                "q3",
+            ]);
+        });
+
+        it("lists espresso paw UPF files for q3 under the paw subtype, not vasp POTCARs", () => {
+            const filtered = Pseudopotential.applyPseudoFilters(q3Pseudos, {
+                appName: "q3",
+                type: "paw",
+                elements: ["Si"],
+            });
+            expect(filtered).to.have.length(1);
+            expect(filtered[0].apps).to.include("espresso");
+            expect(filtered[0].path).to.include(".upf");
+        });
+
+        it("lists native q3 pseudopotentials before espresso ones", () => {
+            const sorted = Pseudopotential.sortByPathApplicationSpecific(q3Pseudos, "q3");
+            expect(sorted.map((pseudo) => pseudo.apps[0])).to.deep.equal([
+                "q3",
+                "espresso",
+                "espresso",
+                "espresso",
+                "vasp",
+            ]);
+        });
+
+        it("preserves the preceding order within espresso, making gbrv the default among reused files", () => {
+            const sorted = Pseudopotential.sortByPathApplicationSpecific(
+                Pseudopotential.sortPseudosByPattern(
+                    q3Pseudos.filter((pseudo) => !pseudo.apps.includes("q3")),
+                ),
+                "q3",
+            );
+            expect(sorted[0].path).to.include("/gbrv/");
+        });
+    });
 });

@@ -42,6 +42,20 @@ class PseudopotentialMetaProperty extends MetaProperty<Schema> implements Schema
         hse06: ["pbe", "hse06"],
     };
 
+    /**
+     * Extra applications whose pseudopotentials may be listed alongside an
+     * application's own. Native files (apps includes the requesting
+     * application) always come first; this list is preference among reused
+     * sets. The method subtype still applies.
+     *
+     * Add "vasp" here when q3 should list VASP POTCARs. Native q3 entries in
+     * pseudos.json (apps: ["q3"]) are picked up automatically without changing
+     * this map.
+     */
+    static readonly compatibleApplicationNames: Record<string, string[]> = {
+        q3: ["espresso"],
+    };
+
     readonly name = PropertyName.pseudopotential;
 
     constructor(config: Omit<Schema, "name">) {
@@ -120,8 +134,23 @@ class PseudopotentialMetaProperty extends MetaProperty<Schema> implements Schema
         return rawData.filter((el) => el.path.match(regexp));
     }
 
+    static getCompatibleApplicationNames(appName: string) {
+        const reusedApplicationNames =
+            PseudopotentialMetaProperty.compatibleApplicationNames[appName] || [];
+        return [appName, ...reusedApplicationNames.filter((name) => name !== appName)];
+    }
+
+    static isReusingOtherApplications(appName?: string): appName is string {
+        return Boolean(
+            appName && appName in PseudopotentialMetaProperty.compatibleApplicationNames,
+        );
+    }
+
     static filterByAppName(pseudos: PseudopotentialMetaProperty[], appName: string) {
-        return pseudos.filter((pseudo) => pseudo.apps.includes(appName));
+        const compatibleApplicationNames = this.getCompatibleApplicationNames(appName);
+        return pseudos.filter((pseudo) =>
+            compatibleApplicationNames.some((name) => pseudo.apps.includes(name)),
+        );
     }
 
     static filterByElements(pseudos: PseudopotentialMetaProperty[], elements: string[]) {
@@ -197,9 +226,33 @@ class PseudopotentialMetaProperty extends MetaProperty<Schema> implements Schema
         });
     }
 
+    /**
+     * Orders pseudopotentials by the application they come from: native files
+     * first, then the extra names in `compatibleApplicationNames` (e.g. q3
+     * native before espresso UPF). The sort is stable, so any prior ordering
+     * within a single application is preserved.
+     */
+    static sortByCompatibleApplicationOrder(
+        pseudos: PseudopotentialMetaProperty[],
+        appName: string,
+    ) {
+        const compatibleApplicationNames = this.getCompatibleApplicationNames(appName);
+        const applicationRank = (pseudo: PseudopotentialMetaProperty) => {
+            const index = compatibleApplicationNames.findIndex((name) =>
+                pseudo.apps.includes(name),
+            );
+            return index === -1 ? compatibleApplicationNames.length : index;
+        };
+
+        return pseudos.concat([]).sort((a, b) => applicationRank(a) - applicationRank(b));
+    }
+
     static sortByPathApplicationSpecific(pseudos: PseudopotentialMetaProperty[], appName?: string) {
         if (appName === "vasp") {
             return this.sortByPathVASP(pseudos);
+        }
+        if (this.isReusingOtherApplications(appName)) {
+            return this.sortByCompatibleApplicationOrder(pseudos, appName);
         }
         return pseudos;
     }
