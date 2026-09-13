@@ -43,7 +43,7 @@ all = [
 ]
 
 [tool.setuptools_scm]
-git_describe_command = "git describe --tags --long"
+git_describe_command = "git describe --tags --long --match [v0-9]*"
 
 [tool.setuptools.packages.find]
 where = ["src/py"]
@@ -85,4 +85,3 @@ pythonpath = [
 testpaths = [
     "tests/py"
 ]
-
